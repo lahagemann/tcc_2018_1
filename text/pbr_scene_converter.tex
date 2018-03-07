@@ -1,0 +1,98 @@
+\documentclass[cic,tc,english]{iiufrgs}
+
+\usepackage[utf8]{inputenc}   % pacote para acentuação
+\usepackage{graphicx}         % pacote para importar figuras
+\usepackage{times}            % pacote para usar fonte Adobe Times
+% \usepackage{palatino}
+% \usepackage{mathptmx}       % p/ usar fonte Adobe Times nas fórmulas
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% pacote para usar citações abnt
+
+
+\title{Um Exemplo de Monografia do Instituto de Informática da UFRGS}
+\author{Hagemann}{Luiza de Azambuja}
+\advisor[Prof.~Dr.]{Neto}{Manuel Menezes de Oliveira}
+
+\keyword{formatação eletrônica de documentos}
+\keyword{\LaTeX}
+\keyword{ABNT}
+\keyword{UFRGS}
+
+\begin{document}
+
+\maketitle
+
+% dedicatoria
+% \clearpage
+% \begin{flushright}
+%     \mbox{}\vfill
+%     {\sffamily\itshape
+%       ``If I have seen farther than others,\\
+%       it is because I stood on the shoulders of giants.''\\}
+%     --- \textsc{Sir~Isaac Newton}
+% \end{flushright}
+
+% agradecimentos
+%\chapter*{Agradecimentos}
+%Agradeço ao \LaTeX\ por não ter vírus de macro\ldots
+
+% resumo na língua do documento
+\begin{abstract}
+    Este documento é um exemplo de como formatar documentos para o
+    Instituto de Informática da UFRGS usando as classes \LaTeX\
+    disponibilizadas pelo UTUG\@. Ao mesmo tempo, pode servir de consulta
+    para comandos mais genéricos. \emph{O texto do resumo não deve
+      conter mais do que 500 palavras.}
+\end{abstract}
+
+% resumo na outra língua
+% como parametros devem ser passados o titulo e as palavras-chave na outra língua, separadas por vírgulas
+\begin{englishabstract}{Using \LaTeX\ to Prepare Documents at II/UFRGS}{Electronic document preparation. \LaTeX. ABNT. UFRGS}
+    This document is an example on how to prepare documents at II/UFRGS
+    using the \LaTeX\ classes provided by the UTUG\@. At the same time, it
+    may serve as a guide for general-purpose commands. \emph{The text in
+      the abstract should not contain more than 500~words.}
+\end{englishabstract}
+
+% lista de figuras
+\listoffigures
+
+% lista de tabelas
+\listoftables
+
+% lista de abreviaturas e siglas
+\begin{listofabbrv}{SPMD}
+    \item[SMP] Symmetric Multi-Processor
+    \item[NUMA] Non-Uniform Memory Access
+    \item[SIMD] Single Instruction Multiple Data
+    \item[SPMD] Single Program Multiple Data
+    \item[ABNT] Associação Brasileira de Normas Técnicas
+\end{listofabbrv}
+
+% idem para a lista de símbolos
+% \begin{listofsymbols}{$\alpha\beta\pi\omega$}
+%     \item[$\sum{\frac{a}{b}}$] Somatório do produtório
+%     \item[$\alpha\beta\pi\omega$] Fator de inconstância do resultado
+% \end{listofsymbols}
+
+% sumario
+\tableofcontents
+
+% capitulos
+\chapter{Introduction}
+No início dos tempos, Donald E. Knuth criou o \TeX. Algum tempo depois, Leslie Lamport criou o \LaTeX. Graças a eles, não somos obrigados a usar o Word nem o LibreOffice.
+
+\chapter{Related Works}
+\chapter{Theoretical Foundations}
+\chapter{Project}
+\chapter{Result Analysis}
+\chapter{Conclusion}
+
+% referências
+% aqui será usado o environment padrao `thebibliography'; porém, sugere-se
+% seriamente o uso de BibTeX e do estilo abnt.bst (veja na página do
+% UTUG)
+
+\bibliographystyle{abntex2-alf}
+\bibliography{biblio}
+
+\end{document}
