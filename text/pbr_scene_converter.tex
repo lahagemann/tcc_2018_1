@@ -8,7 +8,7 @@
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% pacote para usar citações abnt
 
 
-\title{Um Exemplo de Monografia do Instituto de Informática da UFRGS}
+\title{A Converter for Physically-Based Renderer Scenes}
 \author{Hagemann}{Luiza de Azambuja}
 \advisor[Prof.~Dr.]{Neto}{Manuel Menezes de Oliveira}
 
@@ -32,8 +32,8 @@
 % \end{flushright}
 
 % agradecimentos
-%\chapter*{Agradecimentos}
-%Agradeço ao \LaTeX\ por não ter vírus de macro\ldots
+%\chapter*{Acknowledgements}
+
 
 % resumo na língua do documento
 \begin{abstract}
@@ -54,18 +54,15 @@
 \end{englishabstract}
 
 % lista de figuras
-\listoffigures
+% \listoffigures
 
 % lista de tabelas
-\listoftables
+% \listoftables
 
 % lista de abreviaturas e siglas
-\begin{listofabbrv}{SPMD}
-    \item[SMP] Symmetric Multi-Processor
-    \item[NUMA] Non-Uniform Memory Access
-    \item[SIMD] Single Instruction Multiple Data
-    \item[SPMD] Single Program Multiple Data
-    \item[ABNT] Associação Brasileira de Normas Técnicas
+\begin{listofabbrv}{PBR}
+    \item[PBR] Physically-based Rendering
+    \item[PB] Physically-based
 \end{listofabbrv}
 
 % idem para a lista de símbolos
@@ -79,9 +76,47 @@
 
 % capitulos
 \chapter{Introduction}
-No início dos tempos, Donald E. Knuth criou o \TeX. Algum tempo depois, Leslie Lamport criou o \LaTeX. Graças a eles, não somos obrigados a usar o Word nem o LibreOffice.
+% - what is (physically based) rendering?
+Ever since the development of modern computer graphics, one of the goals aspired to by researchers was being able to synthesize images indistinguishable from real photographs. 
+In order to produce a physically accurate image, the process of image synthesis - also called \textbf{rendering} - converts a description of a three-dimensional scene into an two-dimensional image.
+Rendering is a complex process that requires knowledge of optics, of material and object properties and of how light propagates in our world. 
+
+% - why is it important? diffusion of rendering across many fields, such as movies, games, design, etc
+Over the years, physically-based rendering (PBR) has been incorporated and widely used in the entertainment and marketing industries. It has been used in movies and games as an outlet for expression and creativity,
+allowing artists to portray their vision more accurately. Today, most algorithms used in computer animation, geometric modeling and texturing require that their results be passed through 
+some sort of rendering. 
+
+% - the creation of renderers for the market
+<STATE-OF-THE-ART RENDERERS>
+%https://www.blenderguru.com/articles/render-engine-comparison-cycles-vs-giants
+
+% - the scene
+The process of rendering an image usually starts with a scene. But what defines a scene? In PBR, a scene is a collection of descriptions: of the scene's geometry (the objects), of the objects' materials and textures, 
+of the light sources and of the rendering techniques the user would like to use to form the image. This description is then read and interpreted by the renderer, and the scene is then processed into an output image.
+
+% - stating the problem/motivation: making scenes is hard (reference: http://www.laubwerk.com/home/)
+But even with the vast array of softwares at our disposal, creating scenes is still a complex process. For instance, scenes created for architecture or design-oriented softwares often compile hundreds of 
+3D models and dozens of customized materials and textures, as shown in Figure \ref{fig:intro_complexScene}. Each material and texture has to be carefully defined, taking into account the target 
+renderer's limitations and particularities. %Crafting such scenes is an onerous, time-consuming effort: so much that 
+
+\begin{figure}[h]
+  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{../images/1_introduction/Laubwerk-Kit-12_Bauclassroom-Exterior}
+  \caption{An example of a complex scene created by Laubwerk Plants Kits}
+  \label{fig:intro_complexScene}
+\end{figure}
+
+% - converting a scene - what it takes
+<CONVERTING A SCENE>
+
+% - a solution proposal
 
 \chapter{Related Works}
+% - collada
+
+% - bitterli
+
+% - render toolbox4 (https://github.com/RenderToolbox/RenderToolbox4/wiki/Overview)
+
 \chapter{Theoretical Foundations}
 \chapter{Project}
 \chapter{Result Analysis}
