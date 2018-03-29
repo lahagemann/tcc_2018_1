@@ -12,10 +12,11 @@
 \author{Hagemann}{Luiza de Azambuja}
 \advisor[Prof.~Dr.]{Neto}{Manuel Menezes de Oliveira}
 
-\keyword{formatação eletrônica de documentos}
-\keyword{\LaTeX}
-\keyword{ABNT}
-\keyword{UFRGS}
+\keyword{physically-based rendering}
+\keyword{scene conversion}
+\keyword{PBRT}
+\keyword{Mitsuba}
+\keyword{LuxRender}
 
 \begin{document}
 
@@ -37,33 +38,24 @@
 
 % resumo na língua do documento
 \begin{abstract}
-    Este documento é um exemplo de como formatar documentos para o
-    Instituto de Informática da UFRGS usando as classes \LaTeX\
-    disponibilizadas pelo UTUG\@. Ao mesmo tempo, pode servir de consulta
-    para comandos mais genéricos. \emph{O texto do resumo não deve
-      conter mais do que 500 palavras.}
+    Placeholder.
 \end{abstract}
 
 % resumo na outra língua
-% como parametros devem ser passados o titulo e as palavras-chave na outra 
-língua, separadas por vírgulas
-\begin{englishabstract}{Using \LaTeX\ to Prepare Documents at 
-II/UFRGS}{Electronic document preparation. \LaTeX. ABNT. UFRGS}
-    This document is an example on how to prepare documents at II/UFRGS
-    using the \LaTeX\ classes provided by the UTUG\@. At the same time, it
-    may serve as a guide for general-purpose commands. \emph{The text in
-      the abstract should not contain more than 500~words.}
+% como parametros devem ser passados o titulo e as palavras-chave na outra língua, separadas por vírgulas
+\begin{englishabstract}{Um conversor de cenas para renderizadores fisicamente realísticos.}{Physically-based rendering. PBRT. Mitsuba. LuxRender.}
+    Placeholder.
 \end{englishabstract}
 
 % lista de figuras
-% \listoffigures
+\listoffigures
 
 % lista de tabelas
 % \listoftables
 
 % lista de abreviaturas e siglas
 \begin{listofabbrv}{PBR}
-    \item[PBR] Physically-based Rendering
+    \item[PBR] Physically Based Rendering
     \item[PB] Physically-based
 \end{listofabbrv}
 
@@ -78,7 +70,7 @@ II/UFRGS}{Electronic document preparation. \LaTeX. ABNT. UFRGS}
 
 % capitulos
 \chapter{Introduction}
-\section{Physically Based Rendering}
+
 Ever since the development of modern Computer Graphics, one of the goals 
 researchers aspired to was being able to synthesize images indistinguishable 
 from real photographs. In order to produce physically accurate images, the 
@@ -88,33 +80,41 @@ interaction of light with the representation of a three-dimensional scene.
 thorough knowledge of optics, material properties, geometry and light 
 propagation.
 
+\section{Physically Based Rendering (PBR)}
 Over the years, PBR became quite popular and was widely incorporated into the 
 entertainment industries. From movies to videogames, from ads to interior 
-design (and bearing the need of high computational power), PBR made it possible 
-for artists to bring their creations and their vision one step closer to 
-reality. Today, we can say that many - if not most - algorithms used in 
-computer animation, geometric modeling and texturing require that their results 
-be passed through some sort of rendering process. 
+design, PBR made it possible for artists to bring their creations and their 
+vision one step closer to reality. Today, we can say that many - if not most - 
+algorithms used in computer animation, geometric modeling and texturing require 
+that their results be passed through some sort of rendering process. 
 
 As PBR popularity grew, a brand new market opened up for physically-based (PB) 
-renderers. Following the creation of PBRT and the publishing of 
-\textit{"Physically Based Rendering: From Theory to Implementation"},
-several other research-oriented renderers were created. One of the most popular 
-ones, \textit{Mitsuba}, places strong emphasis on experimental rendering 
-techniques.
+renderers. Following the creation of \textit{PBRT} and the publishing of 
+\textit{"Physically Based Rendering: From Theory to Implementation"} 
+\cite{pbrt}, several other research-oriented renderers were created. Among them 
+is \textit{Mitsuba}, one of the renderers chosen for this research, which places 
+strong emphasis on experimental rendering techniques.
 
-Following the lead of Pixar's \textit{Renderman}, many commercial and 
-performance-oriented renderers appeared on the market. Focused on animation 
-techniques and rendering visual effects for feature films, these renderers
-provide well-established, stable rendering techniques. These renderers, such as 
-\textit{LuxRender} and \textit{Octane}, are state-of-the-art renderers used by 
-the animation and gaming industries.
+Following the lead of Pixar's \textit{Renderman} \cite{renderman}, many 
+commercial and performance-oriented renderers appeared on the market. Focused 
+on animation techniques and visual effects for movies, these 
+renderers provide well-established, stable rendering techniques. These 
+renderers, such as \textit{LuxRender} \cite{luxrender} and \textit{Octane} 
+\cite{octane}, are state-of-the-art renderers used by the animation and gaming 
+industries. 
 %https://www.blenderguru.com/articles/render-engine-comparison-cycles-vs-giants
 
-<section closing paragraph>
+Even with different applications, the vast majority of modern 
+PB renderers follows the same general guidelines for defining scene directives 
+and world descriptions. Scene directives establish parameters such as which 
+integration and sampling techniques the renderer must use, the view matrix and 
+other camera properties. World descriptions state which objects compose the 
+scene and which materials must be used to render them. This ensemble of 
+descriptions is what, in PBR, is called a \textbf{scene}.
 
 \section{Rendering a Scene}
 % - the scene
+<TO BE REWRITTEN>
 The process of rendering an image usually starts with a scene. But what defines 
 a scene? In PBR, a scene is a collection of descriptions: of the scene's 
 geometry (the objects), of the objects' materials and textures, of the light 
