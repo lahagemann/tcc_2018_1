@@ -6,7 +6,7 @@
 % \usepackage{palatino}
 % \usepackage{mathptmx}       % p/ usar fonte Adobe Times nas fórmulas
 \usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% pacote para usar citações abnt
-
+\usepackage{cite}
 
 \title{A Converter for Physically-Based Renderer Scenes}
 \author{Hagemann}{Luiza de Azambuja}
@@ -71,67 +71,29 @@
 % capitulos
 \chapter{Introduction}
 
-Ever since the development of modern Computer Graphics, one of the goals 
-researchers aspired to was being able to synthesize images indistinguishable 
-from real photographs. In order to produce physically accurate images, the 
-process of image synthesis - also called \textbf{rendering} - simmulates the 
-interaction of light with the representation of a three-dimensional scene. 
-\textbf{Physically-Based Rendering} (PBR) is a complex process that requires 
-thorough knowledge of optics, material properties, geometry and light 
-propagation.
+Ever since the development of modern Computer Graphics, one of the goals researchers aspired to was being able to synthesize images indistinguishable from real photographs. In order to produce physically accurate images, the process of image synthesis - also called \textbf{rendering} - simmulates the interaction of light with the representation of a three-dimensional scene. 
+
+\textbf{Physically-Based Rendering (PBR)} is a complex process that requires thorough knowledge of optics, material properties, geometry and light propagation.
 
 \section{Physically Based Rendering (PBR)}
-Over the years, PBR became quite popular and was widely incorporated into the 
-entertainment industries. From movies to videogames, from ads to interior 
-design, PBR made it possible for artists to bring their creations and their 
-vision one step closer to reality. Today, we can say that many - if not most - 
-algorithms used in computer animation, geometric modeling and texturing require 
-that their results be passed through some sort of rendering process. 
+Over the years, PBR became quite popular and was widely incorporated into the entertainment industries. From movies to videogames, from ads to interior design, PBR made it possible for artists to bring their creations and their vision one step closer to reality. Today, we can say that many - if not most - algorithms used in computer animation, geometric modeling and texturing require that their results be passed through some sort of rendering process.
 
-As PBR popularity grew, a brand new market opened up for physically-based (PB) 
-renderers. Following the creation of \textit{PBRT} and the publishing of 
-\textit{"Physically Based Rendering: From Theory to Implementation"} 
-\cite{pbrt}, several other research-oriented renderers were created. Among them 
-is \textit{Mitsuba}, one of the renderers chosen for this research, which places 
-strong emphasis on experimental rendering techniques.
+As PBR popularity grew, a brand new market opened up for physically-based (PB) renderers. Following the creation of \textit{PBRT} and the publishing of \textit{"Physically Based Rendering: From Theory to Implementation"} \cite{pbrt}, several other research-oriented renderers were created. Among them is \textit{Mitsuba}, one of the renderers chosen for this research, which places strong emphasis on experimental rendering techniques.
 
-Following the lead of Pixar's \textit{Renderman} \cite{renderman}, many 
-commercial and performance-oriented renderers appeared on the market. Focused 
-on animation techniques and visual effects for movies, these 
-renderers provide well-established, stable rendering techniques. These 
-renderers, such as \textit{LuxRender} \cite{luxrender} and \textit{Octane} 
-\cite{octane}, are state-of-the-art renderers used by the animation and gaming 
-industries. 
+Following the lead of Pixar's \textit{Renderman} \cite{renderman}, many commercial and performance-oriented renderers appeared on the market. Focused on animation techniques and visual effects for movies, these renderers provide well-established, stable rendering techniques. These renderers, such as \textit{LuxRender} \cite{luxrender} and \textit{Octane} \cite{octane}, are state-of-the-art renderers used by the animation and gaming industries.
 %https://www.blenderguru.com/articles/render-engine-comparison-cycles-vs-giants
 
-Even with different applications, the vast majority of modern 
-PB renderers follows the same general guidelines for defining scene directives 
-and world descriptions. Scene directives establish parameters such as which 
-integration and sampling techniques the renderer must use, the view matrix and 
-other camera properties. World descriptions state which objects compose the 
-scene and which materials must be used to render them. This ensemble of 
-descriptions is what, in PBR, is called a \textbf{scene}.
+Even with different applications, the vast majority of modern PB renderers follows the same general guidelines for defining scene directives and world descriptions. Scene directives establish parameters such as which integration and sampling techniques the renderer must use, the view matrix and other camera properties. World descriptions state which objects compose the scene and which materials must be used to render them. This ensemble of descriptions is what, in PBR, is called a \textbf{scene}.
 
 \section{Rendering a Scene}
 % - the scene
-<TO BE REWRITTEN>
-The process of rendering an image usually starts with a scene. But what defines 
-a scene? In PBR, a scene is a collection of descriptions: of the scene's 
-geometry (the objects), of the objects' materials and textures, of the light 
-sources and of the rendering techniques the user would like to use to form the 
-image. This description is then read and interpreted by the renderer, and the 
-scene is then processed into an output image.
+Starting with \textit{PBRT}, most PB renderers have used a similar, traditional​ structure to describe scenes.
+
+These scenes are usually created by a 3D artist, who will use a modeling software (such as Blender, 3D Max or Maya) to draw the objects, choose their materials and then create the object files. These files will then be instanced in the scene file and interpreted by the renderer.
 
 % - stating the problem/motivation: making scenes is hard 
 % (reference: http://www.laubwerk.com/home/)
-But even with the vast array of softwares at our disposal, creating scenes is 
-still a complex process. For instance, scenes created for architecture or 
-design-oriented softwares often compile hundreds of 3D models and dozens of 
-customized materials and textures, as shown in Figure 
-\ref{fig:intro_complexScene}. Each material and texture has to be carefully 
-defined, taking into account the target 
-renderer's limitations and particularities. Crafting such scenes is an onerous, 
-time-consuming effort: so much that 
+But even with an artist’s expertise, creating scenes is still a complex process. For instance, scenes created for building overviews and interior design often compile hundreds of 3D models and dozens of customized materials and textures, as one can see in Figure \ref{fig:intro_complexScene}. Each material and texture has to be carefully defined, taking into account the renderer's limitations and particularities.
 
 \begin{figure}[h]
   
@@ -140,10 +102,25 @@ time-consuming effort: so much that
   \label{fig:intro_complexScene}
 \end{figure}
 
-% - converting a scene - what it takes
-<CONVERTING A SCENE>
+After a scene is created and rendered, all the hard work invested by the artist is stored, waiting for a possible future use. However, should the artist choose to change renderers, the scene file they created so diligently would have to be rewritten and/or heavily modified.
 
-% - a solution proposal
+Converting a scene file from one renderer format to another is very difficult and time consuming. Aside from adapting material and light properties - which can be hard since sometimes renderers don't provide the same features -, the 3D object formats supported may not be the same. For instance, \textit{Mitsuba} supports the Object File Wavefront 3D (.obj) format while \textit{PBRT} does not.
+
+Creating free resources in order to help rendering research, Benedikt Bitterli \cite{bitterli} manually converted 32 scenes for his renderer \textit{Tungsten} \cite{tungsten}, later converting them to \textit{PBRT} and \textit{Mitsuba}. According to him, \textit{"this process is time intensive (up to several days per scene)"}. 
+
+% maybe add more people complaining
+
+\section{Project Definition}
+
+Facing the issues presented in the last session, this work proposes an automatic converter between scene files of three popular PB renderers: \textit{Mitsuba}, \textit{PBRT} and \textit{LuxRender}. The converter is able to interpret files from these renderers and store the information in a canonical, intermediate state. From this state, the scene structure is converted into the desired output renderer.
+
+The converter's system architecture was conceived using modules. Each renderer scene file interpreter is a separate module that reads the input file and stores information in a canonical intermediate state. Each converter is also a module that reads from the canonical intermediate state and converts the scene structure into an output renderer file format. Adding new scene interpreters or converters is as simple as having to write a new module. 
+
+The converter is only responsible for converting renderer scene files. It cannot convert 3D object files (such as OBJ meshes to PLY meshes) or environment mapping files. If the converter recognizes an unsupported file extension during a conversion, a warning is issued to the user.
+
+\section{Evaluation and Results}
+
+<TODO>
 
 \chapter{Related Works}
 % - collada

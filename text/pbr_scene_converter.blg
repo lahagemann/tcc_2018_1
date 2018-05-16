@@ -2,20 +2,20 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: pbr_scene_converter.aux
 I couldn't open style file abntex2-alf.bst
----line 87 of file pbr_scene_converter.aux
+---line 88 of file pbr_scene_converter.aux
  : \bibstyle{abntex2-alf
  :                      }
 I'm skipping whatever remains of this command
 I couldn't open database file abntex2-options.bib
----line 88 of file pbr_scene_converter.aux
+---line 89 of file pbr_scene_converter.aux
  : \bibdata{abntex2-options
  :                         ,biblio}
 I'm skipping whatever remains of this command
 I found no database files---while reading file pbr_scene_converter.aux
 I found no style file---while reading file pbr_scene_converter.aux
-You've used 6 entries,
+You've used 7 entries,
             0 wiz_defined-function locations,
-            91 strings with 603 characters,
+            93 strings with 631 characters,
 and the built_in function-call counts, 0 in all, are:
 = -- 0
 > -- 0
