@@ -5,7 +5,10 @@
   volume = {14},
   number = {2},
   pages = {6},
-  year = {2014}
+  year = {2014},
+  doi = {10.1167/14.2.6},
+  URL = { + http://dx.doi.org/10.1167/14.2.6},
+  eprint = {/data/journals/jov/932814/i1534-7362-14-2-6.pdf}
 }
 
 @book{collada,
@@ -13,8 +16,9 @@
   title = {Collada: Sailing the Gulf of 3D Digital Content Creation},
   year = {2006},
   isbn = {1568812876},
-  publisher = {AK Peters Ltd}
+  publisher = {AK Peters Ltd},
 }
+
 
 @book{pbrtBook,
   author = {Pharr, Matt and Humphreys, Greg},
@@ -25,15 +29,6 @@
   address = {San Francisco, CA, USA},
 }
 
-@proceedings{SIBGRAPI2018,
-  Address = {Foz do Igua\c{c}u, PR, Brazil},
-  Booktitle = {SIBGRAPI},
-  Month = {October},
-  Publisher = {{IEEE}},
-  Title = {Proceedings of the 31st SIBGRAPI -- Conference on Graphics, Patterns and Images},
-  Year = {2018}
-}
-
 @misc{resources16,
   author = {Bitterli, Benedikt},
   year = {2016},
@@ -42,14 +37,14 @@
 } 
 
 @misc{mitsuba,
-  author = {Jakob, Wenzel},
+	author = {Jakob, Wenzel},
   title = {Mitsuba: Physically Based Renderer},
   note = {\url{http://www.mitsuba-renderer.org/}},
   year = {2014}
 }
 
 @misc{tungsten,
-  author = {Bitterli, Benedikt},
+	author = {Bitterli, Benedikt},
   title = {The Tungsten Renderer},
   note = {\url{https://benedikt-bitterli.me/tungsten.html}},
   year = {2014}
@@ -57,21 +52,13 @@
 
 @misc{luxrender,
   author = {Grimaldi, Jean-Philippe and Vergauwen, Terrence},
-  title = {LuxRender v1.6},
+  title = {LuxRender 1.6},
   note = {\url{http://www.luxrender.net/}},
   year = {2008}
-}
 
 @misc{pbrt, 
   author = {Pharr, Matt and Humphreys, Greg},
   title = {PBRT, Version 3},
-  url = {https://github.com/mmp/pbrt-v3},
+  note = {\url{https://github.com/mmp/pbrt-v3}}
   year = {2015}
-}
-
-@misc{ply, 
-  author = {Beazley, David},
-  title = {PLY (Python Lex-Yacc)},
-  url = {http://www.dabeaz.com/ply/},
-  year = {2001}
 }

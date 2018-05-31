@@ -1,6 +1,9 @@
 DONE:
 
 - adicionar template do sibgrapi no repositório
+
+TODO:
+
 - montar bibtex com
     - pbrt
     - mitsuba
@@ -9,8 +12,6 @@ DONE:
     - Bitterli
     - rendertoolbox
     - collada
-
-TODO:
 
 - escrever seção de trabalhos relacionados
     - Bitterli - fez conversão manual de cenas para tungsten + conversão do tungsten para mitsuba e para pbrt
