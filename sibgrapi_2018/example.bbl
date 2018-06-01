@@ -27,6 +27,11 @@ M.~Pharr and G.~Humphreys, ``Pbrt, version 3,'' 2015. [Online]. Available:
   \url{https://github.com/mmp/pbrt-v3}
 \BIBentrySTDinterwordspacing
 
+\bibitem{pbrtBook}
+------, \emph{Physically Based Rendering: From Theory to Implementation}.\hskip
+  1em plus 0.5em minus 0.4em\relax San Francisco, CA, USA: Morgan Kaufmann
+  Publishers Inc., 2004.
+
 \bibitem{mitsuba}
 W.~Jakob, ``Mitsuba: Physically based renderer,'' 2014,
   \url{http://www.mitsuba-renderer.org/}.
@@ -34,6 +39,14 @@ W.~Jakob, ``Mitsuba: Physically based renderer,'' 2014,
 \bibitem{luxrender}
 J.-P. Grimaldi and T.~Vergauwen, ``Luxrender v1.6,'' 2008,
   \url{http://www.luxrender.net/}.
+
+\bibitem{resources16}
+B.~Bitterli, ``Rendering resources,'' 2016,
+  \url{https://benedikt-bitterli.me/resources/}.
+
+\bibitem{tungsten}
+------, ``The tungsten renderer,'' 2014,
+  \url{https://benedikt-bitterli.me/tungsten.html}.
 
 \bibitem{ply}
 \BIBentryALTinterwordspacing
