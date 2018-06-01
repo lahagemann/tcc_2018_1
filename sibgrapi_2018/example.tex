@@ -125,16 +125,23 @@ implement this module using ElementTree \cite{ET}, a XML parsing tool.
 After loading the scene file, the information obtained from them has to be 
 stored somewhere. While most renderers have the same base structure, they differ 
 in which parameters can be used to configure the techniques used during the 
-rendering process. In order to establish a common ground for conversion, we 
+rendering process. 
+
+Renderer directives are usually given in the format of a command, followed by a 
+type and a list of additional parameters. So, for instance, to specify the path 
+integration technique with 8192 samples per pixel in \textit{PBRT} one would 
+write the following directive: \textit{Integrator ``path'' ``integer 
+pixelsamples'' [8192]}.
+
+In order to establish a common ground for conversion, we 
 defined a canonical scene representation. This representation can be easily 
 extended incorporate any directives not contemplated in this work.
 
-In this representation, we divide scene into the two sections stated in the 
-section above: \textbf{scene-wide rendering options} and \textbf{world block}. 
-The rendering options are divided into integration technique and sensor options, 
-while the world block is divided into lists of shapes, global emitters and 
-material definitions. This structure is illustrated in Figure 
-\ref{fig:canonicalrep}.
+In this representation, we divide the scene into \textbf{scene-wide rendering 
+options} and \textbf{world block}. The rendering options are divided into 
+integration technique and sensor options, while the world block is divided into 
+lists of shapes, global emitters and material definitions. This structure is 
+illustrated in Figure \ref{fig:canonicalrep}.
 
 \begin{figure}[h]
 \centering
@@ -146,16 +153,24 @@ material definitions. This structure is illustrated in Figure
 \subsubsection{Scene-wide Rendering Options}
 A set of directives specifying the integration and sampling techniques used for 
 rendering, camera and film properties. These directives are represented in a 
-structure with two fields: a \textbf{type} and a \textbf{list of parameters}.
+structure with two fields: a type and a list of parameters.
 
 \subsubsection{World Block}
-A set of directives describing the shapes, materials and global emitters present in the scene. 
+A set of directives describing the shapes, materials and global emitters present 
+in the scene. 
 
-The shape directive is represented in a structure with: a \textbf{type} (cube, sphere, ...), an optional \textbf{area emitter}, an optional \textbf{material reference}, an optional \textbf{transformation matrix} and a \textbf{list of parameters}. 
+The \textbf{shape} directive is represented in a structure with: a type (cube, 
+sphere, ...), an optional area emitter, an optional material reference, an 
+optional transformation matrix and a list of parameters. 
 
-The material directive is represented in a structure with: a \textbf{type}, an \textbf{id}, an optional \textbf{texture} and a \textbf{list of parameters}.
+The \textbf{material} directive is represented in a structure with: a type, an 
+id, an optional texture and a list of parameters.
 
-The global emitter directive is represented in a structure with: a \textbf{type}, an optional \textbf{transformation matrix} and a \textbf{list of parameters}.
+The \textbf{texture} directive is represented in a structure with: a type, an id 
+and a list of parameters.
+
+The \textbf{global emitter} directive is represented in a structure with: a 
+type}, an optional transformation matrix and a list of parameters.
 
 \subsection{Conversion Module}
 Subsection text here.
