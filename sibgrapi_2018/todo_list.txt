@@ -9,6 +9,9 @@ DONE:
     - Bitterli
     - rendertoolbox
     - collada
+- descrever a arquitetura do sistema, justificando decisões de implementação.
+    - módulo de leitura dos arquivos de cena dos renderizadores
+        - explicar a decisão de uso do ElementTree para o Mitsuba ao invés de PLY (flex + bison)
 
 TODO:
 
