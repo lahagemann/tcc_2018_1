@@ -1,7 +1,7 @@
 \section{Related Work}
 With the addition of new physically-based renderers to the market, the number of 
 incompatible file formats began to grow. There were a few initiatives to solve 
-this problem, the greatest one being the proposal of a common file format.
+this problem, starting with the proposal of a common file format.
 
 Back in 2004, Arnaud and Barnes created COLLADA \cite{collada}, a XML schema 
 file format that intended to unify representation of digital assets among 
@@ -12,6 +12,7 @@ that adhered to this file format, one of the few being Mitsuba. That might have
 happened because COLLADA files only include information about the geometry 
 present in the scene - they don't store any information about other rendering 
 options, such as camera positioning or integration techniques.
+
 
 While working on his renderer, Tungsten \cite{tungsten}, Benedikt Bitterli 
 manually converted 32 scenes of various complexities and origins. He later 

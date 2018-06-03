@@ -48,6 +48,11 @@ B.~Bitterli, ``Rendering resources,'' 2016,
 ------, ``The tungsten renderer,'' 2014,
   \url{https://benedikt-bitterli.me/tungsten.html}.
 
+\bibitem{collada}
+R.~Arnaud and M.~C. Barnes, \emph{Collada: Sailing the Gulf of 3D Digital
+  Content Creation}.\hskip 1em plus 0.5em minus 0.4em\relax AK Peters Ltd,
+  2006.
+
 \bibitem{ply}
 \BIBentryALTinterwordspacing
 D.~Beazley, ``Ply (python lex-yacc),'' 2001. [Online]. Available:

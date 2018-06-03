@@ -92,15 +92,4 @@ The \textbf{global emitter} directive is represented in a structure with: a
 type, an optional transformation matrix and a list of parameters.
 
 \subsection{Conversion Module}
-After the scene is loaded and properly set into our canonical representation, it 
-can be converted into any of the supported formats. Each conversion (to PBRT, 
-Mitsuba and LuxRender) has its own particularities.
-
-\subsubsection{Mitsuba}
-Explain Mitsuba conversion here
-
-\subsubsection{PBRT}
-Explain PBRT conversion here
-
-\subsubsection{LuxRender}
-Explain LuxRender conversion here
+After the scene is loaded and properly set into our canonical representation, it can be converted into any of the supported formats. Each conversion (to PBRT, Mitsuba and LuxRender
