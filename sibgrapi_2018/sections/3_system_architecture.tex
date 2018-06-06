@@ -19,29 +19,31 @@ the most popularly used renderers in the community.
 
 \subsection{Import Module}
 Most physically-based renderers have a similar way of describing a scene. 
-Usually, they divide a scene into two sections: scene-wide rendering options and 
+Usually, they divide it into two sections: scene-wide rendering options and 
 world block. The former defines overall rendering settings (such as which 
 rendering or sampling technique should be used) while the latter describes the 
 geometry and which materials should be used for rendering.
 
 Our import module specializes in reading and interpreting such scene files. The 
-input file is read, parsed and each directive is loaded into our canonical scene 
+input file is read, parsed and each directive is loaded into our canonical  
 representation. Since each renderer has its own proprietary file format, we have 
-three importing modules: one for each renderer.
+developed three importing modules: one for each renderer.
 
 \textit{PBRT} and \textit{LuxRender} file formats are composed of structured 
-text statements defining all scene directives. Given their structure, a Lex/Yacc 
+text statements which define the directives. Given their structure, a Lex/Yacc 
 parser was considered the best choice for these formats. As we intended to keep 
 our system in pure Python, we chose to use PLY \cite{ply}, a Python 
 implementation of Lex and Yacc.
 
-\textit{Mitsuba}'s file format consists of a XML file. Since there are several 
+\textit{Mitsuba} is a heavily optimized, plugin-oriented renderer. The file 
+format is, essentialy, a XML description of which plugins should be instantiated 
+with the specified parameters. Since there are several 
 XML-parsing libraries for Python that can load the hierarchy into a tree data 
 structure, we didn't think it necessary to create a Lex/Yacc parser. We chose to 
-implement this module using ElementTree \cite{ET}, a XML parsing tool.
+implement this module using ElementTree \cite{ET}, a Python XML parsing tool.
 
 \subsection{Canonical Scene Representation}
-After loading the scene file, the information obtained from them has to be 
+After loading the scene file, the obtained information has to be 
 stored somewhere. While most renderers have the same base structure, they differ 
 in which parameters can be used to configure the techniques used during the 
 rendering process. 
@@ -52,15 +54,15 @@ integration technique with 8192 samples per pixel in \textit{PBRT} one would
 write the following directive: \textit{Integrator ``path'' ``integer 
 pixelsamples'' [8192]}.
 
-In order to establish a common ground for conversion, we 
-defined a canonical scene representation. This representation can be easily 
-extended incorporate any directives not contemplated in this work.
+In order to establish a common ground for conversion, we decided it best to 
+define a canonical representation for these scenes. This representation can be 
+easily extended incorporate any directives not contemplated in this work.
 
-In this representation, we divide the scene into \textbf{scene-wide rendering 
-options} and \textbf{world block}. The rendering options are divided into 
-integration technique and sensor options, while the world block is divided into 
-lists of shapes, global emitters and material definitions. This structure is 
-illustrated in Figure \ref{fig:canonicalrep}.
+We divide the scene into \textbf{scene-wide rendering options} and \textbf{world 
+block}. The rendering options are divided into integration technique and sensor 
+options, while the world block is divided into lists of shapes, global emitters 
+and material definitions. This structure is illustrated in Figure 
+\ref{fig:canonicalrep}.
 
 \begin{figure}[h]
 \centering
@@ -97,7 +99,14 @@ can be converted into any of the supported formats. Each conversion (to PBRT,
 Mitsuba and LuxRender) has its own particularities.
 
 \subsubsection{Mitsuba}
+The
+
+Of the chosen renderers, Mitsuba is the only one using a right-hand coordinate 
+system. All instanced matrixes modifying the world position of shapes, 
+environment maps and the camera must have their x-axis mirrored. 
+
 Explain Mitsuba conversion here
+
 
 \subsubsection{PBRT}
 Explain PBRT conversion here
