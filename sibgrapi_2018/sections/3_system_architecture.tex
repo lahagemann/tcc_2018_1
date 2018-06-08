@@ -15,7 +15,9 @@ formats.
 
 Our Proof of Concept encompassed \textit{PBRT} \cite{pbrt}, \textit{Mitsuba} 
 \cite{mitsuba} and \textit{LuxRender} \cite{luxrender}, as these are three of 
-the most popularly used renderers in the community.
+the most popularly used renderers in the community. This architecture, however, 
+is easily extensible: adding other renderers would be a simple task of writing 
+an import and a conversion module.
 
 \subsection{Import Module}
 Most physically-based renderers have a similar way of describing a scene. 
@@ -94,22 +96,38 @@ The \textbf{global emitter} directive is represented in a structure with: a
 type, an optional transformation matrix and a list of parameters.
 
 \subsection{Conversion Module}
-After the scene is loaded and properly set into our canonical representation, it 
-can be converted into any of the supported formats. Each conversion (to PBRT, 
-Mitsuba and LuxRender) has its own particularities.
+After the scene file is loaded and properly set into our canonical 
+representation, it can be converted into any of the supported formats.
 
-\subsubsection{Mitsuba}
-The
+When converting scene representations, there are several delicate cases to 
+consider and study carefully. The matrix transformations, the native shape 
+directives, the environment mapping coordinates and, mostly, the materials are 
+some of the directives that vary greatly between renderers. 
 
-Of the chosen renderers, Mitsuba is the only one using a right-hand coordinate 
-system. All instanced matrixes modifying the world position of shapes, 
-environment maps and the camera must have their x-axis mirrored. 
+\subsubsection{Converting Matrixes}
+There are several issues to consider when converting matrixes between renderers. 
+A few things we had to keep in mind were: does this renderer use a left or right 
+coordinate system? Does this renderer represent matrixes in the scene file using 
+the inverse-transpose? How is the object-world transformation represented for 
+shapes?
 
-Explain Mitsuba conversion here
+Mitsuba uses a right-hand coordinate system, while PBRT and LuxRender use a 
+left-hand one. This meant that, when converting between Mitsuba and the other 
+two, we had to mirror the x-axis of all camera matrix transformations. This was 
+also the case for environment mapping positioning and object-world 
+transformations. 
 
+Mitsuba also has its camera transformation matrix specified as a camera to world 
+ transformation, while PBRT and LuxRender do not. Therefore, when converting the 
+camera look-at matrix between these renderers, we had to compute the inverse 
+transpose of the specified matrix.
 
-\subsubsection{PBRT}
-Explain PBRT conversion here
+\subsubsection{Converting Materials}
+Materials are maybe the most delicate aspect of scene conversion. Most renderers 
+have very different implementations for common BSDFs, making it hard to predict 
+the relation between their parameters.
 
-\subsubsection{LuxRender}
-Explain LuxRender conversion here
+Mitsuba takes a more generalist approach: 
+
+\subsubsection{Converting Shapes}
+Explain
