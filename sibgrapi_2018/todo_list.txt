@@ -9,16 +9,11 @@ DONE:
     - Bitterli
     - rendertoolbox
     - collada
-- descrever a arquitetura do sistema, justificando decisões de implementação.
-    - módulo de leitura dos arquivos de cena dos renderizadores
-        - explicar a decisão de uso do ElementTree para o Mitsuba ao invés de PLY (flex + bison)
 
-TODO:
+- escrever introdução/contextualização
 
 - escrever seção de trabalhos relacionados
     - Bitterli - fez conversão manual de cenas para tungsten + conversão do tungsten para mitsuba e para pbrt
-    - rendertoolbox - plugin para visualização de cenas em matlab que exporta para pbrt e mitsuba
-    (descrever brevemente os trabalhos)
 
 - descrever a arquitetura do sistema, justificando decisões de implementação.
     - módulo de leitura dos arquivos de cena dos renderizadores
@@ -31,7 +26,12 @@ TODO:
     - módulo de conversão
         - explicação em alto nível dos procedimentos realizados para conversão
     - figura esquemática da arquitetura montada
+TODO:
+
+- escrever seção de trabalhos relacionados
+    - rendertoolbox - plugin para visualização de cenas em matlab que exporta para pbrt e mitsuba
+    (descrever brevemente os trabalhos)
 
 - escrever seção de resultados
 
-- escrever introdução/contextualização + conclusão
+- escrever conclusão
