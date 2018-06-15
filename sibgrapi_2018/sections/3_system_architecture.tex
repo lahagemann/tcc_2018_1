@@ -82,15 +82,14 @@ structure with two fields: a type and a list of parameters.
 A set of directives describing the shapes, materials and global emitters present
 in the scene.
 
+The \textbf{material} directive is represented in a structure with: a type, an
+id, an optional texture and a list of parameters.
+
 The \textbf{shape} directive is represented in a structure with: a type (cube,
 sphere, ...), an optional area emitter, an optional material reference, an
 optional transformation matrix and a list of parameters.
 
-The \textbf{material} directive is represented in a structure with: a type, an
-id, an optional texture and a list of parameters.
-
-The \textbf{texture} directive is represented in a structure with: a type, an id
-and a list of parameters.
+\red{The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters. [Not shown in Fig. 2]}
 
 The \textbf{global emitter} directive is represented in a structure with: a
 type, an optional transformation matrix and a list of parameters.
@@ -102,13 +101,13 @@ representation, it can be converted into any of the supported formats.
 When converting scene representations, there are several delicate cases to
 consider and study carefully. The matrix transformations, the native shape
 directives, the environment mapping coordinates and, mostly, the materials are
-some of the directives that vary greatly between renderers. \\
+some of the directives that vary greatly between renderers. 
 
-% \subsubsection{Converting Matrixes}
-\textit{1. Converting Matrixes} \\
-There are several issues to consider when converting matrixes between renderers.
+% \subsubsection{Converting Matrices}
+\textit{1. Converting Matrices} \\
+There are several issues to consider when converting matrices between renderers.
 A few things we had to keep in mind were: does this renderer use a left or right
-coordinate system? Does this renderer represent matrixes in the scene file using
+coordinate system? Does this renderer represent matrices in the scene file using
 the inverse-transpose? How is the object-world transformation represented for
 shapes?
 
@@ -118,10 +117,10 @@ two, we had to mirror the x-axis of all camera matrix transformations. This was
 also the case for environment mapping positioning and object-world
 transformations.
 
-Mitsuba also has its camera transformation matrix specified as a camera to world
+\red{Mitsuba also has its camera transformation matrix specified as a camera-to-world
  transformation, while PBRT and LuxRender do not. Therefore, when converting the
 camera look-at matrix between these renderers, we had to compute the inverse
-transpose of the specified matrix. \\
+transpose of the specified matrix. }
 
 % \subsubsection{Converting Materials}
 \textit{2. Converting Materials} \\
@@ -131,8 +130,8 @@ converting scenes. However, most renderers have very different implementations
 for common subsurface scattering models (called BSDFs), making it hard to
 predict the relation between their parameters.
 
-Mitsuba uses a more physics-oriented approach: materials can be diffuse,
-conductors (metal), dielectrics (glass), plastic, translucent or a bumpmap.
+Mitsuba uses a more physics-oriented approach: a material can be diffuse,
+conductor, dielectric, plastic, translucent, or a bumpmap.
 There are other types of materials, but those were not contemplated in our PoC.
 The material type in Mitsuba changes should the material contain any form of
 surface roughness, becoming a ``rough'' version of itself (for instance, a rough
@@ -142,10 +141,10 @@ PBRT and LuxRender materials have roughness parameters, making it unecessary to
 change the material's name.
 
 The major problem was faced when converting metals from and to LuxRender. PBRT 
-and Mitsuba use the index of refraction (\textit{eta}) and the absorption 
+and Mitsuba use the index of refraction ($\eta$) and the absorption 
 coefficient (\textit{k}) in each channel in order to compute material's 
 reflectance. LuxRender, however, uses a Fresnel texture, which can specify a 
-single value of \textit{eta} and \textit{k} for all channels, or specify an RGB 
+single value of $\eta$ and \textit{k} for all channels, or specify an RGB 
 color. Therefore, getting a converted metal color between LuxRender and the 
 others is very difficult, and was not implemented for this PoC. \\
 
@@ -168,8 +167,8 @@ primitive for specifying inbuilt triangle meshes.
 The reverse process, however, is more complicated. The triangle mesh directive
 specifies the coordinates, normal and uv mapping for the points forming a
 triangle. In order to recover a transformation matrix for the corresponding
-Mitsuba primitive, these points have to be multiplied by the original Mitsuba
-canonical coordinates in the correct order. \\
+Mitsuba primitive, \red{these points have to be multiplied by the original Mitsuba
+canonical coordinates in the correct order.}
 
 \textit{4. Converting Global Emitters} \\
 Global emitters can used to emulate environment lighting, such as the sun, the
@@ -185,10 +184,10 @@ a sun directive is a very straightforward conversion. Converting a PBRT
 environment mapping into a sky directive is not: how could the converter know
 whether the environment mapping is in fact an adaptation of a sky light? We
 solved this issue by interacting with the user whenever an environment map
-directive is found - we ask the user whether they would like to use a sky
+directive is found - we ask the user whether (s)he would like to use a sky
 emitter or not.
 
-Another sensitive point to consider is converting environment mapping indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, Mitsuba uses cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as shown in \ref{fig:mitdocemitter}. 
+Another sensitive point to consider is converting environment mapping indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as shown in \ref{fig:mitdocemitter}. 
 
 \begin{figure}[h]
 \centering
@@ -197,4 +196,4 @@ Another sensitive point to consider is converting environment mapping indexation
 \label{fig:mitdocemitter}
 \end{figure}
 
-This essentialy means that <>
+\red{This essentialy means that} <>

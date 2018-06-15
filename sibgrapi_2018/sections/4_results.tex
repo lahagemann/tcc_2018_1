@@ -5,16 +5,15 @@ These two were chosen for providing a collection of varied directives.
 
 \textit{The Wooden Staircase} makes use of image-based textures, area lighting 
 and has a vast array of different kinds of materials, including bumpmaps. The 
-scene has a whopping set of 774 external 3D meshes - which makes it very 
-difficult to convert manually - and primitive directives, such as rectangles.
+scene uses 774 external 3D meshes, which makes manual conversion hard and time consuming, as well as primitive directives, such as rectangles.
 
 The \textit{Utah Teapot} is a much simpler scene, with two materials, one primitive  and one 
 external 3D mesh. It does, however, use a primitive checkerboard texture and 
 environment mapping.
 
-The scenes were rendered using Mitsuba 0.5.0, PBRT v3 and LuxRender v1.6 on a 
-UNIX system running Ubuntu 14.04 LTS. All scenes were rendered using over 5000 
-samples per pixel. 
+The scenes were rendered using Mitsuba 0.5.0, PBRT v3 and LuxRender v1.6 on 
+%a UNIX system running
+Ubuntu 14.04 LTS. All scenes were rendered using over 5,000 samples per pixel. 
 
 We rendered the original scenes for Mitsuba, PBRT and LuxRender. After that, we 
 rendered the scenes converted from these input files by our system. The original 
@@ -30,7 +29,7 @@ LuxRender input files.}
 \end{figure}
 
 The results in Figure \ref{fig:staircase} differ a little in coloring from 
-renderer to renderer due to the very nature of Montecarlo Rendering - sampling 
+renderer to renderer due to the very nature of Monte Carlo Rendering - sampling 
 can vary between scenes. The results obtained from our system were very similar 
 to the original images.
 
@@ -42,7 +41,7 @@ input files.}
 \label{fig:teapot}
 \end{figure*}
 
-Obtaining the results in Figure \ref{fig:teapot} were particularly challenging
+\red{Obtaining the results in Figure \ref{fig:teapot} were particularly challenging}
 
 \subsection{Limitations}
 In order to minimize scope issues, we restricted the number of directives 
@@ -57,7 +56,7 @@ materials in LuxRender given the issues discussed in \ref{systemarch}.
 
 We chose to limit the interpreted global emitters to the most commonly used 
 ones: environment mapping, sun, sky, distant lighting, infinite. Therefore, spot 
-and point lights were not included in our PoC.
+and \red{point lights were not included in our PoC. [Why not?]}
 
 
 
