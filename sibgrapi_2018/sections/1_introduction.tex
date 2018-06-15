@@ -3,11 +3,11 @@
 
 Monte Carlo ray tracing is currently the only practical solution for simulating global illumination effects in complex environments.
 Due to its high computational cost, several techniques have been introduced to reduce rendering time through improved sampling and reconstruction strategies~\cite{X, Y, Z}. When developing such new techniques, researchers often implement them on top of existing rendering systems as a way of leveraging available infrastructure to perform functions (\eg, ray-traversal acceleration, ray-primitive intersections, etc.) that are orthogonal to the proposed methods.
-%
-Unfortunately, the various rendering systems use proprietary scene-description formats. While modeling visually-pleasing scenes requires significant artistic skills, manual conversion between proprietary formats requires knowledge of the specific formats and tend to be extremely time consuming (up to several days per scene~\cite{Bitterli}). 
+
+Unfortunately, the various rendering systems use proprietary scene description formats. While modeling visually-pleasing scenes requires significant artistic skills, manual conversion between proprietary formats requires knowledge of the specific formats and tend to be extremely time consuming (up to several days per scene~\cite{Bitterli}). 
 Thus, by selecting a given rendering system one is often constrained to test and demonstrate the proposed techniques on the limited set of test scenes available for that renderer. This apparently simple limitation has profound implications, as it constrains a direct comparison between Monte Carlo (MC) rendering techniques that have been implemented using different rendering systems. In this case, one often has to compare the quality of algorithms using disjoint sets of scenes, which tends to be unsatisfactory.    
     
-We present {\it a system for automatic conversion among the scene file formats used by Monte Carlo physically-based rendering systems}. 
+We present {\it a system for automatic conversion among scene file formats used by Monte Carlo physically-based rendering systems}. 
 Our solution significantly expands the repertoire of scenes available for testing, validation, and benchmarking of MC rendering algorithms.  
 Currently, our system handles conversions among PBRT v3~\cite{PBRT-v3}, Mitsuba~\cite{mitsuba}, and LuxRender~\cite{luxrender}, which are three of the most popular physically-based renderers (PBR). Our solution (discussed in Section~\ref{sec:architecture}) consists of {\it importing} any source scene description into a canonical representation, which can then be {\it exported} to other scene formats. By specializing the import and export classes to the various formats, our system can convert among arbitrary scene file formats.     
 %
@@ -17,7 +17,9 @@ Our work does not introduce a new physically-based rendering technique per se. I
 
 The {\bf contributions} of our work include:
 \begin{itemize}
-	\item 
+	\item A system for automatic conversion among scene file formats used by Monte Carlo physically-based rendering systems (Section~\ref{sec:}).
+	It enables algorithms implemented on different rendering systems to be tested on similar scene description, giving developers and end users a better assessment of the strengths and limitations of MC rendering techniques;
+	\item A mechanism for achieving full orthogonality among MC rendering algorithms, rendering systems, and scene files (Section~\ref{sec:}). This is achieved in combination with the API provided in~\cite{Santos:2018:FBKSD}. 
 \end{itemize}
 
 %
