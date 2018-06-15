@@ -8,7 +8,7 @@ formats.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=2.5in]{figs/3_system_architecture/architecture.png}
+\includegraphics[width=3.5in]{figs/3_system_architecture/architecture.png}
 \caption{Illustration of the system pipeline.}
 \label{fig:sysarch}
 \end{figure}
@@ -53,12 +53,12 @@ rendering process.
 Renderer directives are usually given in the format of a command, followed by a
 type and a list of additional parameters. So, for instance, to specify the path
 integration technique with 8192 samples per pixel in \textit{PBRT} one would
-write the following directive: \textit{Integrator ``path'' ``integer
-pixelsamples'' [8192]}.
+write the following directive: \\ \\
+\indent \textbf{Integrator ``path'' ``integer pixelsamples'' [8192]}\\
 
 In order to establish a common ground for conversion, we decided it best to
 define a canonical representation for these scenes. This representation can be
-easily extended incorporate any directives not contemplated in this work.
+easily extended to incorporate any directives not contemplated in this work.
 
 We divide the scene into \textbf{scene-wide rendering options} and \textbf{world
 block}. The rendering options are divided into integration technique and sensor
@@ -68,7 +68,7 @@ and material definitions. This structure is illustrated in Figure
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=2.5in]{figs/3_system_architecture/canonicalrep.png}
+\includegraphics[width=3.5in]{figs/3_system_architecture/canonicalrep.png}
 \caption{Illustration of the canonical scene representation.}
 \label{fig:canonicalrep}
 \end{figure}
@@ -141,13 +141,13 @@ metal becomes a roughconductor).
 PBRT and LuxRender materials have roughness parameters, making it unecessary to
 change the material's name.
 
-The major problem was faced when converting metals from and to LuxRender. PBRT
-and Mitsuba use the index of refraction (eta) and the absorbtion coefficient (k)
-in each channel in order to compute material's reflectance. LuxRender, however,
-uses a Fresnel texture, which can specify a single value of eta and k for all
-channels, or specify an RGB color. Therefore, getting a converted metal color
-between LuxRender and the others is very difficult, and was not implemented in
-this PoC. \\
+The major problem was faced when converting metals from and to LuxRender. PBRT 
+and Mitsuba use the index of refraction (\textit{eta}) and the absorption 
+coefficient (\textit{k}) in each channel in order to compute material's 
+reflectance. LuxRender, however, uses a Fresnel texture, which can specify a 
+single value of \textit{eta} and \textit{k} for all channels, or specify an RGB 
+color. Therefore, getting a converted metal color between LuxRender and the 
+others is very difficult, and was not implemented for this PoC. \\
 
 \textit{3. Converting Shapes} \\
 Shape directives can be split into two categories: primitive shapes, which can
@@ -187,3 +187,14 @@ whether the environment mapping is in fact an adaptation of a sky light? We
 solved this issue by interacting with the user whenever an environment map
 directive is found - we ask the user whether they would like to use a sky
 emitter or not.
+
+Another sensitive point to consider is converting environment mapping indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, Mitsuba uses cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as shown in \ref{fig:mitdocemitter}. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=2.7in]{figs/3_system_architecture/mitdocemitter.png}
+\caption{Illustration of the coordinate conventions used by Mitsuba for indexing environment map uv coordinates.}
+\label{fig:mitdocemitter}
+\end{figure}
+
+This essentialy means that <>
