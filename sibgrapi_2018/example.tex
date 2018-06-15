@@ -43,14 +43,15 @@
 \usepackage{xcolor}
 
 \newcommand \red[1] {\textcolor{red}{#1}}
+\newcommand \eg {{\it e.g.}}
 
 \begin{document}
 
 \title{Scene Conversion for Physically-based Renderers}
 
 \newif\iffinal
-%\finalfalse
-\finaltrue
+\finalfalse
+%\finaltrue
 \newcommand{\jemsid}{99999}
 \iffinal
 
@@ -75,12 +76,13 @@ oliveira@inf.ufrgs.br}}
 \begin{figure}[h]
 	\includegraphics[width=1\linewidth]{figs/4_results/teaser_staircase.png}
 	\centering
-	\caption{Example of automatic convertion obtained with our system for a scene originally modeled for Mitsuba. (left) Rendering produced by Mitsuba. (center) Rendering produced by PBRT v3 (center) and LuxRender (right), from converted scenes for the renderers. }
-	\label{fig:cfa_design_autoencoder_idea}
+	\caption{Example of automatic conversion obtained with our system for a scene originally modeled for Mitsuba. (left) Rendering produced by Mitsuba. (center) Rendering produced by PBRT v3 (center) and LuxRender (right), from converted scenes for the renderers. }
+	\label{fig:teaser}
 \end{figure}
 
 \begin{abstract}
-The abstract goes here.
+Monte Carlo ray tracing is currently the only practical solution for simulating global illumination effects in complex environments.
+Due to its high computational cost, several techniques have been introduced to reduce rendering time through improved sampling and reconstruction strategies~\cite{X, Y, Z}.   
 \end{abstract}
 
 \IEEEpeerreviewmaketitle
