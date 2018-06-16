@@ -6,8 +6,9 @@ types of materials and bumpmaps; 3D meshes and primitive shapes; image and
 primitive textures; area and environment lighting. 
 
 The scenes were rendered using Mitsuba 0.5.0, PBRT v3 and LuxRender v1.6 on 
-%a UNIX system running
 Ubuntu 14.04 LTS. All scenes were rendered using over 5,000 samples per pixel. 
+
+%Some difference between the rendered images is expected, especially of scenes with environment emitters. All three renderers have different implementations of sun and sky directives, Mitsuba being the 
 
 \begin{figure*}
 \centering
@@ -66,7 +67,31 @@ from converted scenes for the renderers}
 scene originally modeled for Mitsuba. Rendering produced by Mitsuba (left).
 Rendering produced by PBRT v3 (center) and LuxRender (right),
 from converted scenes for the renderers}
-\label{fig:coffee}
+\label{fig:cornell}
+\end{figure*}
+
+\begin{figure*}
+\centering
+\includegraphics[width=2.2in]{figs/4_results/dining_room/1_from_lux.png}
+\includegraphics[width=2.2in]{figs/4_results/dining_room/2_to_mitsuba.png}
+\includegraphics[width=2.2in]{figs/4_results/dining_room/3_to_pbrt.png}
+\caption{Automatic conversion obtained with our system for \textit{The Breakfast Room}
+scene originally modeled for LuxRender. Rendering produced by LuxRender (left).
+Rendering produced by Mitsuba (center) and PBRT v3 (right),
+from converted scenes for the renderers}
+\label{fig:dining-room}
+\end{figure*}
+
+\begin{figure*}
+\centering
+\includegraphics[width=2.2in]{figs/4_results/glass_of_water/1_from_pbrt.png}
+\includegraphics[width=2.2in]{figs/4_results/glass_of_water/2_to_lux.png}
+\includegraphics[width=2.2in]{figs/4_results/glass_of_water/3_to_mitsuba.png}
+\caption{Automatic conversion obtained with our system for \textit{Glass of Water}
+scene originally modeled for PBRT v3. Rendering produced by PBRT v3 (left).
+Rendering produced by LuxRender (center) and Mitsuba (right),
+from converted scenes for the renderers}
+\label{fig:glass-of-water}
 \end{figure*}
 
 \subsection{Limitations}
@@ -79,7 +104,7 @@ incorporated. That was the case, for instance, for Mitsuba-only materials like
 We chose not to interpret and convert hair or participating media (volumes, such 
 as water or fog) for this PoC. We also did not convert the color for metal 
 materials in LuxRender given the issues discussed in \ref{systemarch}. The 
-latter can be observed in Figure \ref{fig:coffee} - we can see the lack of a 
+latter can be observed in Figure \ref{fig:veach-bidir} - we can see the lack of a 
 copper color on the lamp in the image rendered by LuxRender.
 
 

@@ -4,13 +4,15 @@
 To the best of our knowledge, no previous system has performed automatic scene conversion among the major MC rendering systems. 
 Bitterli has converted 32 scenes of various complexities and origins from Tungsten to PBRT v3 and Mitsuba using some scripts~\cite{tungsten}. These scripts, however, are specific for conversions from Tungsten to these two renderers and are not publicly available. 
 
+Heasly et al. developed a tool to aid the studying of vision: RenderToobox3 \cite{rendertoolbox} is a system that imports COLLADA XML files into a MATLAB system and uses different rendering techniques in order images as close to reality as possible. Their system uses integrated PBRT and Mitsuba rendering is capable of storing their data structure into their respective scene file formats. Being a tool for visualization, they do not import scenes from Mitsuba, PBRT or any other renderers, which limits the possibility of converting scene files between them. 
 
 \subsection{Meta-Research Systems in Computer Graphics}
 
 Several systems have been developed to support research in computer graphics. 
 Some well-known examples include Cg~\cite{Mark2003}, Brook~\cite{Buck2004}, and Halide~\cite{Ragan-Kelley2012}.
 Cg is a general-purpose programming language designed to support the development of efficient GPU applications, and has stimulated a lot of research efforts in shader-based rendering techniques~\cite{Policarpo2005, Policarpo2006, Wyman2005, Oliveira2007RRT}.  
-Brook is system for general-purpose computation that allows one to exploit the inherent parallelism of modern GPUs without having to deal with GPU architecture details. These kinds of systems were an inspiration that led to the development of CUDA~\cite{Nickolls2008}.
+Brook~\cite{Buck2004} is system for general-purpose computation that allows one to exploit the inherent parallelism of modern GPUs without having to deal with GPU architecture details. These kinds of systems were an inspiration that led to the development of CUDA~\cite{Nickolls2008}.
+Halide~\cite{Ragan-Kelley2012} is a system designed to optimize image-processing applications on multiple hardware platforms by separating the algorithm description from its schedule. The system has been recently extended to support differentiable programming for image processing and deep learning~\cite{Li2018-Halide-Diff_Prog}. All these systems focus on generating efficient code while freeing the user from GPU architectural details. All goal, in turn, is to make high-quality scenes availability independent of one's choice of rendering system. 
 
 
 %With the addition of new physically-based renderers to the market, the number of 
