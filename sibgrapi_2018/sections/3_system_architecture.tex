@@ -1,32 +1,40 @@
-\section{System Architecture} 
+\section{Automatic Scene Conversion} 
 \label{sec:systemarch}
 
-Our converting pipeline is subdivided into three main states: the \textbf{Import
-Module}, the \textbf{Canonical Scene Representation} and the \textbf{Conversion
-Module}, as illustrated in Figure \ref{fig:sysarch}. Given an arbitrary input
-file format, our converter is able to import the scene and transform it into a
-generic, canonical representation and then export it to different output
-formats.
+Our system consists of two main components: an {\it import module} that reads an arbitrary scene file format and generates an equivalent description in a {\it canonical} scene representation; and an {\it export module} that takes a canonical representation and exports it to a target rendering system file format. The complete process is illustrated in Figure \ref{fig:sysarch}. 
+Currently, our system supports \textit{PBRT v-3}~\cite{PBRT:v3}, \textit{Mitsuba}~\cite{mitsuba}, and \textit{LuxRender}~\cite{luxrender}, as these are three of the most popular rendering systems.
+This architecture, however, is quite flexible. Supporting additional rendering systems only requires specializing the import and export methods to handle the new formats. Moreover, it can be easily integrated with the API described in~\cite{Santos:2018:FBKSD}.   
+%
+Next, we describe the main components of our system.
+
+%Our Proof of Concept (PoC) encompassed \textit{PBRT} \cite{pbrt}, \textit{Mitsuba}
+%\cite{mitsuba} and \textit{LuxRender} \cite{luxrender}, as these are three of
+%the most popularly used renderers in the community. This architecture, however,
+%is easily extensible: adding other renderers would be a simple task of writing
+%an import and a conversion module.
+
+
+
+%converting pipeline is subdivided into three main states: the \textbf{Import
+%Module}, the \textbf{Canonical Scene Representation} and the \textbf{Conversion
+%Module}, as illustrated in Figure \ref{fig:sysarch}. Given an arbitrary input
+%file format, our converter is able to import the scene and transform it into a
+%generic, canonical representation and then export it to different output
+%formats.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=3.5in]{figs/3_system_architecture/architecture.png}
-\caption{Illustration of the system pipeline.}
+\includegraphics[width=0.8\linewidth]{figs/3_system_architecture/architecture.png}
+\caption{Our scene conversion pipeline. An input scene description is converted to a canonical representation, which, in turn, can be exported to a target rendering system format.}
 \label{fig:sysarch}
 \end{figure}
 
-Our Proof of Concept (PoC) encompassed \textit{PBRT} \cite{pbrt}, \textit{Mitsuba}
-\cite{mitsuba} and \textit{LuxRender} \cite{luxrender}, as these are three of
-the most popularly used renderers in the community. This architecture, however,
-is easily extensible: adding other renderers would be a simple task of writing
-an import and a conversion module.
-
-\subsection{Import Module}
+\subsection{The Import Module}
 Most physically-based renderers have a similar way of describing a scene.
 Usually, it is divided into two sections: scene-wide rendering options and
 world block. The former defines overall rendering settings (such as which
 rendering or sampling technique should be used) while the latter describes the
-geometry and which materials should be used for rendering.
+geometry and materials to be used for rendering.
 
 Our import module specializes in reading and interpreting such scene files. The
 input file is read, parsed and each directive is loaded into our canonical
@@ -70,7 +78,7 @@ and material definitions. This structure is illustrated in Figure
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=3.5in]{figs/3_system_architecture/canonicalrep.png}
+\includegraphics[width=0.6\linewidth]{figs/3_system_architecture/canonicalrep.png}
 \caption{Illustration of the canonical scene representation.}
 \label{fig:canonicalrep}
 \end{figure}
@@ -78,25 +86,25 @@ and material definitions. This structure is illustrated in Figure
 \subsubsection{Scene-wide Rendering Options}
 A set of directives specifying the integration and sampling techniques used for
 rendering, camera and film properties. These directives are represented in a
-structure with two fields: a type and a list of parameters.
+structure with two fields: \red{a type and a list of parameters [EXAMPLE?]}.
 
 \subsubsection{World Block}
 A set of directives describing the shapes, materials and global emitters present
 in the scene.
 
-The \textbf{material} directive is represented in a structure with: a type, an
+The \textbf{material} directive is represented in a structure with: a type \red{(examples of types?)}, an
 id, an optional texture and a list of parameters.
 
 The \textbf{shape} directive is represented in a structure with: a type (cube,
 sphere, ...), an optional area emitter, an optional material reference, an
 optional transformation matrix and a list of parameters.
 
-The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters.
+The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters. \red{[Where are the textures themselves stored?]}
 
 The \textbf{global emitter} directive is represented in a structure with: a
 type, an optional transformation matrix and a list of parameters.
 
-\subsection{Conversion Module}
+\subsection{The Export Module}
 After the data is loaded into our canonical
 representation, it can be converted into any of the supported formats.
 
@@ -213,10 +221,10 @@ shown in Figure \ref{fig:mitdocemitter}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=1.4in]{figs/3_system_architecture/spherical_coordinates.png}
-\includegraphics[width=2.2in]{figs/3_system_architecture/mitdocemitter.png}
+\includegraphics[width=1.2in]{figs/3_system_architecture/spherical_coordinates.png}
+\includegraphics[width=2.0in]{figs/3_system_architecture/mitdocemitter.png}
 \caption{Illustration of the coordinate conventions used by PBRT and LuxRender 
-(top) and by Mitsuba (bottom) for indexing environment map uv coordinates.}
+(left) and by Mitsuba (right) for indexing environment map uv coordinates.}
 \label{fig:mitdocemitter}
 \end{figure}
 
