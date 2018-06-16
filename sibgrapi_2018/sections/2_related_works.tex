@@ -1,24 +1,33 @@
 \section{Related Work}
-With the addition of new physically-based renderers to the market, the number of 
-incompatible file formats began to grow. There were a few initiatives to solve 
-this problem, the greatest one being the proposal of a common file format.
+\label{(sec:related_work)}
 
-Back in 2004, Arnaud and Barnes created COLLADA \cite{collada}, a XML schema 
-file format that intended to unify representation of digital assets among 
-various graphics software applications. Ever since it became property of the 
-Khronos Group, several companies included a COLLADA module on their 3D modeling 
-softwares or game engines. However, there were few physically-based renderers 
-that adhered to this file format, one of the few being Mitsuba. That might have 
-happened because COLLADA files only include information about the geometry 
-present in the scene - they don't store any information about other rendering 
-options, such as camera positioning or integration techniques.
+To the best of our knowledge, no previous system has performed scene conversion among the major MC rendering systems. 
+Bitterli has converted 32 scenes of various complexities and origins from Tungsten to PBRT v3 and Mitsuba using some scripts~\cite{tungsten}. These scripts, however, are specific for conversions from Tungsten to the two renderers and are not publicly available. 
 
-While working on his renderer, Tungsten \cite{tungsten}, Benedikt Bitterli 
-manually converted 32 scenes of various complexities and origins. He later 
-released his work as an open source set for rendering research. \textcolor{red}{He later 
-exported these manually converted scenes from Tungsten to Mitsuba and PBRT v3 
-using automatic converters}. These converters were not released to the public, 
-though. Bitterli's work was crucial to the development of our system: we used 
-his set of rendering resources to evaluate our system's results.
+
+
+\subsection{Meta-Research Systems in Computer Graphics}
+
+%With the addition of new physically-based renderers to the market, the number of 
+%incompatible file formats began to grow. There were a few initiatives to solve 
+%this problem, the greatest one being the proposal of a common file format.
+%
+%Back in 2004, Arnaud and Barnes created COLLADA \cite{collada}, a XML schema 
+%file format that intended to unify representation of digital assets among 
+%various graphics software applications. Ever since it became property of the 
+%Khronos Group, several companies included a COLLADA module on their 3D modeling 
+%softwares or game engines. However, there were few physically-based renderers 
+%that adhered to this file format, one of the few being Mitsuba. That might have 
+%happened because COLLADA files only include information about the geometry 
+%present in the scene - they don't store any information about other rendering 
+%options, such as camera positioning or integration techniques.
+%
+%While working on his renderer, Tungsten \cite{tungsten}, Benedikt Bitterli 
+%manually converted 32 scenes of various complexities and origins. He later 
+%released his work as an open source set for rendering research. \textcolor{red}{He later 
+%exported these manually converted scenes from Tungsten to Mitsuba and PBRT v3 
+%using automatic converters}. These converters were not released to the public, 
+%though. Bitterli's work was crucial to the development of our system: we used 
+%his set of rendering resources to evaluate our system's results.
 
 

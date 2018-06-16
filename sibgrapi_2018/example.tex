@@ -44,8 +44,8 @@
 
 \newcommand \red[1] {\textcolor{red}{#1}}
 \newcommand \eg {{\it e.g.}}
+\usepackage{caption}
 
-\begin{document}
 
 \title{Scene Conversion for Physically-based Renderers}
 
@@ -71,14 +71,21 @@ oliveira@inf.ufrgs.br}}
   \author{SIBGRAPI paper ID: \jemsid \\ }
 \fi
 
-\maketitle
-
-\begin{figure}[h]
-	\includegraphics[width=1\linewidth]{figs/4_results/teaser_staircase.png}
-	\centering
-	\caption{Example of automatic conversion obtained with our system for a scene originally modeled for Mitsuba. (left) Rendering produced by Mitsuba. (center) Rendering produced by PBRT v3 (center) and LuxRender (right), from converted scenes for the renderers. }
+\begin{document}
+\twocolumn[{%
+	\renewcommand\twocolumn[1][]{#1}%
+	\maketitle
+	\begin{center}
+		\centering
+	\includegraphics[width=0.2\linewidth]{figs/4_results/coffee/1_from_pbrt.png}
+	\includegraphics[width=0.2\linewidth]{figs/4_results/coffee/2_to_mitsuba.png}
+	\includegraphics[width=0.2\linewidth]{figs/4_results/coffee/3_to_lux.png}
+	\captionof{figure}{Example of automatic scene conversion obtained with our system. \textit{Coffee Maker} originally modeled for PBRT v3 (left). Rendering produced by Mitsuba (center) and LuxRender (right), from converted scenes for these rendering systems.}
 	\label{fig:teaser}
-\end{figure}
+	\end{center}%
+}]	
+	
+%\maketitle
 
 \begin{abstract}
 Monte Carlo ray tracing is currently the only practical solution for simulating global illumination effects in complex environments.
