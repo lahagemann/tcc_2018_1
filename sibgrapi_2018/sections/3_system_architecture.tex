@@ -89,7 +89,7 @@ The \textbf{shape} directive is represented in a structure with: a type (cube,
 sphere, ...), an optional area emitter, an optional material reference, an
 optional transformation matrix and a list of parameters.
 
-\red{The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters. [Not shown in Fig. 2]}
+The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters.
 
 The \textbf{global emitter} directive is represented in a structure with: a
 type, an optional transformation matrix and a list of parameters.
@@ -117,10 +117,16 @@ two, we had to mirror the x-axis of all camera matrix transformations. This was
 also the case for environment mapping positioning and object-world
 transformations.
 
-\red{Mitsuba also has its camera transformation matrix specified as a camera-to-world
- transformation, while PBRT and LuxRender do not. Therefore, when converting the
-camera look-at matrix between these renderers, we had to compute the inverse
-transpose of the specified matrix. }
+\green{Furthermore, Mitsuba scene files have their camera position specified as a 
+world-to-camera transformation matrix, while PBRT and LuxRender scene files have 
+theirs as a camera-to-world transformation matrix. Therefore, converting the 
+camera positioning between Mitsuba and the other two renderers means we have to 
+compute the inverse transpose of this transformation matrix.}
+
+% \red{Mitsuba also has its camera transformation matrix specified as a camera-to-world
+%  transformation, while PBRT and LuxRender do not. Therefore, when converting the
+% camera look-at matrix between these renderers, we had to compute the inverse
+% transpose of the specified matrix. }
 
 % \subsubsection{Converting Materials}
 \textit{2. Converting Materials} \\
@@ -187,13 +193,20 @@ solved this issue by interacting with the user whenever an environment map
 directive is found - we ask the user whether (s)he would like to use a sky
 emitter or not.
 
-Another sensitive point to consider is converting environment mapping indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as shown in \ref{fig:mitdocemitter}. 
+Another sensitive point to consider is converting environment mapping 
+indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed 
+using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, 
+Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as 
+shown in \ref{fig:mitdocemitter}. 
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=2.7in]{figs/3_system_architecture/mitdocemitter.png}
-\caption{Illustration of the coordinate conventions used by Mitsuba for indexing environment map uv coordinates.}
+\includegraphics[width=1.4in]{figs/3_system_architecture/spherical_coordinates.png}
+\includegraphics[width=2.2in]{figs/3_system_architecture/mitdocemitter.png}
+\caption{Illustration of the coordinate conventions used by PBRT and LuxRender 
+(top) and by Mitsuba (bottom) for indexing environment map uv coordinates.}
 \label{fig:mitdocemitter}
 \end{figure}
 
-\red{This essentialy means that} <>
+This conversion can be done by applying a transformation matrix on the 
+environment map, rotating the x, y and z axes to match the output renderer. 
