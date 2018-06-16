@@ -1,12 +1,17 @@
 \section{Related Work}
 \label{(sec:related_work)}
 
-To the best of our knowledge, no previous system has performed scene conversion among the major MC rendering systems. 
-Bitterli has converted 32 scenes of various complexities and origins from Tungsten to PBRT v3 and Mitsuba using some scripts~\cite{tungsten}. These scripts, however, are specific for conversions from Tungsten to the two renderers and are not publicly available. 
-
+To the best of our knowledge, no previous system has performed automatic scene conversion among the major MC rendering systems. 
+Bitterli has converted 32 scenes of various complexities and origins from Tungsten to PBRT v3 and Mitsuba using some scripts~\cite{tungsten}. These scripts, however, are specific for conversions from Tungsten to these two renderers and are not publicly available. 
 
 
 \subsection{Meta-Research Systems in Computer Graphics}
+
+Several systems have been developed to support research in computer graphics. 
+Some well-known examples include Cg~\cite{Mark2003}, Brook~\cite{Buck2004}, and Halide~\cite{Ragan-Kelley2012}.
+Cg is a general-purpose programming language designed to support the development of efficient GPU applications, and has stimulated a lot of research efforts in shader-based rendering techniques~\cite{Policarpo2005, Policarpo2006, Wyman2005, Oliveira2007RRT}.  
+Brook is system for general-purpose computation that allows one to exploit the inherent parallelism of modern GPUs without having to deal with GPU architecture details. These kinds of systems were an inspiration that led to the development of CUDA~\cite{Nickolls2008}.
+
 
 %With the addition of new physically-based renderers to the market, the number of 
 %incompatible file formats began to grow. There were a few initiatives to solve 
