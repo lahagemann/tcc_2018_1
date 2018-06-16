@@ -14,6 +14,8 @@ Cg is a general-purpose programming language designed to support the development
 Brook~\cite{Buck2004} is system for general-purpose computation that allows one to exploit the inherent parallelism of modern GPUs without having to deal with GPU architecture details. These kinds of systems were an inspiration that led to the development of CUDA~\cite{Nickolls2008}.
 Halide~\cite{Ragan-Kelley2012} is a system designed to optimize image-processing applications on multiple hardware platforms by separating the algorithm description from its schedule. The system has been recently extended to support differentiable programming for image processing and deep learning~\cite{Li2018-Halide-Diff_Prog}. All these systems focus on generating efficient code while freeing the user from GPU architectural details. All goal, in turn, is to make high-quality scenes availability independent of one's choice of rendering system. 
 
+Santos et al. have recently presented a framework for developing and benchmarking MC sampling and denoising algorithms~\cite{Santos:2018:FBKSD}.
+They use an API to decouple algorithms from rendering systems, allowing for the same algorithm to be tested on multiple rendering systems. By doing so, they also increase the set of scenes an algorithm can be tested with. However, in order to use a given test scene, the rendering system for which the scene was created would have to be used as well. Our scene-conversion solution complements the API described in~\cite{Santos:2018:FBKSD}, lending to a desirable full orthogonality among MC algorithms, rendering systems, and scene files.
 
 %With the addition of new physically-based renderers to the market, the number of 
 %incompatible file formats began to grow. There were a few initiatives to solve 
