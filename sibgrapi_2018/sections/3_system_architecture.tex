@@ -47,20 +47,27 @@ with the specified parameters. Since there are several XML-parsing libraries for
 structure, we chose to use ElementTree \cite{ET}, a Python XML parsing tool.
 
 \subsection{Canonical Scene Representation}
-After loading the scene file, the information has to be
-stored somewhere. While most renderers have the same base structure, they differ
-in which parameters can be used to configure the techniques used during the
-rendering process.
+%After loading the scene file, the information has to be stored somewhere. 
+While most renderers have a similar structure, they differ in a few supported features and in the parameters used to configure the rendering process. Thus, we need a canonical representation that covers the features supported by all renderers, 
+%
+ COLLADA~\cite{collada} is an XML schema intended as a representation for exchanging digital content among graphics applications. 
+ %Ever since it became property of the 
+ %Khronos Group, several companies included a COLLADA module on their 3D modeling 
+ %softwares or game engines. However, there were few physically-based renderers 
+ %that adhered to this file format, one of the few being Mitsuba. That might have 
+ %happened because 
+ However, COLLADA files only include information about scene geometry. No information about other rendering 
+ options, such as camera positioning or integration techniques, is available. 
+ In order to establish a common ground for conversion, we defined a canonical representation for these scenes. Such a representation 
+ is illustrated in Figure~\ref{fig:canonicalrep} and can easily extended to incorporate any directives not covered in our current implementation.
+ 
+%Renderer directives are usually written as a command, followed by a type and a list of additional parameters. 
+%So, for instance, to specify the path
+%integration technique with 8192 samples per pixel in PBRT v3 one would
+%write:  
+%\texttt{\small Integrator "path" "integer pixelsamples" [8192]}
 
-Renderer directives are usually given in the format of a command, followed by a
-type and a list of additional parameters. So, for instance, to specify the path
-integration technique with 8192 samples per pixel in \textit{PBRT} one would
-write the following directive: \\ \\
-\indent \textbf{Integrator ``path'' ``integer pixelsamples'' [8192]}\\
-
-In order to establish a common ground for conversion, we decided it best to
-define a canonical representation for these scenes. This representation can be
-easily extended to incorporate any directives not contemplated in this work.
+%In order to establish a common ground for conversion, we decided it best to define a canonical representation for these scenes. This representation can be easily extended to incorporate any directives not contemplated in this work.
 
 We divide the scene into the aforementioned \textbf{scene-wide rendering options} and \textbf{world
 block}. The rendering options are divided into integration technique and sensor
