@@ -69,15 +69,14 @@ While most renderers have a similar structure, they differ in a few supported fe
 
 %In order to establish a common ground for conversion, we decided it best to define a canonical representation for these scenes. This representation can be easily extended to incorporate any directives not contemplated in this work.
 
-We divide the scene into the aforementioned \textbf{scene-wide rendering options} and \textbf{world
-block}. The rendering options are divided into integration technique and sensor
-options, while the world block is divided into lists of shapes, global emitters
-and material definitions. This structure is illustrated in Figure
-\ref{fig:canonicalrep}.
+Our canonical scene representation mirrors the general structure of scene files and divides scene data into
+%We divide the scene into the aforementioned 
+scene-wide {\it rendering options} and {\it world block}. The rendering options are subdivided into {\it integration} technique and {\it sensor}
+options, while the world block is subdivided into  {\it material} definitions, global {\it emitters}, and lists of {\it shapes}. This structure is illustrated in Figure~\ref{fig:canonicalrep}.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.6\linewidth]{figs/3_system_architecture/canonicalrep.png}
+\includegraphics[width=0.9\linewidth]{figs/3_system_architecture/canonicalrep.png}
 \caption{Illustration of the canonical scene representation.}
 \label{fig:canonicalrep}
 \end{figure}
