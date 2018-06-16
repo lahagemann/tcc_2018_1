@@ -23,7 +23,7 @@ an import and a conversion module.
 
 \subsection{Import Module}
 Most physically-based renderers have a similar way of describing a scene.
-Usually, they divide it into two sections: scene-wide rendering options and
+Usually, it is divided into two sections: scene-wide rendering options and
 world block. The former defines overall rendering settings (such as which
 rendering or sampling technique should be used) while the latter describes the
 geometry and which materials should be used for rendering.
@@ -47,7 +47,7 @@ structure, we didn't think it necessary to create a Lex/Yacc parser. We chose to
 implement this module using ElementTree \cite{ET}, a Python XML parsing tool.
 
 \subsection{Canonical Scene Representation}
-After loading the scene file, the obtained information has to be
+After loading the scene file, the information has to be
 stored somewhere. While most renderers have the same base structure, they differ
 in which parameters can be used to configure the techniques used during the
 rendering process.
@@ -62,7 +62,7 @@ In order to establish a common ground for conversion, we decided it best to
 define a canonical representation for these scenes. This representation can be
 easily extended to incorporate any directives not contemplated in this work.
 
-We divide the scene into \textbf{scene-wide rendering options} and \textbf{world
+We divide the scene into the aforementioned \textbf{scene-wide rendering options} and \textbf{world
 block}. The rendering options are divided into integration technique and sensor
 options, while the world block is divided into lists of shapes, global emitters
 and material definitions. This structure is illustrated in Figure
@@ -97,11 +97,11 @@ The \textbf{global emitter} directive is represented in a structure with: a
 type, an optional transformation matrix and a list of parameters.
 
 \subsection{Conversion Module}
-After the scene file is loaded and properly set into our canonical
+After the data is loaded into our canonical
 representation, it can be converted into any of the supported formats.
 
 When converting scene representations, there are several delicate cases to
-consider and study carefully. The matrix transformations, the native shape
+consider. The matrix transformations, the native shape
 directives, the environment mapping coordinates and, mostly, the materials are
 some of the directives that vary greatly between renderers. 
 
@@ -166,17 +166,27 @@ for this exact purpose. However, PBRT does not support Object File Wavefront 3D
 (.obj) files - these must be converted by the user with mesh converting tools.
 Our system issues a warning, making the user aware of this problem.
 
-Native shapes are more complex. Mitsuba has primitives for both cubes and
-rectangles, while PBRT and LuxRender do not. The primitive defines canonical,
-unitary points for these shapes, which can be modified with a transformation
-matrix. These directives can be reproduced in PBRT and LuxRender using their
-primitive for specifying inbuilt triangle meshes.
+\green{Primitive shapes are a bit more complex. Mitsuba has directives for both cubes 
+and rectangles, while PBRT and LuxRender do not. Mitsuba's cube and rectangle 
+primitives define, respectively, 8 and 4 unitary points which can be modified by 
+a transformation matrix. In order to reproduce these directives in PBRT and 
+LuxRender, an inbuilt triangle mesh directive must be used, specifying each 
+point that will compose the shape, which points form a triangle, each point's 
+normal and the uv coordinates for this mesh.}
 
-The reverse process, however, is more complicated. The triangle mesh directive
-specifies the coordinates, normal and uv mapping for the points forming a
-triangle. In order to recover a transformation matrix for the corresponding
-Mitsuba primitive, \red{these points have to be multiplied by the original Mitsuba
-canonical coordinates in the correct order.}
+\green{The reverse process - converting PBRT and LuxRender triangle meshes into 
+primitive Mitsuba shape directives - is more complicated. Since Mitsuba's 
+primitive cube and rectangle directives have predefined coordinates for each 
+vertex, to convert the points specified in the PBRT/LuxRender directive into 
+these coordinates means finding the transformation matrix that transforms one 
+into the other. }
+
+% Since the triangle mesh directive specifies each points in world coordinates, 
+% The reverse process, however, is more complicated. The triangle mesh directive
+% specifies the coordinates, normal and uv mapping for the points forming a
+% triangle. In order to recover a transformation matrix for the corresponding
+% Mitsuba primitive, \red{these points have to be multiplied by the original Mitsuba
+% canonical coordinates in the correct order.}
 
 \textit{4. Converting Global Emitters} \\
 Global emitters can used to emulate environment lighting, such as the sun, the
@@ -199,7 +209,7 @@ Another sensitive point to consider is converting environment mapping
 indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed 
 using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, 
 Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as 
-shown in \ref{fig:mitdocemitter}. 
+shown in Figure \ref{fig:mitdocemitter}. 
 
 \begin{figure}[h]
 \centering
@@ -211,4 +221,4 @@ shown in \ref{fig:mitdocemitter}.
 \end{figure}
 
 This conversion can be done by applying a transformation matrix on the 
-environment map, rotating the x, y and z axes to match the output renderer. 
+environment map, rotating the \textit{x}, \textit{y} and \textit{z} axes to match the diferring axis setup. 

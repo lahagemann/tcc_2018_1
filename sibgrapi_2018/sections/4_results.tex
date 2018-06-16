@@ -8,7 +8,19 @@ primitive textures; area and environment lighting.
 The scenes were rendered using Mitsuba 0.5.0, PBRT v3 and LuxRender v1.6 on 
 Ubuntu 14.04 LTS. All scenes were rendered using over 5,000 samples per pixel. 
 
-%Some difference between the rendered images is expected, especially of scenes with environment emitters. All three renderers have different implementations of sun and sky directives, Mitsuba being the 
+We obtained interesting results with \textit{The Wooden Staircase} (Figure 
+\ref{fig:staircase}, \textit{Utah Teapot} (Figure \ref{fig:teapot}), 
+\textit{Coffee Maker} (Figure \ref{fig:teaser}) and Glass of Water (Figure 
+\ref{fig:glass-of-water}). We reached a high degree of visual similarity between 
+the original and the converted scenes, which was our goal.
+
+We can observe some difference in coloring between the image rendered by Mitsuba 
+(center) and the ones rendered by other two renderers in Figure 
+\ref{fig:dining-room}. This particular scene uses a distant environment light to 
+emulate the sun. In Mitsuba, this directive is implemented using the technique 
+described in \cite{}, which produces a warm-colored, distant light source. In 
+PBRT and LuxRender, this directive is implemented simply as a distant white 
+light, which produces the difference shown in the results.
 
 \begin{figure*}
 \centering
