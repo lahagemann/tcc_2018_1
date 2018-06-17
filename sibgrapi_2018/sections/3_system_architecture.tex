@@ -93,10 +93,10 @@ rendering, as well as camera and film properties. These include, for instance, c
 \noindent \textit{World Block}:
 a set of directives describing the materials, global emitters, and shapes present in the scene.
 %
-A {\it material} (\eg, glass, metal, plastic, etc.) may have one or more associated textures. {\it Global emitters} represent \red{area and point} light sources, as well more specific ones such as {\it sun} and {\it sky}.
+A {\it material} (\eg, glass, metal, plastic, etc.) may have one or more associated textures. {\it Global emitters} represent all kinds of light sources, except area light sources, which are represented as shapes. These include conventional environment, spot, directional, and point light sources, as well more specific ones such as {\it sun} and {\it sky}.
 %The \textbf{material} directive is represented in a structure with: a type \red{(examples of types?)}, an id, an optional texture and a list of parameters.
 %
-A {\it shape} can be a polygonal mesh or a simpler object such as a cube or a sphere, for instance. 
+A {\it shape} can be a polygonal mesh or a geometric primitive such as a rectangle, disk, cube, or sphere, for instance. 
 %an optional area emitter, an optional material reference, an optional transformation matrix and a list of parameters.
 
 %The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters. \red{[Where are the textures themselves stored?]}
@@ -127,14 +127,15 @@ shapes?
 Mitsuba uses a right-hand coordinate system, while PBRT and LuxRender use a
 left-hand one. This means that, when converting between Mitsuba and the other
 two, one has to mirror the x-axis of all camera matrix transformations. This is
-also the case for environment mapping positioning and object-world
-transformations.
+also the case for environment map positioning and object-world
+transformations. Moreover, Mitsuba's scene files contain a world-to-camera transformation matrix (\ie, view matrix),
+while PBRT and LuxRender scene files use the view matrix inverse transpose.
 
-\green{Furthermore, Mitsuba scene files have their camera position specified as a 
-world-to-camera transformation matrix, while PBRT and LuxRender scene files have 
-theirs as a camera-to-world transformation matrix. Therefore, converting the 
-camera positioning between Mitsuba and the other two renderers means we have to 
-compute the inverse transpose of this transformation matrix.}
+%\green{Furthermore, Mitsuba scene files have their camera position specified as a 
+%world-to-camera transformation matrix, while PBRT and LuxRender scene files have 
+%theirs as a camera-to-world transformation matrix. Therefore, converting the 
+%camera positioning between Mitsuba and the other two renderers means we have to 
+%compute the inverse transpose of this transformation matrix.}
 
 % \red{Mitsuba also has its camera transformation matrix specified as a camera-to-world
 %  transformation, while PBRT and LuxRender do not. Therefore, when converting the
@@ -162,35 +163,32 @@ change the material's name.
 %The major problem was faced when converting metals from and to LuxRender. 
 To represent the material's reflectance, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
 coefficient (\textit{k}) per color channel. 
-LuxRender, however, uses a Fresnel texture, specifying a 
-single value of $\eta$ and \textit{k} for all channels, \red{or specify an RGB 
-color}. Therefore, correctly converting metal colors between LuxRender and PBRT or Mitsuba is very hard, 
+LuxRender, however, uses a so-called ``{\it Fresnel texture}'', specifying a 
+single value of $\eta$ and \textit{k} for all channels. Alternatively, LuxRender allows the specification of a single RGB 
+color value for the material's reflectance. Therefore, correctly converting metal colors between LuxRender and PBRT or Mitsuba is not well defined, 
 and is not supported in the current implementation of our system.
 
 \textbf{Shape Conversion}: 
-shape directives can be split into two categories: primitive shapes, which can
-be used to specify primitive shapes, such as rectangles, disks, cubes, and spheres;
-and 3D meshes stored in external files. Somehow surprising, converting primitive shapes between renderers is not straightforward, but
-converting meshes is simple, as all rendering systems have directives
-for this exact purpose. However, PBRT does not support Object File Wavefront 3D
-(.obj) files. These must be converted by off-line.
+shape directives can be split into two categories: {\it primitive shapes}, which can
+be used to specify primitives such as {\it rectangles, disks, cubes}, and {\it spheres};
+and {\it 3D meshes}, which are stored in external files. 
+%
+Converting primitive shapes requires more attention than converting external 3D meshes. 
+Mitsuba has directives for rectangle, disk, cube and sphere, while PBRT and LuxRender do not. 
+Mitsuba's primitives are defined by some parameters (\eg, vertex positions, radius) which can be modified by 
+a transformation (model) matrix. To reproduce these primitives in PBRT and 
+LuxRender, an {\it internal triangle mesh} must be used. This is done by specifying the position, normal, and texture coordinates for each vertex in the mesh representing a given primitive. One should note that such internal meshes do not use the same representation as the 3D meshes stored in files.
+
+Converting PBRT and LuxRender internal triangle meshes into Mitsuba primitive shapes is a more involving process. Since Mitsuba's 
+primitives have predefined coordinates, converting vertices from PBRT or LuxRender internal meshes into 
+these coordinates requires obtaining the transformation matrix that maps PBRT or LuxRender vertices 
+to Mitsuba's predefined points. Our system takes care of this automatically.
+
+Converting external 3D meshes is simple, as all rendering systems have directives
+for this purpose. PBRT, however, does not support Object File Wavefront 3D
+(.obj) files. 
 %the user with mesh converting tools.
-In this case, our system issues a warning, making the user aware of this problem.
-
-Converting primitive shapes is a bit more complex. Mitsuba has directives for both cubes 
-and rectangles, while PBRT and LuxRender do not. Mitsuba's cube and rectangle 
-primitives define, respectively, 8 and 4 points which can be modified by 
-a transformation matrix. To reproduce these directives in PBRT and 
-LuxRender, a triangle mesh directive must be used, \red{specifying each 
-point that will compose the shape, which points form a triangle, each point's 
-normal and the uv coordinates for this mesh.}
-
-Converting PBRT and LuxRender triangle meshes into 
-Mitsuba primitive shapes is more complicated. Since Mitsuba's 
-primitive cube and rectangle directives have predefined coordinates for each 
-vertex, to convert the points specified by PBRT or LuxRender directives into 
-these coordinates requires obtaining the transformation matrix that maps PBRT/LuxRender points 
-into Mitsuba's vertices. 
+In this case, our system issues a warning, making the user aware of the need to convert .obj files off-line.
 
 % Since the triangle mesh directive specifies each points in world coordinates, 
 % The reverse process, however, is more complicated. The triangle mesh directive
@@ -203,24 +201,30 @@ into Mitsuba's vertices.
 global emitters can used to emulate environment lighting, such as the sun, the
 sky, or an environment map. Converting global emitters can be tricky, mainly
 because different rendering systems do not implement the same algorithms and directives. 
-For instance, Mitsuba and LuxRender implement sun and sky algorithms, while PBRT does not.
+For instance, Mitsuba and LuxRender implement {\it sun} and {\it sky} directives, while PBRT does not.
 %However, these directives can be converted from Mitsuba and LuxRender to PBRT. 
 A sun directive can be simulated in PBRT using a distant light. A sky directive can
-be simulated using an environment mapping of a clear sky.
+be simulated using an environment map of a clear sky.
+While PBRT and LuxRender access environment maps using spherical coordinates, 
+Mitsuba uses a latitude-longitude format. Thus, a conversion between the two representations is required. 
+  
 %
 Converting a PBRT distant light into
 a sun directive for Mitsuba or LuxRender is straightforward. However, converting a PBRT
 environment map into a sky directive lends to an ambiguous situation, as the converter would require additional information to decide 
-whether the environment map should be treated just as a regular environment map, or as an adaptation of a sky light.
-Our system solves this ambiguity asking the user if the environment map should be converted to a sky
+whether the environment map should be treated just as a regular environment map, or as a sky directive.
+Our system solves this ambiguity by asking the user if the environment map should be converted to a sky
 emitter.
 
-%Another sensitive point to consider is converting environment mapping indexation. 
-PBRT and LuxRender access environment maps using spherical coordinates ($\theta$ and $\phi$), while 
-Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}).
-%, as  shown in Figure \ref{fig:mitdocemitter}. 
-Conversion between the two representations can be done by applying a \red{transformation matrix on the 
-environment map, rotating the \textit{x}, \textit{y} and \textit{z} axes to match the differing axis setup.} 
+%%Another sensitive point to consider is converting environment mapping indexation. 
+%PBRT and LuxRender access environment maps using spherical coordinates, 
+%%($\theta$, $\phi$), 
+%while Mitsuba uses a latitude-longitude format.   
+%%(\textit{x}, \textit{y} and \textit{z}).
+%%, as  shown in Figure \ref{fig:mitdocemitter}. 
+%A conversion between the two representations is required. 
+%%can be done by applying a \red{transformation matrix on the 
+%%environment map, rotating the \textit{x}, \textit{y} and \textit{z} axes to match the differing axis setup.} 
 
 %\begin{figure}[h]
 %\centering
