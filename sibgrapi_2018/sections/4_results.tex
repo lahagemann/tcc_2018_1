@@ -1,13 +1,14 @@
 \section{Results}
 \label{sec:results}
 
-We have tested our system on a large number of scenes, including the 32 scenes available
+Our system is freely available on-line~\cite{sceneConverter}, and we would like to encourage the community to download and use it.
+We have tested it on a large number of scenes, including the 32 scenes available
 at Bitterli's rendering resources website~\cite{resources16}. 
 %We validated our system's conversion using scenes from Bitterli's 32 resources 
 %\cite{resources16}. 
-Here, we include a few examples that explore different 
-types of materials and bump maps, 3D meshes and primitive shapes, image and 
-primitive textures, and area light sources and environment lighting. They include most elements typically found in scenes used by physically-based rendering systems.  The time required to convert a scene is about 0.5 seconds on a typical PC (Intel i5 3.8 GHz).
+Here, we include a few examples to illustrate its results on scenes that explore different 
+types of materials, 3D meshes and primitive shapes, image and 
+primitive textures, and various lighting styles. They include most elements typically found in scenes used by physically-based rendering systems.  The time required to convert a scene is about 0.5 seconds on a typical PC (Intel i5 3.8 GHz).
 % 
 %We chose scenes that provided a wide variety of directives 
 %in order to cover most commonly used directives. These scenes include: different 
@@ -24,17 +25,20 @@ Note how the object details have been faithfully preserved in these renderings.
 
 The \textit{Wooden Staircase} scene (Figure~\ref{fig:staircase}) contains many geometric objects and textures. 
 A LuxRender scene description was provided as input and its rendering is shown in (a). The images shown in (b) and (c) were produced 
-by PBRT v3 and Mitusuba, respectively, from scene representations automatically converted by our system. 
+by PBRT v3 and Mitsuba, respectively, from scene representations automatically converted by our system. 
 
-The \textit{Teapot} scene (Figure \ref{fig:teapot}) contains a shiny object, environment lighting, and a procedural texture. The input scene description was provided in the LuxRender format, and its rendering is shown in (a). Figures~\ref{teatpot_PBRT} and \ref{teapot_Mitsuba} show the renderings produced by PBRT v3 and Mitusuba, respectively, from scene descriptions converted by our system.
+The \textit{Teapot} scene (Figure \ref{fig:teapot}) contains a shiny object, environment lighting, and a procedural texture. The input scene description was also provided in the LuxRender format, and its rendering is shown in (a). Figures~\ref{teatpot_PBRT} and \ref{teapot_Mitsuba} show the renderings produced by PBRT v3 and Mitsuba, respectively, from scene descriptions converted by our system.
 
-explores the use of textures and geometric details. This scene was originally modeled for 
+Figure~\ref{fig:bidir-cornell} shows two scenes, \textit{Veach Bidir Room} and \textit{Cornell Box}. The first includes caustics, while the second only contains diffuse surfaces. A Mitsuba scene description was provided as input for each of these scenes, whose renderings are shown on the first column of Figure~\ref{fig:bidir-cornell}. Columns (b) and (c) show, respectively, the renderings produced by PBRT v3 and LuxRender using scene descriptions converted by our system.    
 
-We obtained interesting results with \textit{The Wooden Staircase} (Figure 
-\ref{fig:staircase}, \textit{Utah Teapot} (Figure \ref{fig:teapot}), 
-\textit{Coffee Maker} (Figure \ref{fig:teaser}) and Glass of Water (Figure 
-\ref{fig:glass-of-water}). We reached a high degree of visual similarity between 
-the original and the converted scenes, which was our goal.
+MENTION SUPPLEMENTARY MATERIALS. THESE AND OTHER EXAMPLES, WHERE ONE CAN INSPECT THE IMAGES AT THEIR ORIGINAL RESOLUTIONS.
+
+
+%We obtained interesting results with \textit{The Wooden Staircase} (Figure 
+%\ref{fig:staircase}, \textit{Utah Teapot} (Figure \ref{fig:teapot}), 
+%\textit{Coffee Maker} (Figure \ref{fig:teaser}) and Glass of Water (Figure 
+%\ref{fig:glass-of-water}). We reached a high degree of visual similarity between 
+%the original and the converted scenes, which was our goal.
 
 We can observe some difference in coloring between the image rendered by Mitsuba 
 (center) and the ones rendered by other two renderers in Figure 
@@ -97,7 +101,7 @@ from scene descriptions converted by our system. }
 \caption{\textit{Veach, Bidir Room} (top) and \textit{Cornell Box} (bottom). Input scene descriptions for 
  Mitsuba (a). Renderings produced by PBRT v3 (b) and LuxRender (c),
  from scene descriptions converted by our system.}
-\label{fig:veach-bidir}
+\label{fig:bidir-cornell}
 \end{figure}
 
 \begin{figure}

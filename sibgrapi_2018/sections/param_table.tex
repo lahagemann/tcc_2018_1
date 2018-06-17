@@ -1,26 +1,30 @@
 \scriptsize
+\begin{table}
 \begin{center}
-    \begin{tabular}{ | L{1cm} | L{2.2cm} | L{2.2cm} | L{1.4cm} | }
+    \begin{tabular}{ | L{1.5cm} | L{2.0cm} | L{2.2cm} | L{1.4cm} | }
     \hline
-    Directive & Type & Params & Others \\ 
+    {\bf Component} & {\bf ~~~~Type} & {\bf Parameters} & {\bf Others} \\ 
     \hline
-    camera & environment, orthographic, perspective, realistic & focal distance, fov, lens aperture, near/far clip, shutter open/close & view matrix \\
+    {\bf camera} & environment, orthographic, perspective, realistic & focal distance, fov, lens aperture, near/far clip, shutter open/close & view matrix \\
     \hline
-    sampler & halton, random, sobol, stratified & samples per pixel, scramble & - \\
+    {\bf sampler} & halton, random, sobol, stratified & samples per pixel, scramble & ~~~~~~- \\
     \hline
-    film & hdr, ldr & file extension (png, ...), filter, image height, image width & - \\
+    {\bf film} & hdr, ldr & file extension (png, ...), filter, image height, image width & ~~~~~~- \\
     \hline
-    integrator & bidirectional path tracer, direct lighting, metropolis light transport, path tracer, photon mapping & max depth, number of iterations, number of Markov chains, photon count, photon mapping lookup radius, russian roulette depth & - \\
+    {\bf integrator} & bidirectional path tracer, direct lighting, metropolis light transport, path tracer, photon mapping & max depth, number of iterations, number of Markov chains, photon count, photon mapping lookup radius, russian roulette depth & ~~~~~~- \\
     \hline
-    materials & glass, matte/diffuse, metal, substrate/glossy, translucent, uber & eta, id, IOR, k, kd, ks, reflectance, roughness, transmittance, ... & texture (id, type, params) \\ 
+    {\bf materials} & glass, matte/diffuse, metal, substrate/glossy, translucent, uber & $\eta$, id, IOR, k, kd, ks, reflectance, roughness, transmittance, ... & texture (id, type, params) \\ 
     \hline
-    shapes & mesh (ply/obj) & filename & model matrix, area emitter, \\
+     {\bf emitters} & directional, distant, environment mapping, sky, spot, sun & filename, from (origin), intensity, radiance, to (direction) & model matrix \\
+    \hline
+    {\bf shapes} & mesh (ply/obj) & filename & model matrix, area emitter, \\
     \cline{2-3}
 	   & rectangle, disk, triangle mesh, cube, sphere & center, normals, points, radius, uv mapping, ... & unnamed material\\
-    \hline
-    global emitters & directional, distant, environment mapping, sky, spot, sun & filename, from (origin), intensity, radiance, to (direction) & model matrix \\
     \hline
 
     \end{tabular}
 \end{center}
+  \caption{Types, parameters and additional attributes of the components in our canonical scene representation (Figure~\ref{fig:canonicalrep}).} 
+  \label{tab:summary}
+\end{table}
 \normalsize    
