@@ -1,0 +1,52 @@
+\begin{center}
+    \begin{tabular}{ l | l | l | l }
+    \hline
+    Directive 		& Type 				& Params 			& Others		\\ \hline
+    integrator		& path tracer 			& max depth 			& -			\\
+			& bidirectional path tracer 	& russian roulette depth	&			\\
+			& metropolis light transport	& photon count			&			\\
+			& photon mapping		& photon mapping lookup radius	&			\\
+			& progressive photon mapping	& number of iterations		&			\\
+			& direct lighting		& number of markov chains	&			\\ \hline
+    sampler		& random			& samples per pixel		& -			\\
+			& stratified			& scramble			&			\\
+			& halton			&				&			\\
+			& sobol				&				&			\\ \hline
+    film		& ldr				& image width			& -			\\
+			& hdr				& image height			&			\\
+			&				& filter			&			\\
+			&				& file extension (png, ...) 	&			\\ \hline
+    camera		& perspective			& fov				& view matrix		\\
+			& orthographic			& lens apperture		&			\\
+			& environment			& focal distance		&			\\
+			& realistic			& shutter open			&			\\
+			&				& shutter close			&			\\
+			&				& near clip			&			\\
+			&				& far clip			&			\\ \hline
+    materials		& metal				& kd				& texture (id, type, params)	\\ 
+			& glass				& ks				&			\\
+			& substrate/glossy		& transmittance			&			\\
+			& matte/diffuse			& reflectance			&			\\
+			& translucent			& roughness			&			\\
+			& uber				& IOR				&			\\
+			&				& eta				&			\\
+			&				& k				&			\\
+			& 				& id				&			\\
+			& 				& ...				&			\\ \hline
+    shapes		& mesh (ply/obj)		& filename			& model matrix		\\
+			& cube				& center			& area emitter		\\
+			& rectangle			& radius			& unnamed material	\\
+			& sphere			& points			&			\\
+			& disk				& normals			&			\\
+			& trianglemesh			& uv mapping			&			\\
+			& 				& ...				&			\\ \hline
+    global emitters	& environment mapping		& radiance			& model matrix		\\
+			& point				& filename			& 			\\
+			& spot				& from (origin)			&			\\
+			& sun				& to (direction)		&			\\
+			& sky				& area (spot)			&			\\
+			& directional			& ...				&			\\
+			& distant			&				&			\\
+    \end{tabular}
+\end{center}
+    
