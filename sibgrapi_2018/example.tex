@@ -32,6 +32,7 @@
 \newtheorem{definition}{Definition}
 \usepackage{algorithmic}
 \usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \ifCLASSOPTIONcompsoc
   \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
 \else
@@ -48,6 +49,7 @@
 \newcommand \eg {{\it e.g.}}
 \newcommand \ie {{\it i.e.}}
 \usepackage{caption}
+
 
 
 \title{Scene Conversion for Physically-based Renderers}

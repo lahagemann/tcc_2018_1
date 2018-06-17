@@ -1,59 +1,26 @@
 \scriptsize
 \begin{center}
-    \begin{tabular}{ l | l | l | l }
+    \begin{tabular}{ | L{1cm} | L{2.2cm} | L{2.2cm} | L{1.4cm} | }
     \hline
-    Directive 		& Type 				& Params 			& Others		\\ 
+    Directive & Type & Params & Others \\ 
     \hline
-    integrator		& path tracer 			& max depth 			& -			\\
-			& bidirectional path tracer 	& russian roulette depth	&			\\
-			& metropolis light transport	& photon count			&			\\
-			& photon mapping		& photon mapping lookup radius	&			\\
-			& progressive photon mapping	& number of iterations		&			\\
-			& direct lighting		& number of Markov chains	&			\\ 
-			\hline
-    sampler	& random, stratified, halton, sobol & samples per pixel, scramble		& -			\\
-			\hline
-    film		& ldr, hdr				& image width			& -			\\
-			& 				& image height			&			\\
-			&				& filter			&			\\
-			&				& file extension (png, ...) 	&			\\ 
-			\hline
-    camera		& perspective			& fov				& view matrix		\\
-			& orthographic			& lens aperture		&			\\
-			& environment			& focal distance		&			\\
-			& realistic			& shutter open			&			\\
-			&				& shutter close			&			\\
-			&				& near clip			&			\\
-			&				& far clip			&			\\ 
-			\hline
-    materials		& metal, glass, substrate/glossy, & kd				& texture (id, type, params)	\\ 
-			& matte/diffuse, translucent, uber		  & ks				&			\\
-			&  										  & transmittance			&			\\
-			&  										  & reflectance			&			\\
-			&  										  & roughness			&			\\
-			&  			& IOR				&			\\
-			&				& eta				&			\\
-			&				& k				&			\\
-			& 				& id				&			\\
-			& 				& ...				&			\\ 
-			\hline
-    shapes		& mesh (ply/obj)		& filename			& model matrix		\\
-			& cube				& center			& area emitter		\\
-			& rectangle			& radius			& unnamed material	\\
-			& sphere			& points			&			\\
-			& disk				& normals			&			\\
-			& triangle mesh			& uv mapping			&			\\
-			& 				& ...				&			\\ 
-			\hline
-    global  & environment mapping		& radiance			& model matrix		\\
-	emitters& point				& filename			& 			\\
-			& spot				& from (origin)			&			\\
-			& sun				& to (direction)		&			\\
-			& sky				& area (spot)			&			\\
-			& directional			& ...				&			\\
-			& distant			&				&			\\			
-			\hline
-			
+    camera & environment, orthographic, perspective, realistic & focal distance, fov, lens aperture, near/far clip, shutter open/close & view matrix \\
+    \hline
+    sampler & halton, random, sobol, stratified & samples per pixel, scramble & - \\
+    \hline
+    film & hdr, ldr & file extension (png, ...), filter, image height, image width & - \\
+    \hline
+    integrator & bidirectional path tracer, direct lighting, metropolis light transport, path tracer, photon mapping & max depth, number of iterations, number of Markov chains, photon count, photon mapping lookup radius, russian roulette depth & - \\
+    \hline
+    materials & glass, matte/diffuse, metal, substrate/glossy, translucent, uber & eta, id, IOR, k, kd, ks, reflectance, roughness, transmittance, ... & texture (id, type, params) \\ 
+    \hline
+    shapes & mesh (ply/obj) & filename & model matrix, area emitter, \\
+    \cline{2-3}
+	   & rectangle, disk, triangle mesh, cube, sphere & center, normals, points, radius, uv mapping, ... & unnamed material\\
+    \hline
+    global emitters & directional, distant, environment mapping, sky, spot, sun & filename, from (origin), intensity, radiance, to (direction) & model matrix \\
+    \hline
+
     \end{tabular}
 \end{center}
 \normalsize    
