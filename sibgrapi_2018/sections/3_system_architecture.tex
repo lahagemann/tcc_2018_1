@@ -69,59 +69,64 @@ While most renderers have a similar structure, they differ in a few supported fe
 
 %In order to establish a common ground for conversion, we decided it best to define a canonical representation for these scenes. This representation can be easily extended to incorporate any directives not contemplated in this work.
 
-Our canonical scene representation mirrors the general structure of scene files and divides scene data into
-%We divide the scene into the aforementioned 
-scene-wide {\it rendering options} and {\it world block}. The rendering options are subdivided into {\it integration} technique and {\it sensor}
-options, while the world block is subdivided into  {\it material} definitions, global {\it emitters}, and lists of {\it shapes}. This structure is illustrated in Figure~\ref{fig:canonicalrep}.
+Our canonical scene representation mirrors the general structure of scene files and divides the scene data into
+scene-wide {\it rendering options} and {\it world block}. 
+%The rendering options are subdivided into {\it integration} technique and {\it sensor} options, while the world block is subdivided into  {\it material} definitions, global {\it emitters}, and lists of {\it shapes}. 
+This structure is illustrated in Figure~\ref{fig:canonicalrep}, where the attributes stored for each scene component are shown on the rectangles on the right.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\linewidth]{figs/3_system_architecture/canonicalrep.png}
-\caption{Illustration of the canonical scene representation.}
+\caption{Canonical scene representation. It separates rendering options from scene block data. The attributes stored for each component are shown on the rectangles on the right.}
 \label{fig:canonicalrep}
 \end{figure}
 
-\subsubsection{Scene-wide Rendering Options}
-A set of directives specifying the integration and sampling techniques used for
-rendering, camera and film properties. These directives are represented in a
-structure with two fields: \red{a type and a list of parameters [EXAMPLE?]}.
+%\subsubsection{Scene-wide Rendering Options}
+\noindent \textit{Rendering Options}:
+%\noindent \textbf{Rendering Options}
+a set of directives specifying the integration and sampling techniques used for
+rendering, as well as camera and film properties. These include, for instance, camera position, camera matrix, image resolution, field of view, etc.
+%These directives are represented in a structure with two fields: 
+\red{[What else?]}.
 
-\subsubsection{World Block}
-A set of directives describing the shapes, materials and global emitters present
-in the scene.
+%\subsubsection{World Block}
+\noindent \textit{World Block}:
+a set of directives describing the materials, global emitters, and shapes present in the scene.
+%
+A {\it material} (\eg, glass, metal, plastic, etc.) may have one or more associated textures. {\it Global emitters} represent \red{area and point} light sources, as well more specific ones such as {\it sun} and {\it sky}.
+%The \textbf{material} directive is represented in a structure with: a type \red{(examples of types?)}, an id, an optional texture and a list of parameters.
+%
+A {\it shape} can be a polygonal mesh or a simpler object such as a cube or a sphere, for instance. 
+%an optional area emitter, an optional material reference, an optional transformation matrix and a list of parameters.
 
-The \textbf{material} directive is represented in a structure with: a type \red{(examples of types?)}, an
-id, an optional texture and a list of parameters.
+%The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters. \red{[Where are the textures themselves stored?]}
 
-The \textbf{shape} directive is represented in a structure with: a type (cube,
-sphere, ...), an optional area emitter, an optional material reference, an
-optional transformation matrix and a list of parameters.
-
-The \textbf{texture} directive is represented in a structure with: a type, an id and a list of parameters. \red{[Where are the textures themselves stored?]}
-
-The \textbf{global emitter} directive is represented in a structure with: a
-type, an optional transformation matrix and a list of parameters.
+%The \textbf{global emitter} directive is represented in a structure with: a type, an optional transformation matrix and a list of parameters.
 
 \subsection{The Export Module}
-After the data is loaded into our canonical
-representation, it can be converted into any of the supported formats.
 
-When converting scene representations, there are several delicate cases to
-consider. The matrix transformations, the native shape
-directives, the environment mapping coordinates and, mostly, the materials are
-some of the directives that vary greatly between renderers. 
-
+The export module is at the core of our system. While the import module deals with a single proprietary scene representation at a time, the export module has to map between materials and scene properties from two proprietary representations. 
+In this case, there are several delicate cases to
+consider. Matrix transformations, native shapes, environment mapping coordinates and, mostly, materials are
+some of the components that vary greatly between renderers. 
+In several situations, there is no direct mapping between them. Still, our system should provide an output representation that, once rendered with the target system, best approximates the results obtained by the source rendering system with the input scene description. 
+Achieving such results required extensive experimentation with parameters of the various systems. Next, we discuss a few relevant aspects one should consider.    
+  
+%After the data is loaded into our canonical representation, it can be converted into any of the supported formats.
 % \subsubsection{Converting Matrices}
-\textit{1. Converting Matrices} \\
+%\noindent 
+\textbf{Matrix Conversion}: 
 There are several issues to consider when converting matrices between renderers.
-A few things we had to keep in mind were: does this renderer use a left or right
-coordinate system? Does this renderer represent matrices in the scene file using
-the inverse-transpose? How is the object-world transformation represented for
+%A few things we had to keep in mind were: 
+Do the two renderers use different coordinate systems (either left-handed or right-handed)? 
+%does this renderer use a left or right coordinate system? Does this renderer 
+Do they represent matrices in the scene file using a direct representation or its
+inverse-transpose? How is the object-world transformation represented for
 shapes?
 
 Mitsuba uses a right-hand coordinate system, while PBRT and LuxRender use a
-left-hand one. This meant that, when converting between Mitsuba and the other
-two, we had to mirror the x-axis of all camera matrix transformations. This was
+left-hand one. This means that, when converting between Mitsuba and the other
+two, one has to mirror the x-axis of all camera matrix transformations. This is
 also the case for environment mapping positioning and object-world
 transformations.
 
@@ -137,55 +142,55 @@ compute the inverse transpose of this transformation matrix.}
 % transpose of the specified matrix. }
 
 % \subsubsection{Converting Materials}
-\textit{2. Converting Materials} \\
-Materials are maybe the most delicate aspect of scene conversion. Materials have
-spectral and roughness properties that absolutely must be gotten right when
-converting scenes. However, most renderers have very different implementations
-for common subsurface scattering models (called BSDFs), making it hard to
-predict the relation between their parameters.
+\textbf{Material Conversion}: 
+materials are the most delicate aspect of scene conversion. Materials have
+spectral and roughness properties that absolutely must be correctly mapped. 
+However, most renderers have very different implementations
+for common subsurface scattering models (BSDFs), making it hard to
+predict the mapping between the parameters of two such implementations.
 
 Mitsuba uses a more physics-oriented approach: a material can be diffuse,
 conductor, dielectric, plastic, translucent, or a bumpmap.
-There are other types of materials, but those were not contemplated in our PoC.
-The material type in Mitsuba changes should the material contain any form of
+It also has other types of materials, but those are not supported in the current implementation of our system.
+The material type in Mitsuba changes as the material contains any form of
 surface roughness, becoming a ``rough'' version of itself (for instance, a rough
 metal becomes a roughconductor).
-
-PBRT and LuxRender materials have roughness parameters, making it unecessary to
+%
+PBRT and LuxRender materials have roughness parameters, making it unnecessary to
 change the material's name.
 
-The major problem was faced when converting metals from and to LuxRender. PBRT 
-and Mitsuba use the index of refraction ($\eta$) and the absorption 
-coefficient (\textit{k}) in each channel in order to compute material's 
-reflectance. LuxRender, however, uses a Fresnel texture, which can specify a 
-single value of $\eta$ and \textit{k} for all channels, or specify an RGB 
-color. Therefore, getting a converted metal color between LuxRender and the 
-others is very difficult, and was not implemented for this PoC. \\
+%The major problem was faced when converting metals from and to LuxRender. 
+To represent the material's reflectance, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
+coefficient (\textit{k}) per color channel. 
+LuxRender, however, uses a Fresnel texture, specifying a 
+single value of $\eta$ and \textit{k} for all channels, \red{or specify an RGB 
+color}. Therefore, correctly converting metal colors between LuxRender and PBRT or Mitsuba is very hard, 
+and is not supported in the current implementation of our system.
 
-\textit{3. Converting Shapes} \\
-Shape directives can be split into two categories: primitive shapes, which can
-be used to specify simple geometry such as cubes, rectangles, spheres and disks;
-and 3D meshes in external files.
-
-Converting meshes between renderers is simple, as all of them have directives
+\textbf{Shape Conversion}: 
+shape directives can be split into two categories: primitive shapes, which can
+be used to specify primitive shapes, such as rectangles, disks, cubes, and spheres;
+and 3D meshes stored in external files. Somehow surprising, converting primitive shapes between renderers is not straightforward, but
+converting meshes is simple, as all rendering systems have directives
 for this exact purpose. However, PBRT does not support Object File Wavefront 3D
-(.obj) files - these must be converted by the user with mesh converting tools.
-Our system issues a warning, making the user aware of this problem.
+(.obj) files. These must be converted by off-line.
+%the user with mesh converting tools.
+In this case, our system issues a warning, making the user aware of this problem.
 
-\green{Primitive shapes are a bit more complex. Mitsuba has directives for both cubes 
+Converting primitive shapes is a bit more complex. Mitsuba has directives for both cubes 
 and rectangles, while PBRT and LuxRender do not. Mitsuba's cube and rectangle 
-primitives define, respectively, 8 and 4 unitary points which can be modified by 
-a transformation matrix. In order to reproduce these directives in PBRT and 
-LuxRender, an inbuilt triangle mesh directive must be used, specifying each 
+primitives define, respectively, 8 and 4 points which can be modified by 
+a transformation matrix. To reproduce these directives in PBRT and 
+LuxRender, a triangle mesh directive must be used, \red{specifying each 
 point that will compose the shape, which points form a triangle, each point's 
 normal and the uv coordinates for this mesh.}
 
-\green{The reverse process - converting PBRT and LuxRender triangle meshes into 
-primitive Mitsuba shape directives - is more complicated. Since Mitsuba's 
+Converting PBRT and LuxRender triangle meshes into 
+Mitsuba primitive shapes is more complicated. Since Mitsuba's 
 primitive cube and rectangle directives have predefined coordinates for each 
-vertex, to convert the points specified in the PBRT/LuxRender directive into 
-these coordinates means finding the transformation matrix that transforms one 
-into the other. }
+vertex, to convert the points specified by PBRT or LuxRender directives into 
+these coordinates requires obtaining the transformation matrix that maps PBRT/LuxRender points 
+into Mitsuba's vertices. 
 
 % Since the triangle mesh directive specifies each points in world coordinates, 
 % The reverse process, however, is more complicated. The triangle mesh directive
@@ -194,28 +199,27 @@ into the other. }
 % Mitsuba primitive, \red{these points have to be multiplied by the original Mitsuba
 % canonical coordinates in the correct order.}
 
-\textit{4. Converting Global Emitters} \\
-Global emitters can used to emulate environment lighting, such as the sun, the
-sky or even environment mapping. Converting these emitters can be tricky, mainly
-because renderers don't implement the same algorithms and directives. For
-instance, Mitsuba and LuxRender implement sun and sky algorithms; PBRT doesn't.
-However, these directives can be converted from Mitsuba and LuxRender to PBRT. A
-sun directive can be simulated in PBRT with a distant light. A sky directive can
+\textbf{Global Emitter Conversion}:
+global emitters can used to emulate environment lighting, such as the sun, the
+sky, or an environment map. Converting global emitters can be tricky, mainly
+because different rendering systems do not implement the same algorithms and directives. 
+For instance, Mitsuba and LuxRender implement sun and sky algorithms, while PBRT does not.
+%However, these directives can be converted from Mitsuba and LuxRender to PBRT. 
+A sun directive can be simulated in PBRT using a distant light. A sky directive can
 be simulated using an environment mapping of a clear sky.
+%
+Converting a PBRT distant light into
+a sun directive for Mitsuba or LuxRender is straightforward. However, converting a PBRT
+environment map into a sky directive lends to an ambiguous situation, as the converter would require additional information to decide 
+whether the environment map should be treated just as a regular environment map, or as an adaptation of a sky light.
+Our system solves this ambiguity asking the user if the environment map should be converted to a sky
+emitter.
 
-The inverse conversion can be a bit tricky. Converting a PBRT distant light into
-a sun directive is a very straightforward conversion. Converting a PBRT
-environment mapping into a sky directive is not: how could the converter know
-whether the environment mapping is in fact an adaptation of a sky light? We
-solved this issue by interacting with the user whenever an environment map
-directive is found - we ask the user whether (s)he would like to use a sky
-emitter or not.
-
-Another sensitive point to consider is converting environment mapping 
-indexation. In PBRT and LuxRender, environment maps' uv coordinates are indexed 
-using spherical coordinates (\textit{theta} and \textit{phi}). Meanwhile, 
-Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as 
-shown in Figure \ref{fig:mitdocemitter}. 
+%Another sensitive point to consider is converting environment mapping indexation. 
+PBRT and LuxRender access environment maps using spherical coordinates ($\theta$ and $\phi$), while 
+Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as  
+shown in Figure \ref{fig:mitdocemitter}. Conversion between the two representations can be done by applying a \red{transformation matrix on the 
+environment map, rotating the \textit{x}, \textit{y} and \textit{z} axes to match the differing axis setup.} 
 
 \begin{figure}[h]
 \centering
@@ -226,5 +230,4 @@ shown in Figure \ref{fig:mitdocemitter}.
 \label{fig:mitdocemitter}
 \end{figure}
 
-This conversion can be done by applying a transformation matrix on the 
-environment map, rotating the \textit{x}, \textit{y} and \textit{z} axes to match the diferring axis setup. 
+
