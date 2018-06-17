@@ -217,17 +217,18 @@ emitter.
 
 %Another sensitive point to consider is converting environment mapping indexation. 
 PBRT and LuxRender access environment maps using spherical coordinates ($\theta$ and $\phi$), while 
-Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}), as  
-shown in Figure \ref{fig:mitdocemitter}. Conversion between the two representations can be done by applying a \red{transformation matrix on the 
+Mitsuba uses Cartesian coordinates (\textit{x}, \textit{y} and \textit{z}).
+%, as  shown in Figure \ref{fig:mitdocemitter}. 
+Conversion between the two representations can be done by applying a \red{transformation matrix on the 
 environment map, rotating the \textit{x}, \textit{y} and \textit{z} axes to match the differing axis setup.} 
 
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.2in]{figs/3_system_architecture/spherical_coordinates.png}
-\includegraphics[width=2.0in]{figs/3_system_architecture/mitdocemitter.png}
-\caption{Illustration of the coordinate conventions used by PBRT and LuxRender 
-(left) and by Mitsuba (right) for indexing environment map uv coordinates.}
-\label{fig:mitdocemitter}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\includegraphics[width=1.2in]{figs/3_system_architecture/spherical_coordinates.png}
+%\includegraphics[width=2.0in]{figs/3_system_architecture/mitdocemitter.png}
+%\caption{Illustration of the coordinate conventions used by PBRT and LuxRender 
+%(left) and by Mitsuba (right) for indexing environment map uv coordinates.}
+%\label{fig:mitdocemitter}
+%\end{figure}
 
 
