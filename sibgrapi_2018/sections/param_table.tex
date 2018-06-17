@@ -1,52 +1,59 @@
+\scriptsize
 \begin{center}
     \begin{tabular}{ l | l | l | l }
     \hline
-    Directive 		& Type 				& Params 			& Others		\\ \hline
+    Directive 		& Type 				& Params 			& Others		\\ 
+    \hline
     integrator		& path tracer 			& max depth 			& -			\\
 			& bidirectional path tracer 	& russian roulette depth	&			\\
 			& metropolis light transport	& photon count			&			\\
 			& photon mapping		& photon mapping lookup radius	&			\\
 			& progressive photon mapping	& number of iterations		&			\\
-			& direct lighting		& number of markov chains	&			\\ \hline
-    sampler		& random			& samples per pixel		& -			\\
-			& stratified			& scramble			&			\\
-			& halton			&				&			\\
-			& sobol				&				&			\\ \hline
-    film		& ldr				& image width			& -			\\
-			& hdr				& image height			&			\\
+			& direct lighting		& number of Markov chains	&			\\ 
+			\hline
+    sampler	& random, stratified, halton, sobol & samples per pixel, scramble		& -			\\
+			\hline
+    film		& ldr, hdr				& image width			& -			\\
+			& 				& image height			&			\\
 			&				& filter			&			\\
-			&				& file extension (png, ...) 	&			\\ \hline
+			&				& file extension (png, ...) 	&			\\ 
+			\hline
     camera		& perspective			& fov				& view matrix		\\
-			& orthographic			& lens apperture		&			\\
+			& orthographic			& lens aperture		&			\\
 			& environment			& focal distance		&			\\
 			& realistic			& shutter open			&			\\
 			&				& shutter close			&			\\
 			&				& near clip			&			\\
-			&				& far clip			&			\\ \hline
-    materials		& metal				& kd				& texture (id, type, params)	\\ 
-			& glass				& ks				&			\\
-			& substrate/glossy		& transmittance			&			\\
-			& matte/diffuse			& reflectance			&			\\
-			& translucent			& roughness			&			\\
-			& uber				& IOR				&			\\
+			&				& far clip			&			\\ 
+			\hline
+    materials		& metal, glass, substrate/glossy, & kd				& texture (id, type, params)	\\ 
+			& matte/diffuse, translucent, uber		  & ks				&			\\
+			&  										  & transmittance			&			\\
+			&  										  & reflectance			&			\\
+			&  										  & roughness			&			\\
+			&  			& IOR				&			\\
 			&				& eta				&			\\
 			&				& k				&			\\
 			& 				& id				&			\\
-			& 				& ...				&			\\ \hline
+			& 				& ...				&			\\ 
+			\hline
     shapes		& mesh (ply/obj)		& filename			& model matrix		\\
 			& cube				& center			& area emitter		\\
 			& rectangle			& radius			& unnamed material	\\
 			& sphere			& points			&			\\
 			& disk				& normals			&			\\
-			& trianglemesh			& uv mapping			&			\\
-			& 				& ...				&			\\ \hline
-    global emitters	& environment mapping		& radiance			& model matrix		\\
-			& point				& filename			& 			\\
+			& triangle mesh			& uv mapping			&			\\
+			& 				& ...				&			\\ 
+			\hline
+    global  & environment mapping		& radiance			& model matrix		\\
+	emitters& point				& filename			& 			\\
 			& spot				& from (origin)			&			\\
 			& sun				& to (direction)		&			\\
 			& sky				& area (spot)			&			\\
 			& directional			& ...				&			\\
-			& distant			&				&			\\
+			& distant			&				&			\\			
+			\hline
+			
     \end{tabular}
 \end{center}
-    
+\normalsize    
