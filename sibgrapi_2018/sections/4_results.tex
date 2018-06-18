@@ -1,3 +1,21 @@
+\begin{figure*}[h!t]
+	\centering
+	
+	\subfloat[LuxRender]{\includegraphics[width=0.225\linewidth]{figs/4_results/staircase/1_from_lux.png}
+		\label{staircase_Lux}
+	}
+	\subfloat[PBRT v3]{\includegraphics[width=0.225\linewidth]{figs/4_results/staircase/3_to_pbrt.png}
+		\label{staircase_PBRT}
+	}
+	\subfloat[Mitsuba]{\includegraphics[width=0.225\linewidth]{figs/4_results/staircase/2_to_mitsuba.png}
+		\label{staircase_Mitsuba}
+	}
+	\caption{\textit{The Wooden Staircase} scene. Input scene description for LuxRender (a).
+		Renderings produced by PBRT v3 (b) and Mitsuba (c),
+		from scene descriptions converted by our system. }
+	\label{fig:staircase}
+\end{figure*}
+
 \section{Results}
 \label{sec:results}
 
@@ -31,40 +49,7 @@ The \textit{Teapot} scene (Figure \ref{fig:teapot}) contains a shiny object, env
 
 Figure~\ref{fig:bidir-cornell} shows two scenes, \textit{Veach Bidir Room} and \textit{Cornell Box}. The first includes caustics, while the second only contains diffuse surfaces. A Mitsuba scene description was provided as input for each of these scenes, whose renderings are shown on the first column of Figure~\ref{fig:bidir-cornell}. Columns (b) and (c) show, respectively, the renderings produced by PBRT v3 and LuxRender using scene descriptions converted by our system.    
 
-MENTION SUPPLEMENTARY MATERIALS. THESE AND OTHER EXAMPLES, WHERE ONE CAN INSPECT THE IMAGES AT THEIR ORIGINAL RESOLUTIONS.
 
-
-%We obtained interesting results with \textit{The Wooden Staircase} (Figure 
-%\ref{fig:staircase}, \textit{Utah Teapot} (Figure \ref{fig:teapot}), 
-%\textit{Coffee Maker} (Figure \ref{fig:teaser}) and Glass of Water (Figure 
-%\ref{fig:glass-of-water}). We reached a high degree of visual similarity between 
-%the original and the converted scenes, which was our goal.
-
-We can observe some difference in coloring between the image rendered by Mitsuba 
-(center) and the ones rendered by other two renderers in Figure 
-\ref{fig:dining-room}. This particular scene uses a distant environment light to 
-emulate the sun. In Mitsuba, this directive is implemented using the technique 
-described in \cite{Preetham}, which produces a warm-colored, distant light source. In 
-PBRT and LuxRender, this directive is implemented simply as a distant white 
-light, which produces the difference shown in the results.
-
-\begin{figure}
-\centering
-
-\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/staircase/1_from_lux.png}
-	\label{staircase_Lux}
-}
-\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/staircase/3_to_pbrt.png}
-	\label{staircase_PBRT}
-}
-\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/staircase/2_to_mitsuba.png}
-	\label{staircase_Mitsuba}
-}
-\caption{\textit{The Wooden Staircase} scene. Input scene description for LuxRender (a).
-Renderings produced by PBRT v3 (b) and Mitsuba (c),
-from scene descriptions converted by our system. }
-\label{fig:staircase}
-\end{figure}
 
 \begin{figure*}
 \centering
@@ -87,22 +72,45 @@ from scene descriptions converted by our system. }
 \label{fig:teapot}
 \end{figure*}
 
-\begin{figure}
+\begin{figure*}
 \centering
-\includegraphics[width=0.325\linewidth]{figs/4_results/veach-bidir/1_from_mitsuba.png}
-\includegraphics[width=0.325\linewidth]{figs/4_results/veach-bidir/2_to_pbrt.png}
-\includegraphics[width=0.325\linewidth]{figs/4_results/veach-bidir/3_to_lux.png}
+\includegraphics[width=0.25\linewidth]{figs/4_results/veach-bidir/1_from_mitsuba.png}
+\includegraphics[width=0.25\linewidth]{figs/4_results/veach-bidir/2_to_pbrt.png}
+\includegraphics[width=0.25\linewidth]{figs/4_results/veach-bidir/3_to_lux.png}
 %\vspace{-0.2cm}
-\subfloat[Mitsuba]{\includegraphics[width=0.325\linewidth]{figs/4_results/cornell-box/1_from_mitsuba.png}
+\subfloat[Mitsuba]{\includegraphics[width=0.25\linewidth]{figs/4_results/cornell-box/1_from_mitsuba.png}
 }	
-\subfloat[PBRT v3]{\includegraphics[width=0.325\linewidth]{figs/4_results/cornell-box/2_to_pbrt.png}
+\subfloat[PBRT v3]{\includegraphics[width=0.25\linewidth]{figs/4_results/cornell-box/2_to_pbrt.png}
 }	
-\subfloat[LuxRender]{\includegraphics[width=0.325\linewidth]{figs/4_results/cornell-box/3_to_lux.png}}
+\subfloat[LuxRender]{\includegraphics[width=0.25\linewidth]{figs/4_results/cornell-box/3_to_lux.png}}
 \caption{\textit{Veach, Bidir Room} (top) and \textit{Cornell Box} (bottom). Input scene descriptions for 
  Mitsuba (a). Renderings produced by PBRT v3 (b) and LuxRender (c),
  from scene descriptions converted by our system.}
 \label{fig:bidir-cornell}
-\end{figure}
+\end{figure*}
+
+\subsection{Discussion}
+
+The renderings produced by different rendering systems may exhibit significant differences in color or shading due to features unsupported by some renderers.  
+For instance, consider the use of a light source to emulate the sun. In PBRT and LuxRender, this directive is implemented as a distant white light.
+Mitsuba, in turn, emulates the sun using a distant environment light implemented according to a technique 
+described in \cite{Preetham}, which produces a warm-colored, distant light source. Thus, when the sun directive is used, Mitsuba renderings present a different color compared to the other two. This situation is illustrated in Figure~\ref{fig:dining-room}.
+
+LuxRender does not properly handles a combination of sun directive and local light sources. This is illustrated in Figure~\ref{lamp_Lux}, where hard shadows have turned soft. The difference in colors are due to the sun directive, as discussed above.
+
+The supplemental materials included with this submission show all the examples presented in the paper plus additional ones. We would like to encourage the reader to explore them, where one can inspect the images at their original resolutions.
+
+\subsection{Limitations}
+%In order to minimize scope issues, we restricted the number of directives interpreted by our system. 
+Scene-description directives found in one rendering system but without correspondence in the other two renderers are not handled by our system. That is the case, for instance, of Mitsuba-only materials like \textit{phong} and \textit{blendbsdf}. 
+
+The current version of our system does not support the conversion of hair or participating media. 
+%We also did not convert the color for metal 
+%materials in LuxRender given the issues discussed in \ref{systemarch}. The 
+%latter can be observed in Figure \ref{fig:veach-bidir} - we can see the lack of a 
+%copper color on the lamp in the image rendered by LuxRender.
+%
+As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflectance differently from PBRT and Mitsuba. Thus, properly converting metal colors to LuxRender is a challenging task, not currently supported by our system. This is illustrated in Figure~\ref{fig:MIS}, where the rendering of metal obtained from a scene converted to and rendered with LuxRender looks darker.  
 
 \begin{figure}
 \centering
@@ -122,34 +130,56 @@ from scene descriptions converted by our system. }
 \end{figure}
 
 \begin{figure}
-\centering
-\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/glass_of_water/1_from_pbrt.png}
-	\label{glass_PBRT}		
-}	
-\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/glass_of_water/2_to_lux.png}
-	\label{glass_Lux}		
-}	
-\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/glass_of_water/3_to_mitsuba.png}
-	\label{glass_Mitsuba}		
-}	
-\caption{\textit{Glass of Water}. Input scene description for PBRT v3 (a).
-	Renderings produced by LuxRender (b) and Mitsuba (c),
-	from scene descriptions converted by our system. } 
-\label{fig:glass-of-water}
+	\centering
+	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/lamp/1_from_mitsuba_s.png}
+		\label{lamp_Mitsuba}	
+	}	
+	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/lamp/2_to_pbrt_s.png}
+		\label{lamp_PBRT}		
+	}	
+	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/lamp/3_to_lux_s.png}
+		\label{lamp_Lux}	
+	}	
+	\caption{\textit{Little Lamp} scene. Input scene description for Mitsuba (a).
+		Renderings produced by PBRT v3 (b) and LuxRender (c),
+		from scene descriptions converted by our system. }
+	\label{fig:lamp}
 \end{figure}
 
-\subsection{Limitations}
-In order to minimize scope issues, we restricted the number of directives 
-interpreted by our system. Generally speaking, directives present in only one 
-renderer that had no correspondent in the other two renderers were not 
-incorporated. That was the case, for instance, for Mitsuba-only materials like 
-\textit{phong} or \textit{blendbsdf}. 
+\begin{figure}
+	\centering
+	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/1_from_pbrt.png}
+		\label{glass_PBRT}		
+	}	
+	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/2_to_mitsuba.png}
+		\label{glass_Mitsuba}		
+	}	
+	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/3_to_lux.png}
+		\label{glass_Lux}		
+	}	
+	\caption{\textit{Veach, MIS}. Input scene description for PBRT v3 (a).
+		Renderings produced by Mitsuba (b) and LuxRender (c),
+		from scene descriptions converted by our system. } 
+	\label{fig:MIS}
+\end{figure}
 
-We chose not to interpret and convert hair or participating media (volumes, such 
-as water or fog) for this PoC. We also did not convert the color for metal 
-materials in LuxRender given the issues discussed in \ref{systemarch}. The 
-latter can be observed in Figure \ref{fig:veach-bidir} - we can see the lack of a 
-copper color on the lamp in the image rendered by LuxRender.
+%\begin{figure}
+%\centering
+%\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/glass_of_water/1_from_pbrt.png}
+%	\label{glass_PBRT}		
+%}	
+%\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/glass_of_water/2_to_lux.png}
+%	\label{glass_Lux}		
+%}	
+%\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/glass_of_water/3_to_mitsuba.png}
+%	\label{glass_Mitsuba}		
+%}	
+%\caption{\textit{Glass of Water}. Input scene description for PBRT v3 (a).
+%	Renderings produced by LuxRender (b) and Mitsuba (c),
+%	from scene descriptions converted by our system. } 
+%\label{fig:glass-of-water}
+%\end{figure}
+
 
 
 
