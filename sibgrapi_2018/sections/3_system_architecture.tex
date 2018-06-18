@@ -37,7 +37,7 @@ Most physically-based renderers subdivide the scene description in two main sect
 The import module parses the input scene files and translates each directive into a canonical
 representation. Since rendering systems use proprietary file format, both the import and export modules have to be specialized for each renderer.
 
-PBRT and LuxRender scene descriptions consist of structured text statements \red{(see XXX)}. We generated parsers for these systems using 
+PBRT and LuxRender scene descriptions consist of structured text statements. We generated parsers for these systems using 
 %Given their structure, a Lex/Yacc parser was considered the best choice for these formats. As we intended to keep our system in pure Python, we chose to use The parser for  
 PLY \cite{ply}, a Python implementation of Lex and Yacc.
 %
@@ -77,7 +77,7 @@ This structure is illustrated in Figure~\ref{fig:canonicalrep}, where the attrib
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.9\linewidth]{figs/3_system_architecture/canonicalrep.png}
-\caption{Canonical scene representation. It separates rendering options from scene block data. The attributes stored for each component are shown on the rectangles on the right.}
+\caption{Structure of our canonical scene representation, consisting of rendering options and scene data. The attributes stored for each component are shown on the rectangles on the right.}
 \label{fig:canonicalrep}
 \end{figure}
 
