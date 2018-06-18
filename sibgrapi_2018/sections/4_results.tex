@@ -112,22 +112,22 @@ The current version of our system does not support the conversion of hair or par
 %
 As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflectance differently from PBRT and Mitsuba. Thus, properly converting metal colors to LuxRender is a challenging task, not currently supported by our system. This is illustrated in Figure~\ref{fig:MIS}, where the rendering of metal obtained from a scene converted to and rendered with LuxRender looks darker.  
 
-\begin{figure}
+\begin{figure*}
 \centering
-\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/dining_room/1_from_lux.png}
+\subfloat[LuxRender]{\includegraphics[width=0.25\linewidth]{figs/4_results/dining_room/1_from_lux.png}
 	\label{breakfast_Lux}	
 }	
-\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/dining_room/3_to_pbrt.png}
+\subfloat[PBRT v3]{\includegraphics[width=0.25\linewidth]{figs/4_results/dining_room/3_to_pbrt.png}
 	\label{breakfast_PBRT}		
 }	
-\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/dining_room/2_to_mitsuba.png}
+\subfloat[Mitsuba]{\includegraphics[width=0.25\linewidth]{figs/4_results/dining_room/2_to_mitsuba.png}
 		\label{breakfast_Mitsuba}	
 }	
 \caption{\textit{The Breakfast Room} scene. Input scene description for LuxRender (a).
 	Renderings produced by PBRT v3 (b) and Mitsuba (c),
-	from scene descriptions converted by our system. }
+	from scene descriptions converted by our system. Mitsuba's sun directive produces a warm-colored lighting.}
 \label{fig:dining-room}
-\end{figure}
+\end{figure*}
 
 \begin{figure}
 	\centering
@@ -148,18 +148,18 @@ As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflecta
 
 \begin{figure}
 	\centering
-	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/1_from_pbrt.png}
-		\label{glass_PBRT}		
+	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/1_from_pbrt_s.png}
+		\label{MIS_PBRT}		
 	}	
-	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/2_to_mitsuba.png}
-		\label{glass_Mitsuba}		
+	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/2_to_mitsuba_s.png}
+		\label{MIS_Mitsuba}		
 	}	
-	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/3_to_lux.png}
-		\label{glass_Lux}		
+	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{figs/4_results/veach-mis/3_to_lux_s.png}
+		\label{MIS_Lux}		
 	}	
-	\caption{\textit{Veach, MIS}. Input scene description for PBRT v3 (a).
-		Renderings produced by Mitsuba (b) and LuxRender (c),
-		from scene descriptions converted by our system. } 
+	\caption{\textit{Veach, MIS}. 
+		Renderings by PBRT v3 (a), Mitsuba (b), and LuxRender (c).
+		Converting metal colors to LuxRender is a challenging task, not currently supported by our system. } 
 	\label{fig:MIS}
 \end{figure}
 
