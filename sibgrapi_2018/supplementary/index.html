@@ -11,7 +11,7 @@
   <br>
   <br>
   
-  <p>This web page contains images rendered by Mitsuba, PBRT v3 and LuxRender from scenes converted by the system described in our paper.<br>
+  <p>This web page contains images rendered by Mitsuba [1], PBRT v3 [2] and LuxRender [3] from scenes converted by the system described in our paper.<br>
   </p>
  <br>
   
@@ -26,16 +26,16 @@
   <p><b>Table of Contents:</b></p>
   <ul>
     <li><a href="#System">Our System</a></li>
-    <li><a href="#Comparison">Scene File Comparison</a></li>
-    <li><a href="#Teapot">Scene 1: Utah Teapot</a></li>
-    <li><a href="#Cornell">Scene 2: Cornell Box</a></li>
-    <li><a href="#Coffee">Scene 3: Coffee Maker</a></li>
-    <li><a href="#Staircase">Scene 4: The Wooden Staircase</a></li>
-    <li><a href="#Glass">Scene 5: Glass of Water</a></li>
-    <li><a href="#VeachBidir">Scene 6: Veach, Bidir Room</a></li>
-    <li><a href="#VeachMIS">Scene 7: Veach, MIS</a></li>
+    <li><a href="#Coffee">Scene 1: Coffee Maker</a></li>
+    <li><a href="#Teapot">Scene 2: Utah Teapot</a></li>
+    <li><a href="#Staircase">Scene 3: The Wooden Staircase</a></li>
+    <li><a href="#VeachBidir">Scene 4: Veach, Bidir Room</a></li>  
+    <li><a href="#Cornell">Scene 5: Cornell Box</a></li>  
+    <li><a href="#Glass">Scene 6: Glass of Water</a></li>
+    <li><a href="#Lamp">Scene 7: Little Lamp</a></li> 
     <li><a href="#Dining">Scene 8: The Breakfast Room</a></li>
-    <li><a href="#Lamp">Scene 9: Little Lamp</a></li>
+    <li><a href="#VeachMIS">Scene 9: Veach, MIS</a></li>    
+    <li><a href="#Comparison">Scene File Comparison</a></li>
     <li><a href="#References">References</a></li> 
   </ul>
   <br>
@@ -44,57 +44,13 @@
   <!-- ============================================ -->
   <h2   id="System">Our System</h2>
    <br>
-   <p>The following images were taken from Benedikt Bitterli's <a href="https://benedikt-bitterli.me/resources/">32 resources</a> and converted using our system, available on <a href="https://github.com/lahagemann/pbr_scene_converter">github</a></p>
-   <br>
-  <br>
-  <!-- ============================================ -->
-  <h2   id="Comparison">Scene File Comparison</h2>
-   <br>
-   <p>Here, we provide 3 files for the same scene, <a href="#Teapot">Utah Teapot</a>. We are able to compare the original scene (LuxRender) to our system's conversion for PBRT v3 and Mitsuba.</p>
-   <p>The whole folder, ready for rendering, can be downloaded <a href="files/teapot.zip">here</a>.
-   <br><br>
-   <p><a href="files/teapot/teapot.lxs">LuxRender (original)</a></p>
-   <p><a href="files/teapot/teapot.xml">Mitsuba</a></p>
-   <p><a href="files/teapot/teapot.pbrt">PBRT v3</a></p>
+   <p>The following images were taken from Benedikt Bitterli's <a href="https://benedikt-bitterli.me/resources/">32 resources</a> [4] and converted using our system, available on <a href="https://github.com/lahagemann/pbr_scene_converter">github</a></p>
    <br>
   <br>
   <!-- ============================================ -->
 <!-- Example -->
   <!-- ============================================ -->
-  <h3 id="Teapot">Scene 1: Utah Teapot</h3>
-   <p>(Click on an image to view in full size)</p>
-  <table width="100%">
-    <tbody>
-      <tr>
-        <script type="text/javascript">
-        reset_caption_counter();
-        add_image_with_height('images/teapot/1_from_lux.png','Input scene, rendered in LuxRender', '200');
-        add_image_with_height('images/teapot/2_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
-        add_image_with_height('images/teapot/3_to_pbrt.png','Converted scene, rendered in PBRT v3', '200');
-        </script>
-     </tr>
-    </tbody>
-  </table>
-<br> 
-  <!-- ============================================ -->
-  <h3 id="Cornell">Scene 2: Cornell Box</h3>
-  <p>(Click on an image to view in full size)</p>
-  <table width="100%">
-    <tbody>
-      <tr>
-        <script type="text/javascript">
-        reset_caption_counter();
-        add_image_with_height('images/cornell-box/1_from_mitsuba.png','Input scene, rendered in Mitsuba', '300');
-        add_image_with_height('images/cornell-box/2_to_pbrt.png','Converted scene, rendered in PBRT v3', '300');
-        add_image_with_height('images/cornell-box/3_to_lux.png','Converted scene, rendered in LuxRender', '300');
-        </script>
-      </tr>
-    </tbody>
-  </table>
-
-<br>
-  <!-- ============================================ -->
-  <h3 id="Coffee">Scene 3: Coffee Maker</h3>
+  <h3 id="Coffee">Scene 1: Coffee Maker</h3>
    <p>(Click on an image to view in full size)</p>
   <table width="100%">
     <tbody>
@@ -110,7 +66,23 @@
   </table>
 <br>
   <!-- ============================================ -->
-  <h3 id="Staircase">Scene 4: The Wooden Staircase</h3>
+  <h3 id="Teapot">Scene 2: Utah Teapot</h3>
+   <p>(Click on an image to view in full size)</p>
+  <table width="100%">
+    <tbody>
+      <tr>
+        <script type="text/javascript">
+        reset_caption_counter();
+        add_image_with_height('images/teapot/1_from_lux.png','Input scene, rendered in LuxRender', '200');
+        add_image_with_height('images/teapot/2_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
+        add_image_with_height('images/teapot/3_to_pbrt.png','Converted scene, rendered in PBRT v3', '200');
+        </script>
+     </tr>
+    </tbody>
+  </table>
+<br> 
+  <!-- ============================================ -->
+  <h3 id="Staircase">Scene 3: The Wooden Staircase</h3>
    <p>(Click on an image to view in full size)</p>
   <table width="100%">
     <tbody>
@@ -126,26 +98,7 @@
   </table>
 <br>
   <!-- ============================================ -->
-  <h3 id="Glass">Scene 5: Glass of Water</h3>
-   <p>(Click on an image to view in full size)</p>
-  <table width="100%">
-    <tbody>
-      <tr>
-        <script type="text/javascript">
-        reset_caption_counter();
-        add_image_with_height('images/glass_of_water/1_from_pbrt.png','Input scene, rendered in PBRT v3', '200');
-        add_image_with_height('images/glass_of_water/2_to_lux.png','Converted scene, rendered in LuxRender', '200');
-        add_image_with_height('images/glass_of_water/3_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
-        </script>
-     </tr>
-    </tbody>
-  </table>
-<br>  
-
-
-
-  <!-- ============================================ -->
-  <h3 id="VeachBidir">Scene 6: Veach, Bidir Room</h3>
+  <h3 id="VeachBidir">Scene 4: Veach, Bidir Room</h3>
    <p>(Click on an image to view in full size)</p>
   <table width="100%">
     <tbody>
@@ -160,43 +113,53 @@
     </tbody>
   </table>
 <br>  
+  <!-- ============================================ -->
+  <h3 id="Cornell">Scene 5: Cornell Box</h3>
+  <p>(Click on an image to view in full size)</p>
+  <table width="100%">
+    <tbody>
+      <tr>
+        <script type="text/javascript">
+        reset_caption_counter();
+        add_image_with_height('images/cornell-box/1_from_mitsuba.png','Input scene, rendered in Mitsuba', '300');
+        add_image_with_height('images/cornell-box/2_to_pbrt.png','Converted scene, rendered in PBRT v3', '300');
+        add_image_with_height('images/cornell-box/3_to_lux.png','Converted scene, rendered in LuxRender', '300');
+        </script>
+      </tr>
+    </tbody>
+  </table>
+
+<br>
+
 
   <!-- ============================================ -->
-  <h3 id="VeachMIS">Scene 7: Veach, MIS</h3>
+  <h3 id="Glass">Scene 6: Glass of Water</h3>
    <p>(Click on an image to view in full size)</p>
   <table width="100%">
     <tbody>
       <tr>
         <script type="text/javascript">
         reset_caption_counter();
-        add_image_with_height('images/veach-mis/1_from_pbrt.png','Input scene, rendered in PBRT v3', '200');
-        add_image_with_height('images/veach-mis/2_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
-        add_image_with_height('images/veach-mis/3_to_lux.png','Converted scene, rendered in LuxRender', '200');
+        add_image_with_height('images/glass_of_water/1_from_pbrt.png','Input scene, rendered in PBRT v3', '200');
+        add_image_with_height('images/glass_of_water/2_to_lux.png','Converted scene, rendered in LuxRender', '200');
+        add_image_with_height('images/glass_of_water/3_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
         </script>
      </tr>
     </tbody>
   </table>
 <br>  
+  <!-- ============================================ -->
+  <h2>Discussion</h2>
+   <br>
+   <p>The following scenes, as discussed in section IV-A of our work, present a few renderer-related issues.</p>
+   <p>Scene 7, Little Lamp, presents different coloring in the Mitsuba image due to usage of the sun directive. The LuxRender image also presented issues due to a known problem with the distant light directive.</p>
+   <p>Scene 8, The Breakfast Room, also presents different coloring in the Mitsuba image.</p>
+   <p>Scene 9, Veach MIS, is an example of the problem faced when converting metal coloring into LuxRender.</p> 
+   <br>
+  <br>
 
   <!-- ============================================ -->
-  <h3 id="Dining">Scene 8: The Breakfast Room</h3>
-   <p>(Click on an image to view in full size)</p>
-  <table width="100%">
-    <tbody>
-      <tr>
-        <script type="text/javascript">
-        reset_caption_counter();
-        add_image_with_height('images/dining_room/1_from_lux.png','Input scene, rendered in LuxRender', '200');
-        add_image_with_height('images/dining_room/2_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
-        add_image_with_height('images/dining_room/3_to_pbrt.png','Converted scene, rendered in PBRT v3', '200');
-        </script>
-     </tr>
-    </tbody>
-  </table>
-<br>  
-
-  <!-- ============================================ -->
-  <h3 id="Dining">Scene 9: Little Lamp</h3>
+  <h3 id="Lamp">Scene 7: Little Lamp</h3>
    <p>(Click on an image to view in full size)</p>
   <table width="100%">
     <tbody>
@@ -212,33 +175,71 @@
   </table>
 <br>  
 
+  <!-- ============================================ -->
+  <h3 id="Dining">Scene 8: The Breakfast Room</h3>
+   <p>(Click on an image to view in full size)</p>
+  <table width="100%">
+    <tbody>
+      <tr>
+        <script type="text/javascript">
+        reset_caption_counter();
+        add_image_with_height('images/dining_room/1_from_lux.png','Input scene, rendered in LuxRender', '200');
+        add_image_with_height('images/dining_room/3_to_pbrt.png','Converted scene, rendered in PBRT v3', '200');
+        add_image_with_height('images/dining_room/2_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
+        </script>
+     </tr>
+    </tbody>
+  </table>
+<br>  
+
+
+  <!-- ============================================ -->
+  <h3 id="VeachMIS">Scene 9: Veach, MIS</h3>
+   <p>(Click on an image to view in full size)</p>
+  <table width="100%">
+    <tbody>
+      <tr>
+        <script type="text/javascript">
+        reset_caption_counter();
+        add_image_with_height('images/veach-mis/1_from_pbrt.png','Input scene, rendered in PBRT v3', '200');
+        add_image_with_height('images/veach-mis/2_to_mitsuba.png','Converted scene, rendered in Mitsuba', '200');
+        add_image_with_height('images/veach-mis/3_to_lux.png','Converted scene, rendered in LuxRender', '200');
+        </script>
+     </tr>
+    </tbody>
+  </table>
+<br>  
+
+
+
+
+  <!-- ============================================ -->
+  <h2   id="Comparison">Scene File Comparison</h2>
+   <br>
+   <p>Here, we provide 3 files for the same scene, <a href="#Teapot">Utah Teapot</a>. We are able to compare the original scene (LuxRender) to our system's conversion for PBRT v3 and Mitsuba.</p>
+   <p>The whole folder, ready for rendering, can be downloaded <a href="files/teapot.zip">here</a>.
+   <br><br>
+   <p><a href="files/teapot/teapot.lxs">LuxRender (original)</a></p>
+   <p><a href="files/teapot/teapot.xml">Mitsuba</a></p>
+   <p><a href="files/teapot/teapot.pbrt">PBRT v3</a></p>
+   <br>
+  <br>
+
 <!-- References -->
   <!-- ============================================ -->
   <h2   id="References">References</h2>
   <br><!-- ============================================ -->
 
-<p>[1] KRISHNAN, D., AND FERGUS, R. 2009. Fast image deconvolution
-using hyper-laplacian priors. In Advances in Neural Information
-Processing Systems 22, Y. Bengio, D. Schuurmans, J. Lafferty,
-C. K. I. Williams, and A. Culotta, Eds. 1033041.</p>
 
-<p>[2]LEVIN, A., FERGUS, R., DURAND, F., AND FREEMAN, W. T.
-2007. Deconvolution using natural image priors. ACM Trans.
-Graphics 26, 3, 02. Suppl. materials.</p>
+<p>[1] W. Jakob, “Mitsuba: Physically based renderer,” 2014, http://www.
+mitsuba-renderer.org/.</p>
 
-<p>[3] LUCY, L. B. 1974. An iterative technique for the rectification of
-observed distributions. The Astronomical Journal 79, 745+.</p>
+<p>[2] M. Pharr, W. Jakob, and G. Humphreys, Physically Based Rendering,
+from Theory to Implementation, 3rd ed. Morgan Kaufmann, 2016.</p>
 
-<p>[4] SHAN, Q., JIA, J., AND AGARWALA, A. 2008. High-quality
-motion deblurring from a single image. ACM Transactions on
-Graphics (SIGGRAPH) 27.</p>
+<p>[3]J.-P. Grimaldi and T. Vergauwen, “Luxrender v1.6,” 2008, http://www.
+luxrender.net/.</p>
 
-<p>[5] WANG, Y., YANG, J., YIN, W., AND ZHANG, Y. 2008. A new
-alternating minimization algorithm for total variation image reconstruction.
-SIAM J. Img. Sci. 1, 3, 248272.</p>
-
-<p>[6] ZHOU, C., AND NAYAR, S. K. 2009. What are good apertures for
-defocus deblurring? In ICCP, 18.</p>
-
-
+<p>[4] B. Bitterli, “Rendering resources,” 2016, https://benedikt-bitterli.me/
+resources/.</p>
 </body></html>
