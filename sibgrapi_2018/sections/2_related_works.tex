@@ -3,11 +3,14 @@
 
 To the best of our knowledge, no previous system has performed automatic scene conversion among the major MC rendering systems. 
 Bitterli has converted 32 scenes of various complexities and origins from Tungsten to PBRT v3 and Mitsuba using some scripts~\cite{tungsten}. These scripts, however, are specific for conversions from Tungsten to these two renderers and are not publicly available. 
+Our system can convert scene descriptions among multiple systems and is freely available for download~\cite{sceneConverter}.
 
-RenderToolbox3 is a MATLAB tool developed for assisting vision research~\cite{rendertoolbox}. It imports a scene containing geometric objects described as COLLADA XML files, and allows one to associate to them reflectance measurements taken from a MATLAB Psycophysics Toolbox~\cite{Brainard1997}. Such reflectance measurements are converted to multispectral reflectance representations compatible to PBRT and Mitsuba. A script then renders the objects with the associated multispectral representations using PBRT or Mitsuba. RenderToolbox3 is a visualization tool for exploring the impact of different reflectance and illuminating properties on human perception.       
+RenderToolbox3 is a MATLAB tool developed for assisting vision research~\cite{rendertoolbox}. It imports a scene containing geometric objects described as COLLADA XML files, and allows one to associate to them reflectance measurements from a MATLAB Psycophysics Toolbox~\cite{Brainard1997}. Such reflectance measurements are converted to multispectral reflectance representations compatible to PBRT and Mitsuba. A script then renders the objects with the associated multispectral representations using PBRT or Mitsuba. RenderToolbox3 is a visualization tool for exploring the impact of different reflectance and illuminating properties on human perception.       
 %Heasly et al. developed a tool to aid the studying of vision: RenderToobox3 \cite{rendertoolbox} is a system that imports COLLADA XML files into a MATLAB system and uses different rendering techniques in order images as close to reality as possible. Their system uses integrated PBRT and Mitsuba rendering is capable of storing their data structure into their respective scene file formats. 
 %As a tool for visualization, 
-The system does not import scenes from Mitsuba, PBRT or other renderers, and does convert scene files among rendering systems. 
+The system does not 
+%import scenes from Mitsuba, PBRT or other renderers, and does not
+convert scene files among rendering systems. 
 
 \subsection{Meta-Research Systems in Computer Graphics}
 

@@ -1,9 +1,10 @@
 \section{Automatic Scene Conversion} 
 \label{sec:systemarch}
 
-Our system consists of two main components: an {\it import module} that reads an arbitrary scene file format and generates an equivalent description in a {\it canonical} scene representation; and an {\it export module} that takes a canonical representation and exports it to a target rendering system file format. The complete process is illustrated in Figure \ref{fig:sysarch}. 
+Our system consists of two main components: an {\it import module} that reads an arbitrary scene file format and generates an equivalent description in a {\it canonical} scene representation; and an {\it export module} that takes our canonical representation and exports it to a target rendering system file format. The complete process is illustrated in Figure \ref{fig:sysarch}. 
 Currently, our system supports \textit{PBRT v-3}~\cite{PBRT:v3}, \textit{Mitsuba}~\cite{mitsuba}, and \textit{LuxRender}~\cite{luxrender}, as these are three of the most popular rendering systems.
-This architecture, however, is quite flexible. Supporting additional rendering systems only requires specializing the import and export methods to handle the new formats. Moreover, it can be easily integrated with the API described in~\cite{Santos:2018:FBKSD}.   
+This architecture, however, is quite flexible. Supporting additional rendering systems only requires specializing the import and export methods to handle the new formats. 
+%Moreover, it can be easily integrated with the API described in~\cite{Santos:2018:FBKSD}.   
 %
 Next, we describe the main components of our system.
 
@@ -25,7 +26,7 @@ Next, we describe the main components of our system.
 \begin{figure}[h]
 \centering
 \includegraphics[width=0.8\linewidth]{figs/3_system_architecture/architecture.png}
-\caption{Our scene conversion pipeline. An input scene description is converted to a canonical representation, which, in turn, can be exported to a target rendering system format.}
+\caption{Our scene conversion pipeline. An input scene description is imported into a canonical representation, which, in turn, can be exported to a target rendering system format.}
 \label{fig:sysarch}
 \end{figure}
 
@@ -42,13 +43,14 @@ PBRT and LuxRender scene descriptions consist of structured text statements. We 
 PLY \cite{ply}, a Python implementation of Lex and Yacc.
 %
 Mitsuba, in turn, is a heavily optimized, plugin-oriented renderer. Its file
-format is, essentialy, a XML description of which plugins should be instantiated
-with the specified parameters. Since there are several XML-parsing libraries for Python that can load the hierarchy into a tree data
-structure, we chose to use ElementTree \cite{ET}, a Python XML parsing tool.
+format is, essentialy, an XML description of which plugins should be instantiated
+with the specified parameters. Since there are several XML-parsing libraries for Python,
+% that can load the hierarchy into a tree data structure, 
+we chose to use ElementTree \cite{ET}, a Python XML parsing tool.
 
 \subsection{Canonical Scene Representation}
 %After loading the scene file, the information has to be stored somewhere. 
-While most renderers have a similar structure, they differ in a few supported features and in the parameters used to configure the rendering process. Thus, we need a canonical representation that covers the features supported by all renderers, 
+While most renderers have a similar structure, they differ in a few supported features and in the parameters used to configure the rendering process. Thus, we need a canonical representation that covers the features supported by all renderers. 
 %
  COLLADA~\cite{collada} is an XML schema intended as a representation for exchanging digital content among graphics applications. 
  %Ever since it became property of the 
@@ -58,7 +60,7 @@ While most renderers have a similar structure, they differ in a few supported fe
  %happened because 
  However, COLLADA files only include information about scene geometry. No information about other rendering 
  options, such as camera positioning or integration techniques, is available. 
- In order to establish a common ground for conversion, we defined a canonical representation for these scenes. Such a representation 
+ In order to establish a common ground for conversion, we defined a canonical scene representation. It 
  is illustrated in Figure~\ref{fig:canonicalrep} and can easily extended to incorporate any directives not covered in our current implementation.
  
 %Renderer directives are usually written as a command, followed by a type and a list of additional parameters. 
@@ -69,10 +71,10 @@ While most renderers have a similar structure, they differ in a few supported fe
 
 %In order to establish a common ground for conversion, we decided it best to define a canonical representation for these scenes. This representation can be easily extended to incorporate any directives not contemplated in this work.
 
-Our canonical scene representation mirrors the general structure of scene files and divides the scene data into
+Our canonical representation mirrors the general structure of scene files and divides the scene data into
 scene-wide {\it rendering options} and {\it world block}. 
 %The rendering options are subdivided into {\it integration} technique and {\it sensor} options, while the world block is subdivided into  {\it material} definitions, global {\it emitters}, and lists of {\it shapes}. 
-This structure is illustrated in Figure~\ref{fig:canonicalrep}, where the attributes stored for each scene component are shown on the rectangles on the right.
+This is illustrated in Figure~\ref{fig:canonicalrep}, where the attributes stored for each scene component are shown on the rectangles on the right.
 
 \begin{figure}[h]
 \centering
@@ -82,17 +84,16 @@ This structure is illustrated in Figure~\ref{fig:canonicalrep}, where the attrib
 \end{figure}
 
 %\subsubsection{Scene-wide Rendering Options}
-\noindent \textit{Rendering Options}:
+The \textit{Rendering Options}
 %\noindent \textbf{Rendering Options}
-a set of directives specifying the integration and sampling techniques used for
+specify the integration and sampling techniques used for
 rendering, as well as camera and film properties. These include, for instance, camera position, camera matrix, image resolution, field of view, etc.
-Table~\ref{tab:summary} summarizes all types, parameters, and additional attributes associated with each component of our canonical scene representation (Figure~\ref{fig:canonicalrep}). 
+Table~\ref{tab:summary} summarizes all types, parameters, and additional attributes associated with each component of our canonical scene representation. 
 
 %\subsubsection{World Block}
-\noindent \textit{World Block}:
-a set of directives describing the materials, global emitters, and shapes present in the scene.
+The \textit{World Block} describes the materials, global emitters, and shapes present in the scene.
 %
-A {\it material} (\eg, glass, metal, plastic, etc.) may have one or more associated textures. {\it Global emitters} represent all kinds of light sources, except area light sources, which are represented as shapes. These include conventional environment, spot, directional, and point light sources, as well more specific ones such as {\it sun} and {\it sky}.
+A {\it material} (\eg, glass, plastic, metal, etc.) may have one or more associated textures. {\it Global emitters} represent all kinds of light sources, except area light sources, which are represented as shapes. These include conventional environment, spot, directional, and point light sources, as well more specific ones such as {\it sun} and {\it sky}.
 %The \textbf{material} directive is represented in a structure with: a type \red{(examples of types?)}, an id, an optional texture and a list of parameters.
 %
 A {\it shape} can be a polygonal mesh or a geometric primitive such as a rectangle, disk, cube, or sphere, for instance. 
@@ -178,7 +179,7 @@ Converting primitive shapes requires more attention than converting external 3D 
 Mitsuba has directives for rectangle, disk, cube and sphere, while PBRT and LuxRender do not. 
 Mitsuba's primitives are defined by some parameters (\eg, vertex positions, radius) which can be modified by 
 a transformation (model) matrix. To reproduce these primitives in PBRT and 
-LuxRender, an {\it internal triangle mesh} must be used. This is done by specifying the position, normal, and texture coordinates for each vertex in the mesh representing a given primitive. One should note that such internal meshes do not use the same representation as the 3D meshes stored in files.
+LuxRender, an {\it internal triangle mesh} must be used. This is done by specifying the position, normal, and texture coordinates for each vertex in the mesh representing a given primitive. One should note that these internal meshes do not use the same representation as the 3D meshes stored in files.
 
 Converting PBRT and LuxRender internal triangle meshes into Mitsuba primitive shapes is a more involving process. Since Mitsuba's 
 primitives have predefined coordinates, converting vertices from PBRT or LuxRender internal meshes into 
@@ -199,7 +200,7 @@ In this case, our system issues a warning, making the user aware of the need to 
 % canonical coordinates in the correct order.}
 
 \textbf{Global Emitter Conversion}:
-global emitters can used to emulate environment lighting, such as the sun, the
+global emitters can be used to emulate environment lighting, such as the sun, the
 sky, or an environment map. Converting global emitters can be tricky, mainly
 because different rendering systems do not implement the same algorithms and directives. 
 For instance, Mitsuba and LuxRender implement {\it sun} and {\it sky} directives, while PBRT does not.
@@ -213,7 +214,7 @@ Mitsuba uses a latitude-longitude format. Thus, a conversion between the two rep
 Converting a PBRT distant light into
 a sun directive for Mitsuba or LuxRender is straightforward. However, converting a PBRT
 environment map into a sky directive lends to an ambiguous situation, as the converter would require additional information to decide 
-whether the environment map should be treated just as a regular environment map, or as a sky directive.
+whether the environment map should be treated as a regular environment map, or as a sky directive.
 Our system solves this ambiguity by asking the user if the environment map should be converted to a sky
 emitter.
 
