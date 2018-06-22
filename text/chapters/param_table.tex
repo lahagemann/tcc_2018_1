@@ -1,0 +1,30 @@
+
+\begin{table}
+  \begin{center}
+      \begin{tabular}{ | L{2.5cm} | L{4cm} | L{4.2cm} | L{2.4cm} | }
+      \hline
+      {\bf Component} & {\bf ~~~~Type} & {\bf Parameters} & {\bf Others} \\ 
+      \hline
+      {\bf camera} & environment, orthographic, perspective, realistic & focal distance, fov, lens aperture, near/far clip, shutter open/close & view matrix \\
+      \hline
+      {\bf sampler} & halton, random, sobol, stratified & samples per pixel, scramble & ~~~~~~- \\
+      \hline
+      {\bf film} & hdr, ldr & file extension (png, ...), filter, image height, image width & ~~~~~~- \\
+      \hline
+      {\bf integrator} & bidirectional path tracer, direct lighting, metropolis light transport, path tracer, photon mapping & max depth, number of iterations, number of Markov chains, photon count, photon mapping lookup radius, russian roulette depth & ~~~~~~- \\
+      \hline
+      {\bf materials} & glass, matte/diffuse, metal, substrate/glossy, translucent, uber & $\eta$, id, IOR, k, kd, ks, reflectance, roughness, transmittance, ... & texture (id, type, params) \\ 
+      \hline
+      {\bf emitters} & directional, distant, environment mapping, sky, spot, sun & filename, from (origin), intensity, radiance, to (direction) & model matrix \\
+      \hline
+      {\bf shapes} & mesh (ply/obj) & filename & model matrix, area emitter, \\
+      \cline{2-3}
+	    & rectangle, disk, triangle mesh, cube, sphere & center, normals, points, radius, uv mapping, ... & unnamed material\\
+      \hline
+
+      \end{tabular}
+  \end{center}
+    \caption{Types, parameters and additional attributes of the components in our canonical scene representation (Figure~\ref{fig:canonicalrep}).} 
+    \label{tab:summary}
+\end{table}
+    

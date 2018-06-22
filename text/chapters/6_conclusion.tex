@@ -1,0 +1,11 @@
+\chapter{Conclusion}
+\label{sec:conclusion}
+We presented a system for automatic conversion among scene file formats used by Monte Carlo physically-based rendering systems. 
+It enables algorithms implemented using different renderers to be tested on similar scene descriptions, providing better means of assessing the strengths and limitations of MC rendering techniques. 
+%
+Our system can be easily integrated with the API recently introduced by~\cite{Santos:2018:FBKSD}, allowing researchers and developers to exploit full orthogonality among MC algorithms, rendering systems, and scene files.   
+
+We have demonstrated the effectiveness of our system by converting scene description among three of the most popular MC rendering systems: PBRT v3, Mitsuba, and LuxRender. Providing support to additional renderers only requires specializing the import and export modules described in Section~\ref{sec:systemarch} for the given renderers. Our system is freely available and we encourage developers to provide support for other renderers.  
+
+In the future, we would like to add support for the conversion of hair and participating media, as well as for other rendering systems.
+By documenting limitations and incompatibilities found among different renderers, our work might stimulate efforts to reduce these differences.   
