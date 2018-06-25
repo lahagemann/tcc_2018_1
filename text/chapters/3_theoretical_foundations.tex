@@ -1,0 +1,40 @@
+\chapter{Theoretical Foundations}
+\label{sec:theory}
+This chapter will introduce important concepts for the reader. We start by introducing the rendering pipeline, then following into the development of more complex algorithms. We do not delve too deep in the implementations of the techniques discussed in this chapter - we provide a general understanding of the process in order to better situate the reader.
+
+\section{The Rendering Pipeline}
+
+In computer graphics, we say that the computer graphics pipeline is a model that describes the steps taken by a graphics system in order to render a 3D scene into a 2D screen (which is most often our computer monitors) \cite{msdn}. This process is analogous to the way our eyes process the information around us and form images that are then processed by our brain and engraved into our minds.
+
+Likewise, the computer must interpret some sort of description of an object or scene and pass this information through this pipeline into the final data format understood by our monitors. Most of the pipeline steps are implemented in hardware, allowing optimizations required for real-time rendering. 
+
+A graphics pipeline can be divided into five core parts: 
+\begin{enumerate}
+ \item model and camera transformations
+ \item lighting or shading
+ \item projection
+ \item clipping
+ \item screen mapping
+\end{enumerate}
+
+Each individual part is essential to comprehend the workings of this pipeline. We, however, will be focusing our particular attention into the first two parts - \textit{model and camera transformations} and \textit{lighting}.
+
+In part 1, the \textit{model and camera transformations}, we first process each object composing our scene and apply model transformations in order to position them in what is called the \textbf{world space}. The world space is defined by a coordinate system, a reference system to these objects in three-dimensional space.
+
+With our scene now properly set, we then need to know how the camera - our eyes - is viewing the scene. Where is the camera? How far can the camera see? What is hidden from the camera? We need to represent the scene through the camera's reference system, which we call the \textbf{camera space}. Then, we can more easily determine which part of the scene will be within the camera's boundaries and discart the rest in order to improve performance.
+
+In order to go from world space to camera space, one must apply camera transformations. Transforming from one to the other means one must change coordinate systems, which in Linear Algebra can be done by multiplying our models' coordinates (or vertexes) by a specific transformation matrix. 
+
+In part 2, we must compute the amount of incident light in our objects. When the object's properties interact with this incident light, we can determine the color at a given point. An earlier proposed way to compute lighting for computer graphics was the \textit{Phong Illumination Model}.
+
+\section{Phong's Illumination Model}
+
+
+
+\section{Ray Tracing}
+
+\section{The Rendering Equation and Monte Carlo Ray Tracing}
+
+\section{Modern Physically Based Renderers}
+
+

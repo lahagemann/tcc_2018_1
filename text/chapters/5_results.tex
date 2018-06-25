@@ -89,7 +89,7 @@ Figure~\ref{fig:bidir-cornell} shows two scenes, \textit{Veach Bidir Room} and \
 \label{fig:bidir-cornell}
 \end{figure*}
 
-\subsection{Discussion}
+\section{Discussion}
 
 The renderings produced by different rendering systems may exhibit significant differences in color or shading due to features unsupported by some renderers.  
 For instance, consider the use of a light source to emulate the sun. In PBRT and LuxRender, this directive is implemented as a distant white light.
@@ -100,7 +100,7 @@ LuxRender does not properly handles a combination of sun directive and local lig
 
 The supplemental materials included with this submission show all the examples presented in the paper plus additional ones. We would like to encourage the reader to explore them, where one can inspect the images at their original resolutions.
 
-\subsection{Limitations}
+\section{Limitations}
 %In order to minimize scope issues, we restricted the number of directives interpreted by our system. 
 Scene-description directives found in one rendering system but without correspondence in the other two renderers are not handled by our system. That is the case, for instance, of Mitsuba-only materials like \textit{phong} and \textit{blendbsdf}. 
 
