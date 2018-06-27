@@ -71,7 +71,20 @@ Photorealism can only be achieved when an algorithm approximates the \textit{Ren
 \section{The Rendering Equation}
 
 %The Rendering Equation \cite{Kajiya:1986}
-\red{WORK IN PROGRESS}
+
+An important concept for global illumination algorithms is that of \textit{Radiance}, which describes how much power arrives at (or leaves from) a certain point on a surface per unit solid angle and per unit projected area. Radiance can be thought of as the number of photons arriving per time at a small area from a given direction, and it describes the intensity of light at a given point in space in a given direction. Radiance remains constant along the light rays passing through empty space, and when computed, it captures the appearance of objects in the scene.
+
+Another important concept is that of the \textit{Bidirectional Reflection Distribution Function} (BRDF), a function that describes the local illumination model of a given material. The BRDF can be perceived as a constant of proportionality between the amount of incident light and the reflected light along a direction.
+
+The BRDF has some crucial properties that aid in modeling a realistic global illumination model. It is, in general, anisotropic - which means that adding light from several incident directions in a given point has no influence on the amount of light that is reflected from it. Also, we can calculate the total amount of light reflected by a surface in a specific direction as an hemispherical integral over all possible incident directions, as seen in Figure \ref{brdf}.
+
+These concepts and properties were used to model the \textit{Rendering Equation} \cite{Kajiya:1986}, which is able to model the . The Rendering Equation is described as:
+
+% \begin{equation}
+%  
+% \end{equation}
+
+
 
 \subsection{Monte Carlo Ray Tracing}
 
