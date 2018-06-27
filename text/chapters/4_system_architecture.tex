@@ -95,15 +95,13 @@ Converting a PBRT distant light into a sun directive for Mitsuba or LuxRender is
 emitter.
 
 Another sensitive point to consider is converting environment mapping indexation. PBRT and LuxRender access environment maps using spherical coordinates, 
-($\theta$, $\phi$) expressed in cartesian coordinates, while Mitsuba uses a latitude-longitude format.   
+($\theta$, $\phi$) expressed in cartesian coordinates, while Mitsuba uses a latitude-longitude format. A conversion between the two representations is also required. 
 
-A conversion between the two representations is required, which can be done by correctly aligning the axis of both coordinate systems. 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.7\textwidth,height=\textheight,keepaspectratio]{images/4_system_architecture/spherical_coordinates.png}
-  \includegraphics[width=0.7\textwidth,height=\textheight,keepaspectratio]{images/4_system_architecture/mitdocemitter.png}
-  \caption{Illustration of the coordinate conventions used by PBRT and LuxRender 
-  (top) and by Mitsuba (bottom) for indexing environment map uv coordinates.}
-  \label{fig:mitdocemitter}
-\end{figure}
+% \begin{figure}[h]
+%   \centering
+%   \includegraphics[width=0.7\textwidth,height=\textheight,keepaspectratio]{images/4_system_architecture/spherical_coordinates.png}
+%   \includegraphics[width=0.7\textwidth,height=\textheight,keepaspectratio]{images/4_system_architecture/mitdocemitter.png}
+%   \caption{Illustration of the coordinate conventions used by PBRT and LuxRender 
+%   (top) and by Mitsuba (bottom) for indexing environment map uv coordinates.}
+%   \label{fig:mitdocemitter}
+% \end{figure}

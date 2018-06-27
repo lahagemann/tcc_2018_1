@@ -1,6 +1,9 @@
 \chapter{Results}
 \label{sec:results}
 
+This chapter will showcase the test results obtained when evaluating our system. We will also discuss the limitations of our system.
+
+\section{}
 \begin{figure*}[h!t]
 	\centering
 	
@@ -52,24 +55,12 @@ Figure~\ref{fig:bidir-cornell} shows two scenes, \textit{Veach Bidir Room} and \
 
 
 \begin{figure*}
-\centering
-
-\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/teapot/1_from_lux.png}
-	\label{teapot_Lux}
-}
-\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/teapot/3_to_pbrt.png}
-	\label{teatpot_PBRT}
-}
-\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/teapot/2_to_mitsuba.png}
-	\label{teapot_Mitsuba}
-}
-%
-%\includegraphics[width=0.32\linewidth]{figs/4_results/teapot/1_from_lux.png}
-%\includegraphics[width=0.32\linewidth]{figs/4_results/teapot/2_to_mitsuba.png}
-%\includegraphics[width=0.32\linewidth]{figs/4_results/teapot/3_to_pbrt.png}
-\caption{\textit{Teapot} scene. Input scene description for LuxRender (a).	Renderings produced by PBRT v3 (b) and Mitsuba (c),
-	from scene descriptions converted by our system.}
-\label{fig:teapot}
+  \centering
+  \subfloat[LuxRender]{\includegraphics[width=0.6\linewidth]{images/5_results/teapot/1_from_lux.png}\label{teapot_Lux}}\\
+  \subfloat[PBRT v3]{\includegraphics[width=0.6\linewidth]{images/5_results/teapot/3_to_pbrt.png}\label{teatpot_PBRT}}\\
+  \subfloat[Mitsuba]{\includegraphics[width=0.6\linewidth]{images/5_results/teapot/2_to_mitsuba.png}\label{teapot_Mitsuba}}
+  \caption{\textit{Teapot} scene. Input scene description for LuxRender (a). Renderings produced by PBRT v3 (b) and Mitsuba (c), from scene descriptions converted by our system.}
+  \label{fig:teapot}
 \end{figure*}
 
 \begin{figure*}
@@ -113,54 +104,30 @@ The current version of our system does not support the conversion of hair or par
 As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflectance differently from PBRT and Mitsuba. Thus, properly converting metal colors to LuxRender is a challenging task, not currently supported by our system. This is illustrated in Figure~\ref{fig:MIS}, where the rendering of metal obtained from a scene converted to and rendered with LuxRender looks darker.  
 
 \begin{figure*}
-\centering
-\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/dining_room/1_from_lux.png}
-	\label{breakfast_Lux}	
-}	
-\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/dining_room/3_to_pbrt.png}
-	\label{breakfast_PBRT}		
-}	
-\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/dining_room/2_to_mitsuba.png}
-		\label{breakfast_Mitsuba}	
-}	
-\caption{\textit{The Breakfast Room} scene. Input scene description for LuxRender (a).
-	Renderings produced by PBRT v3 (b) and Mitsuba (c),
-	from scene descriptions converted by our system. Mitsuba's sun directive produces a warm-colored lighting.}
-\label{fig:dining-room}
+  \centering
+  \subfloat[LuxRender]{\includegraphics[width=0.5\linewidth]{images/5_results/dining_room/1_from_lux.png}\label{breakfast_Lux}}\\
+  \subfloat[PBRT v3]{\includegraphics[width=0.5\linewidth]{images/5_results/dining_room/3_to_pbrt.png}\label{breakfast_PBRT}}\\
+  \subfloat[Mitsuba]{\includegraphics[width=0.5\linewidth]{images/5_results/dining_room/2_to_mitsuba.png}\label{breakfast_Mitsuba}}
+  \caption{\textit{The Breakfast Room} scene. Input scene description for LuxRender (a). Renderings produced by PBRT v3 (b) and Mitsuba (c), from scene descriptions converted by our system. Mitsuba's sun directive produces a warm-colored lighting.}
+  \label{fig:dining-room}
 \end{figure*}
 
 \begin{figure}
-	\centering
-	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/lamp/1_from_mitsuba_s.png}
-		\label{lamp_Mitsuba}	
-	}	
-	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/lamp/2_to_pbrt_s.png}
-		\label{lamp_PBRT}		
-	}	
-	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/lamp/3_to_lux_s.png}
-		\label{lamp_Lux}	
-	}	
-	\caption{\textit{Little Lamp} scene. Input scene description for Mitsuba (a).
-		Renderings produced by PBRT v3 (b) and LuxRender (c),
-		from scene descriptions converted by our system. }
-	\label{fig:lamp}
+  \centering
+  \subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/lamp/1_from_mitsuba_s.png}\label{lamp_Mitsuba}}
+  \subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/lamp/2_to_pbrt_s.png}\label{lamp_PBRT}}
+  \subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/lamp/3_to_lux_s.png}\label{lamp_Lux}}
+  \caption{\textit{Little Lamp} scene. Input scene description for Mitsuba (a). Renderings produced by PBRT v3 (b) and LuxRender (c), from scene descriptions converted by our system.}
+  \label{fig:lamp}
 \end{figure}
 
 \begin{figure}
-	\centering
-	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/veach-mis/1_from_pbrt_s.png}
-		\label{MIS_PBRT}		
-	}	
-	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/veach-mis/2_to_mitsuba_s.png}
-		\label{MIS_Mitsuba}		
-	}	
-	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/veach-mis/3_to_lux_s.png}
-		\label{MIS_Lux}		
-	}	
-	\caption{\textit{Veach, MIS}. 
-		Renderings by PBRT v3 (a), Mitsuba (b), and LuxRender (c).
-		Converting metal colors to LuxRender is a challenging task, not currently supported by our system. } 
-	\label{fig:MIS}
+  \centering
+  \subfloat[PBRT v3]{\includegraphics[width=0.6\linewidth]{images/5_results/veach-mis/1_from_pbrt_s.png} \label{MIS_PBRT}}\\
+  \subfloat[Mitsuba]{\includegraphics[width=0.6\linewidth]{images/5_results/veach-mis/2_to_mitsuba_s.png}\label{MIS_Mitsuba}}\\
+  \subfloat[LuxRender]{\includegraphics[width=0.6\linewidth]{images/5_results/veach-mis/3_to_lux_s.png}\label{MIS_Lux}}
+  \caption{\textit{Veach, MIS}. Renderings by PBRT v3 (a), Mitsuba (b), and LuxRender (c). Converting metal colors to LuxRender is a challenging task, not currently supported by our system.} 
+  \label{fig:MIS}
 \end{figure}
 
 %\begin{figure}
