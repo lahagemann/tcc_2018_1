@@ -13,10 +13,18 @@ interaction of light with the representation of a three-dimensional scene.
 thorough knowledge of optics, material properties, geometry and light 
 propagation.
 
+
 \section{Physically-based Rendering}
-Physically-based rendering is often implemented using Monte Carlo (MC) Ray Tracing \cite{mcraytracing}, which uses MC 
-integration \cite{montecarlo} to estimate the environment illumination function. 
+Physically-based rendering is often implemented using Monte Carlo (MC) Ray Tracing \cite{Lafortune96mathematicalmodels}, which uses MC 
+integration \cite{Keller:200} to estimate the environment illumination function. 
 This is performed by tracing (or sampling) the path of several light rays starting from the camera position, simulating the effects obtained from its encounters with virtual objects. 
+%
+%\section{Physically Based Rendering (PBR)}
+%PBR is implemented using Monte Carlo (MC) Ray Tracing \cite{Lafortune96mathematicalmodels}, which uses MC 
+%Integration \cite{Keller:2007} to estimate the environment illumination function 
+%by tracing (or sampling) the path of several light rays starting from an image 
+%plane, simulating the effects obtained from its encounters with virtual objects. 
+%>>>>>>> da48ced43714c68ae2cddbc9bac77de6a5f39e92
 While able to produce a high degree of realism, this technique also has a very 
 high computational cost. This method will be further discussed in Chapter~\ref{sec:theory}.
 
@@ -38,9 +46,14 @@ Following the lead of Pixar's \textit{Renderman} \cite{renderman}, many
 commercial and performance-oriented renderers appeared on the market. Focused on 
 animation techniques and visual effects for movies, these renderers provide 
 well-established, stable rendering techniques. These renderers, such as 
+
 \textit{LuxRender} \cite{luxrender} and \textit{Octane} \cite{octane}, 
 %are state-of-the-art renderers 
 have been extensively used by the animation and gaming industries.
+%=======
+%\textit{LuxRender} \cite{luxrender}, are 
+%state-of-the-art renderers used by the animation and gaming industries.
+%>>>>>>> da48ced43714c68ae2cddbc9bac77de6a5f39e92
 %https://www.blenderguru.com/articles/render-engine-comparison-cycles-vs-giants
 
 Even with different applications, the vast majority of modern physically-based renderers 
@@ -125,8 +138,7 @@ Figure~\ref{fig:teaser} illustrates the use of our system to perform automatic c
 Our work does not introduce a new physically-based rendering technique per se. Instead, it falls in the area of {\it meta-research} systems, which are systems 
 designed to facilitate and improve the research process. Meta-research systems are quite common in computer graphics and computer vision~\cite{MiddleburyStereo, MiddleburyFlow, AlphaMatting, VideoMatting}, where they have led to significant progress in these fields. 
   
-Recently, \cite{Santos:2018:FBKSD} introduced a framework for developing and benchmarking MC sampling and denoising algorithms. This is achieved by providing an API that decouples the developed techniques from the used rendering system. 
-
+Recently, Santos et al. \cite{Santos:2018:FBKSD} introduced a framework for developing and benchmarking MC sampling and denoising algorithms. This is achieved by providing an API that decouples the developed techniques from the used rendering system. 
 While it allows a technique to be tested on any rendering system that supports the proposed API, each rendering system is still constrained to a limited set of test scenes. Our system is orthogonal to and complements this API, aspiring to reach full orthogonality among algorithms, rendering systems and scene files.
 
 The {\bf contributions} of our work include:
@@ -144,8 +156,8 @@ This work includes a detailed description of how our solution for converting sce
 similar meta-reseach systems introduced to improve research in computer graphics.
 %developed as , as well as other attempts to convert scenes and exporting a generic 
 %scene format into different renderer-specific outputs. 
-Following the current state-of-the-art, we delve a little into the history of rendering in chapter \ref{sec:theory}, starting with the first algorithms and then moving on to currently used physically-based renderers.
+Following the current state-of-the-art, we delve a little into the history of rendering in Chapter \ref{sec:theory}, starting with the first algorithms and then moving on to currently used physically-based renderers.
 %
-Our system is described in chapter \ref{sec:systemarch}, where we explain how our pipeline works and how we converted some renderer-specific directives. Chapter~\ref{sec:???} discusses some results obtained with our system, and  Chapter~\ref{sec:???} presents our conclusions and directions for future exploration.
+Our system is described in Chapter \ref{sec:systemarch}, where we explain how our pipeline works and how we converted some renderer-specific directives. \red{Chapter~\ref{sec:???}} discusses some results obtained with our system, and  \red{Chapter~\ref{sec:???}} presents our conclusions and directions for future exploration.
 
 

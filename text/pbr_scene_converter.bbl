@@ -39,6 +39,13 @@ Dispon{\'\i}vel em: \url{http://www.dabeaz.com/ply/}.}
 \textbf{Computer Graphics Forum}, v.~35, n.~4, p. 107--117, jul 2016.
 ISSN 01677055.}
 
+\bibitem[{Blender Online Community} 2018]{blender}
+\abntrefinfo{{Blender Online Community}}{{Blender Online Community}}{2018}
+{{Blender Online Community}. \textbf{Blender - a 3D modelling and rendering
+  package}.
+Blender Institute, Amsterdam, 2018. Dispon{\'\i}vel em:
+  \url{http://www.blender.org}.}
+
 \bibitem[Brainard 1997]{Brainard1997}
 \abntrefinfo{Brainard}{BRAINARD}{1997}
 {BRAINARD, D.~H. The psychophysics toolbox.
@@ -85,6 +92,20 @@ ISSN 0730-0301.}
 \textbf{ACM Trans. Graph.}, v.~34, n.~4, p. 122:1--122:12, jul 2015.
 ISSN 07300301.}
 
+\bibitem[Keller, Heinrich e Niederreiter 2007]{Keller:2007}
+\abntrefinfo{Keller, Heinrich e Niederreiter}{KELLER; HEINRICH;
+  NIEDERREITER}{2007}
+{KELLER, A.; HEINRICH, S.; NIEDERREITER, H. \textbf{Monte Carlo and Quasi-Monte
+  Carlo Methods 2006}. 1st. ed. [S.l.]: Springer Publishing Company,
+  Incorporated, 2007.
+ISBN 3540744959, 9783540744955.}
+
+\bibitem[Lafortune 1996]{Lafortune96mathematicalmodels}
+\abntrefinfo{Lafortune}{LAFORTUNE}{1996}
+{LAFORTUNE, E. \textbf{Mathematical Models and Monte Carlo Algorithms for
+  Physically Based Rendering}.
+[S.l.], 1996.}
+
 \bibitem[Li et al. 2018]{Li2018-Halide-Diff_Prog}
 \abntrefinfo{Li et al.}{LI et al.}{2018}
 {LI, T.-M. et al. Differentiable programming for image processing and deep
@@ -104,12 +125,24 @@ ISSN 0730-0301.}
   SIGGRAPH 2008 Classes}. New York, NY, USA: ACM, 2008.  (SIGGRAPH '08), p.
   16:1--16:14.}
 
+\bibitem[O'Connor 2015]{3dsmax}
+\abntrefinfo{O'Connor}{O'CONNOR}{2015}
+{O'CONNOR, R. \textbf{Autodesk 3Ds Max 2016 - Modeling and Shading Essentials}.
+  1st. ed. USA: CreateSpace Independent Publishing Platform, 2015.
+ISBN 1517185815, 9781517185817.}
+
 \bibitem[Oliveira e Brauwers 2007]{Oliveira2007RRT}
 \abntrefinfo{Oliveira e Brauwers}{OLIVEIRA; BRAUWERS}{2007}
 {OLIVEIRA, M.~M.; BRAUWERS, M. Real-time refraction through deformable objects.
   In:  \textbf{Proc. ACM Symposium on Interactive 3D Graphics and Games}.
   [S.l.: s.n.], 2007. p. 89--96.
 ISBN 978-1-59593-628-8.}
+
+\bibitem[Palamar 2015]{maya}
+\abntrefinfo{Palamar}{PALAMAR}{2015}
+{PALAMAR, T. \textbf{Mastering Autodesk Maya 2016: Autodesk Official Press}.
+  1st. ed. Alameda, CA, USA: SYBEX Inc., 2015.
+ISBN 1119059828, 9781119059820.}
 
 \bibitem[{PBR} Scene Converter]{sceneConverter}
 \abntrefinfo{{PBR}\ldots}{{PBR}\ldots}{}
@@ -208,6 +241,13 @@ ISBN 0321552628, 9780321552624.}
 \abntrefinfo{The\ldots}{THE\ldots}{}
 {THE {E}lement{T}ree {XML API}.
   \url{https://docs.python.org/3/library/xml.etree.elementtree.html}.}
+
+\bibitem[Upstill 1989]{renderman}
+\abntrefinfo{Upstill}{UPSTILL}{1989}
+{UPSTILL, S. \textbf{RenderMan Companion: A Programmer's Guide to Realistic
+  Computer Graphics}. Boston, MA, USA: Addison-Wesley Longman Publishing Co.,
+  Inc., 1989.
+ISBN 0201508680.}
 
 \bibitem[Whitted 1980]{Whitted:1980}
 \abntrefinfo{Whitted}{WHITTED}{1980}
