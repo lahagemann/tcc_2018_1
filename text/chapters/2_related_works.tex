@@ -4,14 +4,13 @@
 In this chapter we discuss relevant, similar systems developed as meta-reseach, such as other attempts to convert scenes and exporting a generic 
 scene format into different renderer-specific outputs. This chapter is meant to contextualize the reader in the state-of-the-art in converting PBR scene files.
 
-\section{Similar Conversion Tools}
+\section{Scene Conversion}
 
 With the addition of new physically-based renderers to the market, the number of incompatible file formats began to grow. There were a few initiatives to solve this problem, the greatest one being the proposal of a common file format.
-
-Back in 2004, Arnaud and Barnes created COLLADA \cite{collada}, a XML schema file format that intended to unify representation of digital assets among 
+Arnaud and Barnes created COLLADA \cite{collada}, a XML schema file format that intended to unify representation of digital assets among 
 various graphics software applications. Ever since it became property of the Khronos Group, several companies included a COLLADA module on their 3D modeling 
-softwares or game engines. However, there were few physically-based renderers that adhered to this file format, one of the few being Mitsuba. That might have 
-happened because COLLADA files only include information about the geometry present in the scene - they don't store any information about other rendering 
+software or game engines. However, there were few physically-based renderers that adhered to this file format, one of the few being Mitsuba. That might have 
+happened because COLLADA files only include information about the geometry present in the scene - they do not store any information about other rendering 
 options, such as camera positioning or integration techniques.
 
 To the best of our knowledge, no previous system has performed automatic scene conversion among the major MC rendering systems. Bitterli has converted 32 scenes of various complexities and origins from Tungsten to PBRT v3 and Mitsuba using some scripts~\cite{tungsten}. These scripts, however, are specific for conversions from Tungsten to these two renderers and are not publicly available.

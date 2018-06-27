@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.15)  27 JUN 2018 12:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.11.15)  27 JUN 2018 15:02
 entering extended mode
 **pbr_scene_converter.tex
 (pbr_scene_converter.tex
@@ -1114,13 +1114,6 @@ text indent calculated (toc, 1): 21.0pt
 number indent calculated (toc, 1): 18.0pt
 text noindent (toc, 1): 30.0pt
 number noindent (toc, 1): 0.0pt
-number indent by \l@... (toc, 1):  18.0pt
-text indent by \l@... (toc, 1):  27.60004pt
-number indent by parent (toc, 1):  18.0pt
-text indent calculated (toc, 1): 21.0pt
-number indent calculated (toc, 1): 18.0pt
-text noindent (toc, 1): 30.0pt
-number noindent (toc, 1): 0.0pt
 number indent by \l@... (toc, 0):  0.0pt
 text indent by \l@... (toc, 0):  18.0pt
 number indent by parent (toc, 0):  0.0pt
@@ -1157,7 +1150,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 [8
 
 ]
-<images/1_introduction/Laubwerk-Kit-12_Bauclassroom-Exterior.jpg, id=275, 1927.
+<images/1_introduction/Laubwerk-Kit-12_Bauclassroom-Exterior.jpg, id=270, 1927.
 2pt x 1084.05pt>
 File: images/1_introduction/Laubwerk-Kit-12_Bauclassroom-Exterior.jpg Graphic f
 ile (type jpg)
@@ -1174,7 +1167,7 @@ LaTeX Warning: Citation `laubwerk' on page 9 undefined on input line 93.
 LaTeX Warning: Citation `laubwerk' on page 9 undefined on input line 93.
 
 [9 <./images/1_introduction/Laubwerk-Kit-12_Bauclassroom-Exterior.jpg>]
-<images/5_results/coffee/1_from_pbrt.png, id=292, 401.5pt x 501.875pt>
+<images/5_results/coffee/1_from_pbrt.png, id=287, 401.5pt x 501.875pt>
 File: images/5_results/coffee/1_from_pbrt.png Graphic file (type png)
 
 <use images/5_results/coffee/1_from_pbrt.png>
@@ -1182,7 +1175,7 @@ Package pdftex.def Info: images/5_results/coffee/1_from_pbrt.png used on input
 line 125.
 (pdftex.def)             Requested size: 140.84192pt x 176.05708pt.
 
-<images/5_results/coffee/2_to_mitsuba.png, id=293, 401.5pt x 501.875pt>
+<images/5_results/coffee/2_to_mitsuba.png, id=288, 401.5pt x 501.875pt>
 File: images/5_results/coffee/2_to_mitsuba.png Graphic file (type png)
 
 <use images/5_results/coffee/2_to_mitsuba.png>
@@ -1190,7 +1183,7 @@ Package pdftex.def Info: images/5_results/coffee/2_to_mitsuba.png used on input
  line 128.
 (pdftex.def)             Requested size: 140.84192pt x 176.05708pt.
 
-<images/5_results/coffee/3_to_lux.png, id=294, 401.5pt x 501.875pt>
+<images/5_results/coffee/3_to_lux.png, id=289, 401.5pt x 501.875pt>
 File: images/5_results/coffee/3_to_lux.png Graphic file (type png)
 
 <use images/5_results/coffee/3_to_lux.png>
@@ -1230,7 +1223,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [12]
-Overfull \hbox (3.74988pt too wide) in paragraph at lines 19--20
+Overfull \hbox (3.74988pt too wide) in paragraph at lines 18--19
 []\T1/ptm/m/n/12 RenderToolbox3 is a MAT-LAB tool de-vel-oped for as-sist-ing v
 i-sion re-search [[][]Heasly
  []
@@ -1241,7 +1234,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [13
 
 ]
-Overfull \hbox (10.45782pt too wide) in paragraph at lines 33--34
+Overfull \hbox (10.45782pt too wide) in paragraph at lines 32--33
 []\T1/ptm/m/n/12 Halide [[][]Ragan-Kelley et al. 2012[][]] is a sys-tem de-sign
 ed to op-ti-mize image-processing
  []
@@ -1257,7 +1250,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [15
 
 ]
-<images/3_theoretical_foundations/phong.png, id=388, 724.95844pt x 201.75375pt>
+<images/3_theoretical_foundations/phong.png, id=383, 724.95844pt x 201.75375pt>
 File: images/3_theoretical_foundations/phong.png Graphic file (type png)
 <use images/3_theoretical_foundations/phong.png>
 Package pdftex.def Info: images/3_theoretical_foundations/phong.png used on inp
@@ -1276,7 +1269,7 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [16]
-<images/3_theoretical_foundations/raytracing.png, id=404, 878.28125pt x 584.182
+<images/3_theoretical_foundations/raytracing.png, id=399, 878.28125pt x 584.182
 5pt>
 File: images/3_theoretical_foundations/raytracing.png Graphic file (type png)
  <use images/3_theoretical_foundations/raytracing.png>
@@ -1284,7 +1277,7 @@ Package pdftex.def Info: images/3_theoretical_foundations/raytracing.png used o
 n input line 57.
 (pdftex.def)             Requested size: 192.05653pt x 127.74503pt.
 
-<images/3_theoretical_foundations/raytracingexample.png, id=406, 803.0pt x 803.
+<images/3_theoretical_foundations/raytracingexample.png, id=401, 803.0pt x 803.
 0pt>
 File: images/3_theoretical_foundations/raytracingexample.png Graphic file (type
  png)
@@ -1303,12 +1296,12 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [18]
-<images/4_system_architecture/architecture.png, id=423, 829.0975pt x 705.63625p
+<images/4_system_architecture/architecture.png, id=418, 829.0975pt x 705.63625p
 t>
 File: images/4_system_architecture/architecture.png Graphic file (type png)
  <use images/4_system_architecture/architecture.png>
 Package pdftex.def Info: images/4_system_architecture/architecture.png used on 
-input line 11.
+input line 13.
 (pdftex.def)             Requested size: 426.78125pt x 363.22906pt.
 
 
@@ -1320,7 +1313,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [19
 
 ]
-Underfull \vbox (badness 5446) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Underfull \hbox (badness 10000) has occurred while \output is active
@@ -1328,15 +1321,17 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [20 <./images/4_system_architecture/architecture.png>]
-<images/4_system_architecture/canonicalrep.png, id=441, 841.1425pt x 527.9725pt
+<images/4_system_architecture/canonicalrep.png, id=436, 841.1425pt x 527.9725pt
 >
 File: images/4_system_architecture/canonicalrep.png Graphic file (type png)
  <use images/4_system_architecture/canonicalrep.png>
 Package pdftex.def Info: images/4_system_architecture/canonicalrep.png used on 
-input line 37.
+input line 35.
 (pdftex.def)             Requested size: 426.79509pt x 267.89285pt.
- (chapters/param_table.tex) [21 <./images/4_system_architecture/canonicalrep.pn
-g>]
+ (chapters/param_table.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21 <./images/4_system_architecture/canonicalrep.png>]
 Underfull \hbox (badness 10000) has occurred while \output is active
 \T1/ptm/m/n/10.95 22
  []
@@ -1353,29 +1348,104 @@ Underfull \hbox (badness 10000) has occurred while \output is active
  []
 
 [24]) (chapters/5_results.tex [25]
-<images/5_results/staircase/1_from_lux.png, id=467, 361.35pt x 642.4pt>
+<images/5_results/staircase/1_from_lux.png, id=471, 361.35pt x 642.4pt>
 File: images/5_results/staircase/1_from_lux.png Graphic file (type png)
 
 <use images/5_results/staircase/1_from_lux.png>
 Package pdftex.def Info: images/5_results/staircase/1_from_lux.png used on inpu
-t line 12.
+t line 41.
 (pdftex.def)             Requested size: 136.57635pt x 242.80104pt.
 
-<images/5_results/staircase/3_to_pbrt.png, id=468, 361.35pt x 642.4pt>
+<images/5_results/staircase/3_to_pbrt.png, id=472, 361.35pt x 642.4pt>
 File: images/5_results/staircase/3_to_pbrt.png Graphic file (type png)
 
 <use images/5_results/staircase/3_to_pbrt.png>
 Package pdftex.def Info: images/5_results/staircase/3_to_pbrt.png used on input
- line 15.
+ line 44.
 (pdftex.def)             Requested size: 136.57635pt x 242.80104pt.
 
-<images/5_results/staircase/2_to_mitsuba.png, id=469, 361.35pt x 642.4pt>
+<images/5_results/staircase/2_to_mitsuba.png, id=473, 361.35pt x 642.4pt>
 File: images/5_results/staircase/2_to_mitsuba.png Graphic file (type png)
 
 <use images/5_results/staircase/2_to_mitsuba.png>
 Package pdftex.def Info: images/5_results/staircase/2_to_mitsuba.png used on in
-put line 18.
+put line 47.
 (pdftex.def)             Requested size: 136.57635pt x 242.80104pt.
+
+<images/5_results/teapot/1_from_lux.png, id=474, 642.4pt x 361.35pt>
+File: images/5_results/teapot/1_from_lux.png Graphic file (type png)
+
+<use images/5_results/teapot/1_from_lux.png>
+Package pdftex.def Info: images/5_results/teapot/1_from_lux.png used on input l
+ine 56.
+(pdftex.def)             Requested size: 136.57635pt x 76.82307pt.
+
+<images/5_results/teapot/3_to_pbrt.png, id=475, 642.4pt x 361.35pt>
+File: images/5_results/teapot/3_to_pbrt.png Graphic file (type png)
+
+<use images/5_results/teapot/3_to_pbrt.png>
+Package pdftex.def Info: images/5_results/teapot/3_to_pbrt.png used on input li
+ne 57.
+(pdftex.def)             Requested size: 136.57635pt x 76.82307pt.
+
+<images/5_results/teapot/2_to_mitsuba.png, id=476, 642.4pt x 361.35pt>
+File: images/5_results/teapot/2_to_mitsuba.png Graphic file (type png)
+
+<use images/5_results/teapot/2_to_mitsuba.png>
+Package pdftex.def Info: images/5_results/teapot/2_to_mitsuba.png used on input
+ line 58.
+(pdftex.def)             Requested size: 136.57635pt x 76.82307pt.
+
+<images/5_results/veach-bidir/1_from_mitsuba.png, id=477, 513.92pt x 513.92pt>
+File: images/5_results/veach-bidir/1_from_mitsuba.png Graphic file (type png)
+
+<use images/5_results/veach-bidir/1_from_mitsuba.png>
+Package pdftex.def Info: images/5_results/veach-bidir/1_from_mitsuba.png used o
+n input line 65.
+(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
+
+<images/5_results/veach-bidir/2_to_pbrt.png, id=478, 513.92pt x 513.92pt>
+File: images/5_results/veach-bidir/2_to_pbrt.png Graphic file (type png)
+
+<use images/5_results/veach-bidir/2_to_pbrt.png>
+Package pdftex.def Info: images/5_results/veach-bidir/2_to_pbrt.png used on inp
+ut line 66.
+(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
+
+<images/5_results/veach-bidir/3_to_lux.png, id=479, 513.92pt x 513.92pt>
+File: images/5_results/veach-bidir/3_to_lux.png Graphic file (type png)
+
+<use images/5_results/veach-bidir/3_to_lux.png>
+Package pdftex.def Info: images/5_results/veach-bidir/3_to_lux.png used on inpu
+t line 67.
+(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
+
+<images/5_results/cornell-box/1_from_mitsuba.png, id=480, 513.92pt x 513.92pt>
+File: images/5_results/cornell-box/1_from_mitsuba.png Graphic file (type png)
+
+<use images/5_results/cornell-box/1_from_mitsuba.png>
+Package pdftex.def Info: images/5_results/cornell-box/1_from_mitsuba.png used o
+n input line 70.
+(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
+
+<images/5_results/cornell-box/2_to_pbrt.png, id=481, 513.92pt x 513.92pt>
+File: images/5_results/cornell-box/2_to_pbrt.png Graphic file (type png)
+
+<use images/5_results/cornell-box/2_to_pbrt.png>
+Package pdftex.def Info: images/5_results/cornell-box/2_to_pbrt.png used on inp
+ut line 72.
+(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
+
+<images/5_results/cornell-box/3_to_lux.png, id=482, 513.92pt x 513.92pt>
+File: images/5_results/cornell-box/3_to_lux.png Graphic file (type png)
+
+<use images/5_results/cornell-box/3_to_lux.png>
+Package pdftex.def Info: images/5_results/cornell-box/3_to_lux.png used on inpu
+t line 73.
+(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Underfull \hbox (badness 10000) has occurred while \output is active
 \T1/ptm/m/n/10.95 26
@@ -1383,175 +1453,103 @@ Underfull \hbox (badness 10000) has occurred while \output is active
 
 [26
 
- <./images/5_results/staircase/1_from_lux.png> <./images/5_results/staircase/3_
-to_pbrt.png> <./images/5_results/staircase/2_to_mitsuba.png>]
-<images/5_results/teapot/1_from_lux.png, id=489, 642.4pt x 361.35pt>
-File: images/5_results/teapot/1_from_lux.png Graphic file (type png)
-
-<use images/5_results/teapot/1_from_lux.png>
-Package pdftex.def Info: images/5_results/teapot/1_from_lux.png used on input l
-ine 59.
-(pdftex.def)             Requested size: 256.07741pt x 144.0467pt.
-
-<images/5_results/teapot/3_to_pbrt.png, id=490, 642.4pt x 361.35pt>
-File: images/5_results/teapot/3_to_pbrt.png Graphic file (type png)
-
-<use images/5_results/teapot/3_to_pbrt.png>
-Package pdftex.def Info: images/5_results/teapot/3_to_pbrt.png used on input li
-ne 60.
-(pdftex.def)             Requested size: 256.07741pt x 144.0467pt.
-
-<images/5_results/teapot/2_to_mitsuba.png, id=491, 642.4pt x 361.35pt>
-File: images/5_results/teapot/2_to_mitsuba.png Graphic file (type png)
-
-<use images/5_results/teapot/2_to_mitsuba.png>
-Package pdftex.def Info: images/5_results/teapot/2_to_mitsuba.png used on input
- line 61.
-(pdftex.def)             Requested size: 256.07741pt x 144.0467pt.
-
-<images/5_results/veach-bidir/1_from_mitsuba.png, id=492, 513.92pt x 513.92pt>
-File: images/5_results/veach-bidir/1_from_mitsuba.png Graphic file (type png)
-
-<use images/5_results/veach-bidir/1_from_mitsuba.png>
-Package pdftex.def Info: images/5_results/veach-bidir/1_from_mitsuba.png used o
-n input line 68.
-(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
-
-<images/5_results/veach-bidir/2_to_pbrt.png, id=493, 513.92pt x 513.92pt>
-File: images/5_results/veach-bidir/2_to_pbrt.png Graphic file (type png)
-
-<use images/5_results/veach-bidir/2_to_pbrt.png>
-Package pdftex.def Info: images/5_results/veach-bidir/2_to_pbrt.png used on inp
-ut line 69.
-(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
-
-<images/5_results/veach-bidir/3_to_lux.png, id=494, 513.92pt x 513.92pt>
-File: images/5_results/veach-bidir/3_to_lux.png Graphic file (type png)
-
-<use images/5_results/veach-bidir/3_to_lux.png>
-Package pdftex.def Info: images/5_results/veach-bidir/3_to_lux.png used on inpu
-t line 70.
-(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
-
-<images/5_results/cornell-box/1_from_mitsuba.png, id=495, 513.92pt x 513.92pt>
-File: images/5_results/cornell-box/1_from_mitsuba.png Graphic file (type png)
-
-<use images/5_results/cornell-box/1_from_mitsuba.png>
-Package pdftex.def Info: images/5_results/cornell-box/1_from_mitsuba.png used o
-n input line 73.
-(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
-
-<images/5_results/cornell-box/2_to_pbrt.png, id=496, 513.92pt x 513.92pt>
-File: images/5_results/cornell-box/2_to_pbrt.png Graphic file (type png)
-
-<use images/5_results/cornell-box/2_to_pbrt.png>
-Package pdftex.def Info: images/5_results/cornell-box/2_to_pbrt.png used on inp
-ut line 75.
-(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
-
-<images/5_results/cornell-box/3_to_lux.png, id=497, 513.92pt x 513.92pt>
-File: images/5_results/cornell-box/3_to_lux.png Graphic file (type png)
-
-<use images/5_results/cornell-box/3_to_lux.png>
-Package pdftex.def Info: images/5_results/cornell-box/3_to_lux.png used on inpu
-t line 76.
-(pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [27]
-Underfull \hbox (badness 10000) has occurred while \output is active
-\T1/ptm/m/n/10.95 28
- []
-
-[28 <./images/5_results/teapot/1_from_lux.png> <./images/5_results/teapot/3_to_
-pbrt.png> <./images/5_results/teapot/2_to_mitsuba.png>]
-<images/5_results/dining_room/1_from_lux.png, id=517, 642.4pt x 361.35pt>
+] [27 <./images/5_results/staircase/1_from_lux.png> <./images/5_results/stairca
+se/3_to_pbrt.png> <./images/5_results/staircase/2_to_mitsuba.png> <./images/5_r
+esults/teapot/1_from_lux.png> <./images/5_results/teapot/3_to_pbrt.png> <./imag
+es/5_results/teapot/2_to_mitsuba.png>]
+<images/5_results/dining_room/1_from_lux.png, id=507, 642.4pt x 361.35pt>
 File: images/5_results/dining_room/1_from_lux.png Graphic file (type png)
 
 <use images/5_results/dining_room/1_from_lux.png>
 Package pdftex.def Info: images/5_results/dining_room/1_from_lux.png used on in
-put line 108.
+put line 105.
 (pdftex.def)             Requested size: 213.39568pt x 120.03433pt.
 
-<images/5_results/dining_room/3_to_pbrt.png, id=518, 642.4pt x 361.35pt>
+<images/5_results/dining_room/3_to_pbrt.png, id=508, 642.4pt x 361.35pt>
 File: images/5_results/dining_room/3_to_pbrt.png Graphic file (type png)
 
 <use images/5_results/dining_room/3_to_pbrt.png>
 Package pdftex.def Info: images/5_results/dining_room/3_to_pbrt.png used on inp
-ut line 109.
+ut line 106.
 (pdftex.def)             Requested size: 213.39568pt x 120.03433pt.
 
-<images/5_results/dining_room/2_to_mitsuba.png, id=519, 642.4pt x 361.35pt>
+<images/5_results/dining_room/2_to_mitsuba.png, id=509, 642.4pt x 361.35pt>
 File: images/5_results/dining_room/2_to_mitsuba.png Graphic file (type png)
 
 <use images/5_results/dining_room/2_to_mitsuba.png>
 Package pdftex.def Info: images/5_results/dining_room/2_to_mitsuba.png used on 
-input line 110.
+input line 107.
 (pdftex.def)             Requested size: 213.39568pt x 120.03433pt.
 
-<images/5_results/lamp/1_from_mitsuba_s.png, id=520, 513.92pt x 513.92pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \hbox (badness 10000) has occurred while \output is active
+\T1/ptm/m/n/10.95 28
+ []
+
+[28 <./images/5_results/veach-bidir/1_from_mitsuba.png> <./images/5_results/vea
+ch-bidir/2_to_pbrt.png> <./images/5_results/veach-bidir/3_to_lux.png> <./images
+/5_results/cornell-box/1_from_mitsuba.png> <./images/5_results/cornell-box/2_to
+_pbrt.png> <./images/5_results/cornell-box/3_to_lux.png>]
+<images/5_results/lamp/1_from_mitsuba_s.png, id=518, 513.92pt x 513.92pt>
 File: images/5_results/lamp/1_from_mitsuba_s.png Graphic file (type png)
 
 <use images/5_results/lamp/1_from_mitsuba_s.png>
 Package pdftex.def Info: images/5_results/lamp/1_from_mitsuba_s.png used on inp
-ut line 117.
+ut line 114.
 (pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
 
-<images/5_results/lamp/2_to_pbrt_s.png, id=521, 513.92pt x 513.92pt>
+<images/5_results/lamp/2_to_pbrt_s.png, id=519, 513.92pt x 513.92pt>
 File: images/5_results/lamp/2_to_pbrt_s.png Graphic file (type png)
 
 <use images/5_results/lamp/2_to_pbrt_s.png>
 Package pdftex.def Info: images/5_results/lamp/2_to_pbrt_s.png used on input li
-ne 118.
+ne 115.
 (pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
 
-<images/5_results/lamp/3_to_lux_s.png, id=522, 513.92pt x 513.92pt>
+<images/5_results/lamp/3_to_lux_s.png, id=520, 513.92pt x 513.92pt>
 File: images/5_results/lamp/3_to_lux_s.png Graphic file (type png)
 
 <use images/5_results/lamp/3_to_lux_s.png>
 Package pdftex.def Info: images/5_results/lamp/3_to_lux_s.png used on input lin
-e 119.
+e 116.
 (pdftex.def)             Requested size: 136.57635pt x 136.57239pt.
 
-<images/5_results/veach-mis/1_from_pbrt_s.png, id=523, 642.4pt x 361.35pt>
+<images/5_results/veach-mis/1_from_pbrt_s.png, id=521, 642.4pt x 361.35pt>
 File: images/5_results/veach-mis/1_from_pbrt_s.png Graphic file (type png)
 
 <use images/5_results/veach-mis/1_from_pbrt_s.png>
 Package pdftex.def Info: images/5_results/veach-mis/1_from_pbrt_s.png used on i
-nput line 126.
+nput line 123.
 (pdftex.def)             Requested size: 256.07741pt x 144.0467pt.
 
-<images/5_results/veach-mis/2_to_mitsuba_s.png, id=524, 642.4pt x 361.35pt>
+<images/5_results/veach-mis/2_to_mitsuba_s.png, id=522, 642.4pt x 361.35pt>
 File: images/5_results/veach-mis/2_to_mitsuba_s.png Graphic file (type png)
 
 <use images/5_results/veach-mis/2_to_mitsuba_s.png>
 Package pdftex.def Info: images/5_results/veach-mis/2_to_mitsuba_s.png used on 
-input line 127.
+input line 124.
 (pdftex.def)             Requested size: 256.07741pt x 144.0467pt.
 
-<images/5_results/veach-mis/3_to_lux_s.png, id=525, 642.4pt x 361.35pt>
+<images/5_results/veach-mis/3_to_lux_s.png, id=523, 642.4pt x 361.35pt>
 File: images/5_results/veach-mis/3_to_lux_s.png Graphic file (type png)
 
 <use images/5_results/veach-mis/3_to_lux_s.png>
 Package pdftex.def Info: images/5_results/veach-mis/3_to_lux_s.png used on inpu
-t line 128.
+t line 125.
 (pdftex.def)             Requested size: 256.07741pt x 144.0467pt.
 ) (chapters/6_conclusion.tex
-[29 <./images/5_results/veach-bidir/1_from_mitsuba.png> <./images/5_results/vea
-ch-bidir/2_to_pbrt.png> <./images/5_results/veach-bidir/3_to_lux.png> <./images
-/5_results/cornell-box/1_from_mitsuba.png> <./images/5_results/cornell-box/2_to
-_pbrt.png> <./images/5_results/cornell-box/3_to_lux.png>]
+[29 <./images/5_results/dining_room/1_from_lux.png> <./images/5_results/dining_
+room/3_to_pbrt.png> <./images/5_results/dining_room/2_to_mitsuba.png>]
 Underfull \hbox (badness 10000) has occurred while \output is active
 \T1/ptm/m/n/10.95 30
  []
 
-[30 <./images/5_results/dining_room/1_from_lux.png> <./images/5_results/dining_
-room/3_to_pbrt.png> <./images/5_results/dining_room/2_to_mitsuba.png> <./images
-/5_results/lamp/1_from_mitsuba_s.png> <./images/5_results/lamp/2_to_pbrt_s.png>
- <./images/5_results/lamp/3_to_lux_s.png>] [31 <./images/5_results/veach-mis/1_
-from_pbrt_s.png> <./images/5_results/veach-mis/2_to_mitsuba_s.png> <./images/5_
-results/veach-mis/3_to_lux_s.png>]) (pbr_scene_converter.bbl
+[30 <./images/5_results/lamp/1_from_mitsuba_s.png> <./images/5_results/lamp/2_t
+o_pbrt_s.png> <./images/5_results/lamp/3_to_lux_s.png>] [31 <./images/5_results
+/veach-mis/1_from_pbrt_s.png> <./images/5_results/veach-mis/2_to_mitsuba_s.png>
+ <./images/5_results/veach-mis/3_to_lux_s.png>]) (pbr_scene_converter.bbl
 Underfull \hbox (badness 10000) has occurred while \output is active
 \T1/ptm/m/n/10.95 32
  []
@@ -1574,7 +1572,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 98.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 98.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 98.
 Package rerunfilecheck Info: File `pbr_scene_converter.out' has not changed.
-(rerunfilecheck)             Checksum: 349ADD66A348452BEE230F283A8CD060;5689.
+(rerunfilecheck)             Checksum: 7320D48CC616684F90E9A0CC92E41727;5567.
 
 
 LaTeX Warning: There were undefined references.
@@ -1585,10 +1583,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 98.
  ) 
 Here is how much of TeX's memory you used:
- 13723 strings out of 493673
- 202137 string characters out of 3141526
- 313234 words of memory out of 3000000
- 16675 multiletter control sequences out of 15000+200000
+ 13721 strings out of 493673
+ 202113 string characters out of 3141526
+ 314234 words of memory out of 3000000
+ 16674 multiletter control sequences out of 15000+200000
  28126 words of font info for 39 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
  48i,13n,47p,738b,595s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1602,9 +1600,9 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files
 iKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/
 urw/times/utmri8a.pfb>
-Output written on pbr_scene_converter.pdf (35 pages, 9518127 bytes).
+Output written on pbr_scene_converter.pdf (35 pages, 9517398 bytes).
 PDF statistics:
- 658 PDF objects out of 1000 (max. 8388607)
- 160 named destinations out of 1000 (max. 500000)
- 423 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 653 PDF objects out of 1000 (max. 8388607)
+ 159 named destinations out of 1000 (max. 500000)
+ 415 words of extra memory for PDF output out of 10000 (max. 10000000)
 

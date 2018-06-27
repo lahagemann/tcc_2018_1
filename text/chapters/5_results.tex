@@ -1,26 +1,7 @@
 \chapter{Results}
 \label{sec:results}
 
-This chapter will showcase the test results obtained when evaluating our system. We will also discuss the limitations of our system.
-
-\section{}
-\begin{figure*}[h!t]
-	\centering
-	
-	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/staircase/1_from_lux.png}
-		\label{staircase_Lux}
-	}
-	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/staircase/3_to_pbrt.png}
-		\label{staircase_PBRT}
-	}
-	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/staircase/2_to_mitsuba.png}
-		\label{staircase_Mitsuba}
-	}
-	\caption{\textit{The Wooden Staircase} scene. Input scene description for LuxRender (a).
-		Renderings produced by PBRT v3 (b) and Mitsuba (c),
-		from scene descriptions converted by our system. }
-	\label{fig:staircase}
-\end{figure*}
+%This chapter discusses results and limitations of our system.
 
 Our system is available on-line~\cite{sceneConverter}.
 We have tested it on a large number of scenes, including the 32 scenes available
@@ -52,13 +33,29 @@ The \textit{Teapot} scene (Figure \ref{fig:teapot}) contains a shiny object, env
 
 Figure~\ref{fig:bidir-cornell} shows two scenes, \textit{Veach Bidir Room} and \textit{Cornell Box}. The first includes caustics, while the second only contains diffuse surfaces. A Mitsuba scene description was provided as input for each of these scenes, whose renderings are shown on the first column of Figure~\ref{fig:bidir-cornell}. Columns (b) and (c) show, respectively, the renderings produced by PBRT v3 and LuxRender using scene descriptions converted by our system.    
 
-
+\begin{figure*}[h!t]
+	\centering
+	
+	\subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/staircase/1_from_lux.png}
+		\label{staircase_Lux}
+	}
+	\subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/staircase/3_to_pbrt.png}
+		\label{staircase_PBRT}
+	}
+	\subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/staircase/2_to_mitsuba.png}
+		\label{staircase_Mitsuba}
+	}
+	\caption{\textit{The Wooden Staircase} scene. Input scene description for LuxRender (a).
+		Renderings produced by PBRT v3 (b) and Mitsuba (c),
+		from scene descriptions converted by our system. }
+	\label{fig:staircase}
+\end{figure*}
 
 \begin{figure*}
   \centering
-  \subfloat[LuxRender]{\includegraphics[width=0.6\linewidth]{images/5_results/teapot/1_from_lux.png}\label{teapot_Lux}}\\
-  \subfloat[PBRT v3]{\includegraphics[width=0.6\linewidth]{images/5_results/teapot/3_to_pbrt.png}\label{teatpot_PBRT}}\\
-  \subfloat[Mitsuba]{\includegraphics[width=0.6\linewidth]{images/5_results/teapot/2_to_mitsuba.png}\label{teapot_Mitsuba}}
+  \subfloat[LuxRender]{\includegraphics[width=0.32\linewidth]{images/5_results/teapot/1_from_lux.png}\label{teapot_Lux}}
+  \subfloat[PBRT v3]{\includegraphics[width=0.32\linewidth]{images/5_results/teapot/3_to_pbrt.png}\label{teatpot_PBRT}}
+  \subfloat[Mitsuba]{\includegraphics[width=0.32\linewidth]{images/5_results/teapot/2_to_mitsuba.png}\label{teapot_Mitsuba}}
   \caption{\textit{Teapot} scene. Input scene description for LuxRender (a). Renderings produced by PBRT v3 (b) and Mitsuba (c), from scene descriptions converted by our system.}
   \label{fig:teapot}
 \end{figure*}
