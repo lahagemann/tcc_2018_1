@@ -1,0 +1,240 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.6 }
+
+\bibitem[Arnaud e Barnes 2006]{collada}
+\abntrefinfo{Arnaud e Barnes}{ARNAUD; BARNES}{2006}
+{ARNAUD, R.; BARNES, M.~C. \textbf{Collada: Sailing the Gulf of 3D Digital
+  Content Creation}. [S.l.]: AK Peters Ltd, 2006.
+ISBN 1568812876.}
+
+\bibitem[Baker et al. 2011]{MiddleburyFlow}
+\abntrefinfo{Baker et al.}{BAKER et al.}{2011}
+{BAKER, S. et al. \textbf{{Middlebury Flow Accuracy and Interpolation
+  Evaluation}}. 2011.
+Dispon{\'\i}vel em: \url{http://vision.middlebury.edu/flow/eval/}.}
+
+\bibitem[Beazley 2001]{ply}
+\abntrefinfo{Beazley}{BEAZLEY}{2001}
+{BEAZLEY, D. \textbf{PLY (Python Lex-Yacc)}. 2001.
+Dispon{\'\i}vel em: \url{http://www.dabeaz.com/ply/}.}
+
+\bibitem[Bitterli 2014]{tungsten}
+\abntrefinfo{Bitterli}{BITTERLI}{2014}
+{BITTERLI, B. \textbf{The Tungsten Renderer}. 2014.
+\url{https://benedikt-bitterli.me/tungsten.html}.}
+
+\bibitem[Bitterli 2016]{resources16}
+\abntrefinfo{Bitterli}{BITTERLI}{2016}
+{BITTERLI, B. \textbf{Rendering resources}. 2016.
+\url{https://benedikt-bitterli.me/resources/}.}
+
+\bibitem[Bitterli et al. 2016]{Bitterli2016}
+\abntrefinfo{Bitterli et al.}{BITTERLI et al.}{2016}
+{BITTERLI, B. et al. {Nonlinearly Weighted First-order Regression for Denoising
+  {M}onte {C}arlo Renderings}.
+\textbf{Computer Graphics Forum}, v.~35, n.~4, p. 107--117, jul 2016.
+ISSN 01677055.}
+
+\bibitem[Brainard 1997]{Brainard1997}
+\abntrefinfo{Brainard}{BRAINARD}{1997}
+{BRAINARD, D.~H. The psychophysics toolbox.
+\textbf{Spatial Vision}, v.~10, p. 433--436, 1997.}
+
+\bibitem[Buck et al. 2004]{Buck2004}
+\abntrefinfo{Buck et al.}{BUCK et al.}{2004}
+{BUCK, I. et al. Brook for gpus: Stream computing on graphics hardware.
+\textbf{ACM Trans. Graph.}, v.~23, n.~3, p. 777--786, ago. 2004.
+ISSN 0730-0301.}
+
+\bibitem[Erofeev et al. 2014]{VideoMatting}
+\abntrefinfo{Erofeev et al.}{EROFEEV et al.}{2014}
+{EROFEEV, M. et al. \textbf{VideoMatting}. 2014.
+Dispon{\'\i}vel em: \url{http://videomatting.com/}.}
+
+\bibitem[Grimaldi e Vergauwen 2008]{luxrender}
+\abntrefinfo{Grimaldi e Vergauwen}{GRIMALDI; VERGAUWEN}{2008}
+{GRIMALDI, J.-P.; VERGAUWEN, T. \textbf{LuxRender v1.6}. 2008.
+\url{http://www.luxrender.net/}.}
+
+\bibitem[Heasly et al. 2014]{rendertoolbox}
+\abntrefinfo{Heasly et al.}{HEASLY et al.}{2014}
+{HEASLY, B.~S. et al. Rendertoolbox3: Matlab tools that facilitate physically
+  based stimulus rendering for vision research.
+\textbf{Journal of Vision}, v.~14, n.~2, p.~6, 2014.}
+
+\bibitem[Heck, Schl\"{o}mer e Deussen 2013]{Heck2013}
+\abntrefinfo{Heck, Schl\"{o}mer e Deussen}{HECK; SCHL\"{o}MER; DEUSSEN}{2013}
+{HECK, D.; SCHL\"{o}MER, T.; DEUSSEN, O. Blue noise sampling with controlled
+  aliasing.
+\textbf{ACM Trans. Graph.}, v.~32, n.~3, p. 25:1--25:12, 2013.
+ISSN 0730-0301.}
+
+\bibitem[Jakob 2014]{mitsuba}
+\abntrefinfo{Jakob}{JAKOB}{2014}
+{JAKOB, W. \textbf{Mitsuba: Physically Based Renderer}. 2014.
+\url{http://www.mitsuba-renderer.org/}.}
+
+\bibitem[Kalantari, Bako e Sen 2015]{Kalantari2015}
+\abntrefinfo{Kalantari, Bako e Sen}{KALANTARI; BAKO; SEN}{2015}
+{KALANTARI, N.~K.; BAKO, S.; SEN, P. {A machine learning approach for filtering
+  {M}onte {C}arlo noise}.
+\textbf{ACM Trans. Graph.}, v.~34, n.~4, p. 122:1--122:12, jul 2015.
+ISSN 07300301.}
+
+\bibitem[Li et al. 2018]{Li2018-Halide-Diff_Prog}
+\abntrefinfo{Li et al.}{LI et al.}{2018}
+{LI, T.-M. et al. Differentiable programming for image processing and deep
+  learning in halide.
+\textbf{ACM Transactions on Graphics}, v.~37, n.~4, 2018.}
+
+\bibitem[Mark et al. 2003]{Mark2003}
+\abntrefinfo{Mark et al.}{MARK et al.}{2003}
+{MARK, W.~R. et al. Cg: A system for programming graphics hardware in a c-like
+  language.
+\textbf{ACM Trans. Graph.}, v.~22, n.~3, p. 896--907, jul. 2003.
+ISSN 0730-0301.}
+
+\bibitem[Nickolls et al. 2008]{Nickolls2008}
+\abntrefinfo{Nickolls et al.}{NICKOLLS et al.}{2008}
+{NICKOLLS, J. et al. Scalable parallel programming with cuda. In:  \textbf{ACM
+  SIGGRAPH 2008 Classes}. New York, NY, USA: ACM, 2008.  (SIGGRAPH '08), p.
+  16:1--16:14.}
+
+\bibitem[Oliveira e Brauwers 2007]{Oliveira2007RRT}
+\abntrefinfo{Oliveira e Brauwers}{OLIVEIRA; BRAUWERS}{2007}
+{OLIVEIRA, M.~M.; BRAUWERS, M. Real-time refraction through deformable objects.
+  In:  \textbf{Proc. ACM Symposium on Interactive 3D Graphics and Games}.
+  [S.l.: s.n.], 2007. p. 89--96.
+ISBN 978-1-59593-628-8.}
+
+\bibitem[{PBR} Scene Converter]{sceneConverter}
+\abntrefinfo{{PBR}\ldots}{{PBR}\ldots}{}
+{{PBR} Scene Converter.
+  \url{https://github.com/lahagemann/pbr_scene_converter}.}
+
+\bibitem[Pharr e Humphreys 2015]{pbrt}
+\abntrefinfo{Pharr e Humphreys}{PHARR; HUMPHREYS}{2015}
+{PHARR, M.; HUMPHREYS, G. \textbf{PBRT, Version 3}. 2015.
+Dispon{\'\i}vel em: \url{https://github.com/mmp/pbrt-v3}.}
+
+\bibitem[Pharr, Jakob e Humphreys 2016]{PBRT:v3}
+\abntrefinfo{Pharr, Jakob e Humphreys}{PHARR; JAKOB; HUMPHREYS}{2016}
+{PHARR, M.; JAKOB, W.; HUMPHREYS, G. \textbf{Physically Based Rendering, from
+  Theory to Implementation}. 3. ed. [S.l.]: Morgan Kaufmann, 2016.}
+
+\bibitem[Phong 1975]{Phong:1975}
+\abntrefinfo{Phong}{PHONG}{1975}
+{PHONG, B.~T. Illumination for computer generated pictures.
+\textbf{Commun. ACM}, ACM, New York, NY, USA, v.~18, n.~6, p. 311--317, jun.
+  1975.
+ISSN 0001-0782.}
+
+\bibitem[Pilleboue et al. 2015]{Pilleboue:2015}
+\abntrefinfo{Pilleboue et al.}{PILLEBOUE et al.}{2015}
+{PILLEBOUE, A. et al. Variance analysis for monte carlo integration.
+\textbf{ACM Trans. Graph.}, v.~34, n.~4, p. 124:1--124:14, 2015.
+ISSN 0730-0301.}
+
+\bibitem[Policarpo e Oliveira 2006]{Policarpo2006}
+\abntrefinfo{Policarpo e Oliveira}{POLICARPO; OLIVEIRA}{2006}
+{POLICARPO, F.; OLIVEIRA, M.~M. Relief mapping of non-height-field surface
+  details. In:  \textbf{Proc. ACM Symposium on Interactive 3D Graphics and
+  Games}. [S.l.: s.n.], 2006. p. 55--62.
+ISBN 1-59593-295-X.}
+
+\bibitem[Policarpo, Oliveira e Comba 2005]{Policarpo2005}
+\abntrefinfo{Policarpo, Oliveira e Comba}{POLICARPO; OLIVEIRA; COMBA}{2005}
+{POLICARPO, F.; OLIVEIRA, M.~M.; COMBA, J.~a. L.~D. Real-time relief mapping on
+  arbitrary polygonal surfaces. In:  \textbf{Proc. the ACM Symposium on
+  Interactive 3D Graphics and Games}. [S.l.: s.n.], 2005. p. 155--162.
+ISBN 1-59593-013-2.}
+
+\bibitem[Preetham, Shirley e Smits 1999]{Preetham}
+\abntrefinfo{Preetham, Shirley e Smits}{PREETHAM; SHIRLEY; SMITS}{1999}
+{PREETHAM, A.~J.; SHIRLEY, P.; SMITS, B. A practical analytic model for
+  daylight. In:  \textbf{Proc. SIGGRAPH '99}. [S.l.: s.n.], 1999. p. 91--100.
+ISBN 0-201-48560-5.}
+
+\bibitem[Ragan-Kelley et al. 2012]{Ragan-Kelley2012}
+\abntrefinfo{Ragan-Kelley et al.}{RAGAN-KELLEY et al.}{2012}
+{RAGAN-KELLEY, J. et al. Decoupling algorithms from schedules for easy
+  optimization of image processing pipelines.
+\textbf{ACM Trans. Graph.}, ACM, v.~31, n.~4, p. 32:1--32:12, jul. 2012.
+ISSN 0730-0301.}
+
+\bibitem[Rhemann et al. 2009]{AlphaMatting}
+\abntrefinfo{Rhemann et al.}{RHEMANN et al.}{2009}
+{RHEMANN, C. et al. \textbf{Alpha Matting Evaluation Website}. 2009.
+Dispon{\'\i}vel em: \url{http://www.alphamatting.com/eval\_25.php}.}
+
+\bibitem[Rousselle, Manzi e Zwicker 2013]{Rousselle2013}
+\abntrefinfo{Rousselle, Manzi e Zwicker}{ROUSSELLE; MANZI; ZWICKER}{2013}
+{ROUSSELLE, F.; MANZI, M.; ZWICKER, M. Robust denoising using feature and color
+  information.
+\textbf{Comput. Graph. Forum}, v.~32, n.~7, p. 121--130, 2013.}
+
+\bibitem[Santos, Sen e Oliveira 2018]{Santos:2018:FBKSD}
+\abntrefinfo{Santos, Sen e Oliveira}{SANTOS; SEN; OLIVEIRA}{2018}
+{SANTOS, J. D.~B.; SEN, P.; OLIVEIRA, M.~M. A framework for developing and
+  benchmarking sampling and denoising algorithms for monte carlo rendering.
+\textbf{The Visual Computer}, v.~34, p. 765--778, 2018.}
+
+\bibitem[Scharstein, Szeliski e Hirschmüller 2002]{MiddleburyStereo}
+\abntrefinfo{Scharstein, Szeliski e Hirschmüller}{SCHARSTEIN; SZELISKI;
+  HIRSCHMüLLER}{2002}
+{SCHARSTEIN, D.; SZELISKI, R.; HIRSCHMüLLER, H. \textbf{{Middlebury Stereo
+  Vision Page}}. 2002.
+Dispon{\'\i}vel em: \url{http://vision.middlebury.edu/stereo/}.}
+
+\bibitem[Sen e Darabi 2012]{Sen2012}
+\abntrefinfo{Sen e Darabi}{SEN; DARABI}{2012}
+{SEN, P.; DARABI, S. {On filtering the noise from the random parameters in
+  {M}onte {C}arlo rendering}.
+\textbf{ACM Trans. Graph.}, v.~31, n.~3, p. 1--15, 2012.
+ISSN 07300301.}
+
+\bibitem[Shreiner e Group 2009]{Shreiner:2009}
+\abntrefinfo{Shreiner e Group}{SHREINER; GROUP}{2009}
+{SHREINER, D.; GROUP, T. K. O. A.~W. \textbf{OpenGL Programming Guide: The
+  Official Guide to Learning OpenGL, Versions 3.0 and 3.1}. 7th. ed. [S.l.]:
+  Addison-Wesley Professional, 2009.
+ISBN 0321552628, 9780321552624.}
+
+\bibitem[The {E}lement{T}ree {XML API}]{ET}
+\abntrefinfo{The\ldots}{THE\ldots}{}
+{THE {E}lement{T}ree {XML API}.
+  \url{https://docs.python.org/3/library/xml.etree.elementtree.html}.}
+
+\bibitem[Whitted 1980]{Whitted:1980}
+\abntrefinfo{Whitted}{WHITTED}{1980}
+{WHITTED, T. An improved illumination model for shaded display.
+\textbf{Commun. ACM}, ACM, New York, NY, USA, v.~23, n.~6, p. 343--349, jun.
+  1980.
+ISSN 0001-0782.
+Dispon{\'\i}vel em: \url{http://doi.acm.org/10.1145/358876.358882}.}
+
+\bibitem[Wikipedia 2018]{wiki:phong}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2018a}
+{WIKIPEDIA. \textbf{{Phong reflection model} --- {W}ikipedia{,} The Free
+  Encyclopedia}. 2018.
+  \url{http://en.wikipedia.org/w/index.php?title=Phong\%20reflection\%20model&oldid=846717164}.
+[Online; accessed 27-June-2018].}
+
+\bibitem[Wikipedia 2018]{wiki:raytracing}
+\abntrefinfo{Wikipedia}{WIKIPEDIA}{2018b}
+{WIKIPEDIA. \textbf{{Ray tracing (graphics)} --- {W}ikipedia{,} The Free
+  Encyclopedia}. 2018.
+  \url{http://en.wikipedia.org/w/index.php?title=Ray\%20tracing\%20(graphics)&oldid=840257222}.
+[Online; accessed 27-June-2018].}
+
+\bibitem[Wyman 2005]{Wyman2005}
+\abntrefinfo{Wyman}{WYMAN}{2005}
+{WYMAN, C. An approximate image-space approach for interactive refraction.
+\textbf{ACM Trans. Graph.}, v.~24, n.~3, p. 1050--1053, 2005.
+ISSN 0730-0301.}
+
+\end{thebibliography}
