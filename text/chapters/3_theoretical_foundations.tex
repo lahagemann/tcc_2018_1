@@ -1,56 +1,21 @@
 \chapter{Theoretical Foundations}
 \label{sec:theory}
-This chapter will introduce important concepts for the reader. We start by introducing the rendering pipeline, then following into the development of more complex algorithms. We do not delve too deep in the implementations of the techniques discussed in this chapter - we provide a general understanding of the process in order to better situate the reader.
 
-\section{The Rendering Pipeline}
+This chapter will introduce important concepts for the reader. We start by introducing global illumination techniques such as \textit{Ray Tracing}, followed by important explanations about the techniques implemented by the renderers used in our work (MC Ray Tracing). We do not delve too deep in the implementations of the techniques discussed in this chapter - we provide a general understanding of the process in order to better situate the reader.
 
-In computer graphics, we say that the computer graphics pipeline is a model that describes the steps taken by a graphics system in order to render a 3D scene into a 2D screen (which is most often our computer monitors) \cite{Shreiner:2009}. This process is analogous to the way our eyes process the information around us and form images that are then processed by our brain and engraved into our minds.
+\section{Global Illumination Algorithms}
 
-Likewise, the computer must interpret some sort of description of an object or scene and pass this information through this pipeline into the final data format understood by our monitors. Most of the pipeline steps are implemented in hardware, allowing optimizations required for real-time rendering. 
+Global illumination algorithms have as their goal adding more realisting lighting to 3D scenes, taking into account the Light Transport around the scene, and not only the light coming directly from the light source. Images rendered using these algorithms are more photorealistic than images rendered using direct illumination algorithms at the expense of a higher computational cost. 
 
-A graphics pipeline can be divided into five core parts: 
-\begin{enumerate}
- \item model and camera transformations
- \item lighting or shading
- \item projection
- \item clipping
- \item screen mapping
-\end{enumerate}
+Light Transport models the interaction between light and a surface using the principle that some fraction of the light inciding into a surface is reflected back into the environment. Modeling this reflection requires modeling its spectral and directional distributions, which differ depending on the material properties of the surface. Earlier algorithms modeled these materials as ideal diffuse (lambertian surfaces) and ideal specular (mirrors) for simplicity.
 
-Each individual part is essential to comprehend the workings of this pipeline. We, however, will be focusing our particular attention into the first two parts - \textit{model and camera transformations} and \textit{lighting}.
+Starting at a light source (L), a light ray may bounce several times at specular (S) and diffuse (D) surfaces before reaching the eye (E). These interactions can be represented using regular expressions such as L(S|D)*E. Rendering algorithms can be caracterized by the kinds of paths they support.
 
-In part 1, the \textit{model and camera transformations}, we first process each object composing our scene and apply model transformations in order to position them in what is called the \textbf{world space}. The world space is defined by a coordinate system, a reference system to these objects in three-dimensional space.
-
-With our scene now properly set, we then need to know how the camera - our eyes - is viewing the scene. Where is the camera? How far can the camera see? What is hidden from the camera? We need to represent the scene through the camera's reference system, which we call the \textbf{camera space}. Then, we can more easily determine which part of the scene will be within the camera's boundaries and discart the rest in order to improve performance.
-
-In order to go from world space to camera space, one must apply camera transformations. Transforming from one to the other means one must change coordinate systems, which in Linear Algebra can be done by multiplying our models' coordinates (or vertexes) by a specific transformation matrix. 
-
-In part 2, we must compute the amount of incident light in our objects, which will determine the color present at a given point. An earlier proposed way to compute lighting in the computer graphics pipeline was the \textit{Phong Reflection Model}. However, a lack of photorealism in the resulting images pushed for the development of more complex models for light interaction in the environment, such as the proposal of the \textit{Rendering Equation} and the creation of global illumination algorithms (\ie \textit{Ray Tracing} and \textit{MC Ray Tracing}).
-
-\section{Phong Reflection Model}
-
-The \textit{Phong Reflection Model} \cite{Phong:1975} was published as an empirical model of local illumination, describing how an object's surface reflects light as a combination of its material's properties - ambient, diffuse and specular reflection. This model can be represented by the following equation:
-
-\begin{equation}
-  I = k_a I_a + \sum_{m \in lights} (k_d (L \cdot N) + k_s (R \cdot V)^n) I_m
-\end{equation}
-
-where $k_a$, $k_d$ and $k_s$ represent, respectively, the ambient, diffuse and specular properties of the object; $L$ represents the direction of the incident light; $N$ represents the object's normal vector; $R$ represents the direction to which the incident light is reflected; $V$ represents the position from which we are observing the scene; and $I$ represents the incident light's intensity. This visual effects produced by this equation can be observed in Figure \ref{fig:phong}.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{images/3_theoretical_foundations/phong.png}
-  \caption{Visual illustration of the Phong equation, extracted from \cite{wiki:phong}}
-  \label{fig:phong}
-\end{figure}
-
-Phong's model was widely adopted: its efficiency proved to to be a deciding factor in generating real-time images for 3D scenes. The model, however, was unable to correctly represent global illumination. While the ambient term in the equation is a way of accounting for it, the term alone does not model physically-correct interactions between light and the environment. 
-
-Algorithms that compute global illumination have a much higher computational cost, but produce more realistic images. One of the precursors of this type of algorithm was \textit{Ray Tracing}, which we  will review in our next section.
+Local illumination models, such as Gouraud Shading or Phong Shading, have light hit the scene once before reaching the eye (LDE or LSE). Algorithms have a good representation of specular reflection, such as Ray Tracing, perform at most one bounce on diffuse surfaces and can perform any bounces on specular surfaces (LDS*E or LS*E).
 
 \section{Ray Tracing}
 
-The \textit{Ray Tracing} algorithm \cite{Whitted:1980} consists of shooting rays from an imaginary "eye" (in this case, the camera) into the scene through a virtual screen. We trace the path of this ray until we find the closest object to intersect with it. Once the object has been identified, we - like in Phong Reflection Model - estimate the incoming light, examine the properties of the object and combine this information to determine the color in the output image. This process is illustrated in Figure \ref{fig:raytracing}.
+\textit{Ray Tracing} \cite{Whitted:1980} is a global illumination algorithm that handles multiple inter-reflections among shiny surfaces, producing high quality results for shiny surfaces. In Ray Tracing, we trace a ray from the eye through the center of each pixel in the final image, searching for the closest intersected object along each ray. When an intersecting surface is found, the algorithm shoots a shadow ray to determine whether this surface is hidden from the light source and locally evaluates an illumination function. The incoming ray is then either reflected or refracted (in other words, \textit{bounced}), repeating the process until the original ray reaches a certain amount of bounces. This process is illustrated in Figure \ref{fig:raytracing}.
 
 \begin{figure}[h]
   \centering
@@ -62,30 +27,54 @@ The \textit{Ray Tracing} algorithm \cite{Whitted:1980} consists of shooting rays
 
 % While it may seem strange to send rays away from the camera - which is the opposite of how photographs are generated -, it is more cost-efficient as most light rays that incide on the scene do not reach the camera. Computing light paths is a strenuous task, and cutting back on this task load shortens the rendering time considerably.
 
-The algorithm assumes that a surface may absorb some of the incident light, with results in a loss of intensity of the reflected light. This surface can also reflect the incident ray in more than one direction. If the object has translucent properties, the incident ray may be refracted, which results in an alteration of direction in the ray's path. These features mean that Ray Tracing, unlike its predecessors, is able to simulate a large selection of optical effects. 
+Because a lambertian surface reflects rays in all directions, there is a very high computational cost associated with calculating reflections in diffuse surfaces. In order to reduce this cost, Ray Tracing algorithm approximates the actual diffuse reflection, thus not representing it with as much realism as a specular surface.
 
-It does not, however, come without disadvantages. In order to calculate the amount of light that arrives at an object, the most commonly used method is the Phong Reflection Model. This means that, while the algorithm creates a physically correct interaction of light rays with the environment, the final image is usually not photorealistic.
-
-Photorealism can only be achieved when an algorithm approximates the \textit{Rendering Equation} - which describes every physical effect of light flow. This method will be furtherly discussed in our next section. 
+True realism can only be achieved when an algorithm approximates the \textit{Rendering Equation} - which describes every physical effect of light flow. This method will be furtherly discussed in our next section. 
 
 \section{The Rendering Equation}
 
-%The Rendering Equation \cite{Kajiya:1986}
-
 An important concept for global illumination algorithms is that of \textit{Radiance}, which describes how much power arrives at (or leaves from) a certain point on a surface per unit solid angle and per unit projected area. Radiance can be thought of as the number of photons arriving per time at a small area from a given direction, and it describes the intensity of light at a given point in space in a given direction. Radiance remains constant along the light rays passing through empty space, and when computed, it captures the appearance of objects in the scene.
 
-Another important concept is that of the \textit{Bidirectional Reflection Distribution Function} (BRDF), a function that describes the local illumination model of a given material. The BRDF can be perceived as a constant of proportionality between the amount of incident light and the reflected light along a direction.
+Another important concept is that of the \textit{Bidirectional Reflection Distribution Function} (BRDF), a function that describes the local illumination model of a given material. The BRDF can be perceived as a constant of proportionality between the amount of incident light and the reflected light along a direction. 
 
-The BRDF has some crucial properties that aid in modeling a realistic global illumination model. It is, in general, anisotropic - which means that adding light from several incident directions in a given point has no influence on the amount of light that is reflected from it. Also, we can calculate the total amount of light reflected by a surface in a specific direction as an hemispherical integral over all possible incident directions, as seen in Figure \ref{brdf}.
+The BRDF has some crucial properties that aid in modeling a realistic global illumination model. It is, in general, anisotropic - which means that adding light from several incident directions in a given point has no influence on the amount of light that is reflected from it. Also, we can calculate the total amount of light reflected by a surface in a specific direction as an hemispherical integral over all possible incident directions, as seen in Figure \ref{fig:brdf}.
 
-These concepts and properties were used to model the \textit{Rendering Equation} \cite{Kajiya:1986}, which is able to model the . The Rendering Equation is described as:
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth,height=\textheight,keepaspectratio]{images/3_theoretical_foundations/brdf.png}
+  \caption{Example of how BRDF describes a local illumination model for a surface, extracted from \cite{brdf}}
+  \label{fig:brdf}
+\end{figure}
 
-% \begin{equation}
-%  
-% \end{equation}
 
+These concepts and properties were used in the \textit{Rendering Equation} \cite{Kajiya:1986}, which models the global light transport in a scene. Modeling global illumination means that one would need to consider the light path across the entire scene, not only one interaction - which was the main problem with techniques such as Ray Tracing. 
 
+The Rendering Equation is described as:
+
+$$L_o (x \rightarrow \omega) = L_e (x \rightarrow \omega) + \int_{\Omega} f_r (x, s \rightarrow \omega) L_i (x \leftarrow s) V(x, x') G(x, x') ds $$
+
+It can be interpreted as: the radiance ($L_o$) leaving a particular point ($x$) in a given direction ($\omega$) is composed of the radiance emitted ($L_e$) by this point and the reflected radiance ($L_i$) in every possible direction considering the object's BRDF ($f_r$), the visibility ($V$) and the geometry ($G$) associated. 
+
+The Rendering Equation cannot be directly evaluated, as radiance (L) is present in both sides of the equation; it is impractical to solve with traditional quadrature methods. However, this equation \textit{can} be evaluated by \textit{Monte Carlo Integration}, the technique used in \textit{Monte Carlo Ray Tracing}.
 
 \subsection{Monte Carlo Ray Tracing}
 
+Monte Carlo Integration (MCI) is a technique that uses statistics principles to estimate complicated integrals. It assumes that if a $x$ is a random variable, then $f(x)$ is also a random variable that can be characterized by its probability distribution. We can approximate $f(x)$ with n random samples along $f(x)$'s probability distribution $p(x)$. The MC estimator of an arbitrary function $g(x)$ can be expressed as:
 
+$$ \int g(x)dx \approx \frac{1}{n} \sum_{i = 1}^{n} \frac{g(X_i)}{p(X_i)}$$
+
+The convergence rate for MCI is $O(\frac{1}{\sqrt{n}})$ regardless of the smoothness of the integrand. The technique requires only sampling and point evaluation and can be used to solve a vast array of problems. It does, however, have a high variance that can, in the case of MC rendering, appear as noise. In order to reduce the variance naturally produce by this method, one must greatly increase the number of samples.
+
+The concept of \textit{Importance Sampling} was created to reduce this high variance, exploiting the fact that the MC estimator converges faster if the points are sampled from a distribution $p(x)$ that is similar to $f(x)$. This process is illustrated in Figure \ref{fig:importance}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{images/3_theoretical_foundations/importance.png}
+  \caption{Illustration of how uniform sampling (left) and how importance sampling (right) sample $g(x)$ based on $p(x)$}
+  \label{fig:importance}
+\end{figure}
+
+
+MC Ray Tracing uses MCI to approximate the Rendering Equation. Sampling the hemisphere n given points, it is able to estimate the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
+
+Notwithstanding, MC Ray Tracing is currently the only practical solution for simulating global illumination effects in complex environments. It is implemented in virtually every modern physically-based renderer, featuring several other algorithms using MCI, such as Photon Mapping and Metropolis Light Transport.

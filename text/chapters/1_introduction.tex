@@ -16,7 +16,7 @@ propagation.
 
 \section{Physically-based Rendering}
 Physically-based rendering is often implemented using Monte Carlo (MC) Ray Tracing \cite{Lafortune96mathematicalmodels}, which uses MC 
-integration \cite{Keller:200} to estimate the environment illumination function. 
+integration to estimate the environment illumination function \cite{Keller:2007}. 
 This is performed by tracing (or sampling) the path of several light rays starting from the camera position, simulating the effects obtained from its encounters with virtual objects. 
 %
 %\section{Physically Based Rendering (PBR)}
@@ -45,9 +45,7 @@ is \textit{Mitsuba} \cite{mitsuba}, one of the renderers chosen for this researc
 Following the lead of Pixar's \textit{Renderman} \cite{renderman}, many 
 commercial and performance-oriented renderers appeared on the market. Focused on 
 animation techniques and visual effects for movies, these renderers provide 
-well-established, stable rendering techniques. These renderers, such as 
-
-\textit{LuxRender} \cite{luxrender} and \textit{Octane} \cite{octane}, 
+well-established, stable rendering techniques. These renderers, such as \textit{LuxRender} \cite{luxrender} and \textit{Octane} \cite{octane}, 
 %are state-of-the-art renderers 
 have been extensively used by the animation and gaming industries.
 %=======
@@ -158,6 +156,6 @@ similar meta-reseach systems introduced to improve research in computer graphics
 %scene format into different renderer-specific outputs. 
 Following the current state-of-the-art, we delve a little into the history of rendering in Chapter \ref{sec:theory}, starting with the first algorithms and then moving on to currently used physically-based renderers.
 %
-Our system is described in Chapter \ref{sec:systemarch}, where we explain how our pipeline works and how we converted some renderer-specific directives. \red{Chapter~\ref{sec:???}} discusses some results obtained with our system, and  \red{Chapter~\ref{sec:???}} presents our conclusions and directions for future exploration.
+Our system is described in Chapter \ref{sec:systemarch}, where we explain how our pipeline works and how we converted some renderer-specific directives. Chapter \ref{sec:results} discusses some results obtained with our system, and  Chapter~\ref{sec:conclusion} presents our conclusions and directions for future exploration.
 
 
