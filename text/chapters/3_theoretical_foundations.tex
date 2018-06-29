@@ -1,21 +1,36 @@
-\chapter{Theoretical Foundations}
+\chapter{Review of Global Illumination and MC Ray Tracing}
+%\chapter{Theoretical Foundations}
 \label{sec:theory}
 
-This chapter will introduce important concepts for the reader. We start by introducing global illumination techniques such as \textit{Ray Tracing}, followed by important explanations about the techniques implemented by the renderers used in our work (MC Ray Tracing). We do not delve too deep in the implementations of the techniques discussed in this chapter - we provide a general understanding of the process in order to better situate the reader.
+This chapter reviews important concepts about  global illumination techniques such as \textit{Ray Tracing}, followed by 
+a description of 
+%important explanations about 
+the techniques implemented by the renderers used in our work (MC Ray Tracing). We do not delve too deep in the implementations of the techniques discussed in this chapter - we provide a general understanding of the process in order to better situate the reader.
 
 \section{Global Illumination Algorithms}
 
-Global illumination algorithms have as their goal adding more realisting lighting to 3D scenes, taking into account the Light Transport around the scene, and not only the light coming directly from the light source. Images rendered using these algorithms are more photorealistic than images rendered using direct illumination algorithms at the expense of a higher computational cost. 
+Global illumination algorithms try to synthesize realistic pictures by
+%have as their goal add more realistic lighting to 3D scenes, 
+taking into account both direct and indirect illumination, at the expense of a higher computational cost when compared to local illumination techniques. 
+%the Light Transport around the scene, and not only the light coming directly from the light source. 
+%Images rendered using these algorithms are more photorealistic than images rendered using direct illumination algorithms at the expense of a higher computational cost. 
 
-Light Transport models the interaction between light and a surface using the principle that some fraction of the light inciding into a surface is reflected back into the environment. Modeling this reflection requires modeling its spectral and directional distributions, which differ depending on the material properties of the surface. Earlier algorithms modeled these materials as ideal diffuse (lambertian surfaces) and ideal specular (mirrors) for simplicity.
+{\it Light transport} models the interaction between light and the surface in the scene, 
+%using the principle that 
+where some fraction of the light incident to a surface is reflected back to the environment. Modeling this reflection requires its spectral and directional distributions, which differ depending on the material properties of the surface. Earlier algorithms modeled these materials as ideal diffuse (Lambertian surfaces) and ideal specular (mirrors) for simplicity.
 
 Starting at a light source (L), a light ray may bounce several times at specular (S) and diffuse (D) surfaces before reaching the eye (E). These interactions can be represented using regular expressions such as L(S|D)*E. Rendering algorithms can be caracterized by the kinds of paths they support.
 
-Local illumination models, such as Gouraud Shading or Phong Shading, have light hit the scene once before reaching the eye (LDE or LSE). Algorithms have a good representation of specular reflection, such as Ray Tracing, perform at most one bounce on diffuse surfaces and can perform any bounces on specular surfaces (LDS*E or LS*E).
+Local illumination models, such as the Phong lighting model, 
+%Gouraud Shading or Phong Shading, 
+have the light hit the scene once before reaching the eye (LDE or LSE). Algorithms that have a good representation of specular reflection, such as Ray Tracing~\cite{Whitted:1980}, perform at most one bounce on diffuse surfaces and can perform any number of bounces on specular surfaces (LDS*E or LS*E).
 
 \section{Ray Tracing}
 
-\textit{Ray Tracing} \cite{Whitted:1980} is a global illumination algorithm that handles multiple inter-reflections among shiny surfaces, producing high quality results for shiny surfaces. In Ray Tracing, we trace a ray from the eye through the center of each pixel in the final image, searching for the closest intersected object along each ray. When an intersecting surface is found, the algorithm shoots a shadow ray to determine whether this surface is hidden from the light source and locally evaluates an illumination function. The incoming ray is then either reflected or refracted (in other words, \textit{bounced}), repeating the process until the original ray reaches a certain amount of bounces. This process is illustrated in Figure \ref{fig:raytracing}.
+\textit{Ray Tracing} \cite{Whitted:1980} is a global illumination algorithm that handles multiple inter-reflections among shiny surfaces, producing 
+high-quality results for shiny surfaces. In Ray Tracing, we trace rays from the eye through each pixel of the image, searching for the closest intersected object along each ray. When an intersecting surface is found, the algorithm shoots a shadow ray to determine whether this surface is hidden from the light source and locally evaluates an illumination function. The incoming ray is then either reflected or refracted (in other words, \textit{bounced}), repeating the process until 
+%the original ray reaches 
+a certain amount of bounces is achieved, the contributions of subsequent hits become negligible, or the ray does not intersect any other object in the scene. This process is illustrated in Figure \ref{fig:raytracing}.
 
 \begin{figure}[h]
   \centering
@@ -27,13 +42,15 @@ Local illumination models, such as Gouraud Shading or Phong Shading, have light 
 
 % While it may seem strange to send rays away from the camera - which is the opposite of how photographs are generated -, it is more cost-efficient as most light rays that incide on the scene do not reach the camera. Computing light paths is a strenuous task, and cutting back on this task load shortens the rendering time considerably.
 
-Because a lambertian surface reflects rays in all directions, there is a very high computational cost associated with calculating reflections in diffuse surfaces. In order to reduce this cost, Ray Tracing algorithm approximates the actual diffuse reflection, thus not representing it with as much realism as a specular surface.
+Because a Lambertian surface reflects rays in all directions, there is a very-high computational cost associated with calculating reflections in diffuse surfaces. In order to reduce this cost, Ray Tracing algorithm approximates the actual diffuse reflection, thus not representing it with as much realism as a specular surface.
 
-True realism can only be achieved when an algorithm approximates the \textit{Rendering Equation} - which describes every physical effect of light flow. This method will be furtherly discussed in our next section. 
+True realism can only be achieved when an algorithm approximates the \textit{Rendering Equation} \red{\cite{Kajyia}} - which describes the full light transport.
+%every physical effect of light flow. 
+This method will be further discussed in our next section. 
 
 \section{The Rendering Equation}
 
-An important concept for global illumination algorithms is that of \textit{Radiance}, which describes how much power arrives at (or leaves from) a certain point on a surface per unit solid angle and per unit projected area. Radiance can be thought of as the number of photons arriving per time at a small area from a given direction, and it describes the intensity of light at a given point in space in a given direction. Radiance remains constant along the light rays passing through empty space, and when computed, it captures the appearance of objects in the scene.
+An important concept for global illumination algorithms is that of \textit{radiance}, which describes how much power arrives at (or leaves from) a certain point on a surface per unit solid angle and per unit projected area. Radiance can be thought of as the number of photons arriving per time at a small area from a given direction, and it describes the intensity of light at a given point in space in a given direction. Radiance remains constant along the light rays passing through empty space, and when computed, it captures the appearance of objects in the scene.
 
 Another important concept is that of the \textit{Bidirectional Reflection Distribution Function} (BRDF), a function that describes the local illumination model of a given material. The BRDF can be perceived as a constant of proportionality between the amount of incident light and the reflected light along a direction. 
 
@@ -70,11 +87,11 @@ The concept of \textit{Importance Sampling} was created to reduce this high vari
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{images/3_theoretical_foundations/importance.png}
-  \caption{Illustration of how uniform sampling (left) and how importance sampling (right) sample $g(x)$ based on $p(x)$}
+  \caption{Illustration of how uniform sampling (left) and how importance sampling (right) sample $g(x)$ based on $p(x)$. \red{No TCC, todas as figuras precisam de uma fonte. Esta figura foi preparada pelo Jonas para o conjunto de slides que eu utilizei para a aula.}}
   \label{fig:importance}
 \end{figure}
 
 
-MC Ray Tracing uses MCI to approximate the Rendering Equation. Sampling the hemisphere n given points, it is able to estimate the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
+MC Ray Tracing uses MCI to approximate the Rendering Equation. Sampling the \red{hemisphere n given points}, it is able to estimate the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
 
 Notwithstanding, MC Ray Tracing is currently the only practical solution for simulating global illumination effects in complex environments. It is implemented in virtually every modern physically-based renderer, featuring several other algorithms using MCI, such as Photon Mapping and Metropolis Light Transport.
