@@ -44,7 +44,7 @@ a certain amount of bounces is achieved, the contributions of subsequent hits be
 
 Because a Lambertian surface reflects rays in all directions, there is a very-high computational cost associated with calculating reflections in diffuse surfaces. In order to reduce this cost, Ray Tracing algorithm approximates the actual diffuse reflection, thus not representing it with as much realism as a specular surface.
 
-True realism can only be achieved when an algorithm approximates the \textit{Rendering Equation} \red{\cite{Kajyia}} - which describes the full light transport.
+True realism can only be achieved when an algorithm approximates the \textit{Rendering Equation} \cite{Kajiya:1986} - which describes the full light transport.
 %every physical effect of light flow. 
 This method will be further discussed in our next section. 
 
@@ -86,12 +86,11 @@ The concept of \textit{Importance Sampling} was created to reduce this high vari
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.8\textwidth,height=\textheight,keepaspectratio]{images/3_theoretical_foundations/importance.png}
-  \caption{Illustration of how uniform sampling (left) and how importance sampling (right) sample $g(x)$ based on $p(x)$. \red{No TCC, todas as figuras precisam de uma fonte. Esta figura foi preparada pelo Jonas para o conjunto de slides que eu utilizei para a aula.}}
+  \includegraphics[width=0.5\textwidth,height=\textheight,keepaspectratio]{images/3_theoretical_foundations/importances.png}
+  \caption{Illustration of how uniform sampling (top) and how importance sampling (bottom) sample $g(x)$}
   \label{fig:importance}
 \end{figure}
 
-
-MC Ray Tracing uses MCI to approximate the Rendering Equation. Sampling the \red{hemisphere n given points}, it is able to estimate the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
+MC Ray Tracing uses MCI to approximate the Rendering Equation, estimating the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
 
 Notwithstanding, MC Ray Tracing is currently the only practical solution for simulating global illumination effects in complex environments. It is implemented in virtually every modern physically-based renderer, featuring several other algorithms using MCI, such as Photon Mapping and Metropolis Light Transport.
