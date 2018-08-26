@@ -103,7 +103,7 @@ Converting a scene file from one renderer format to another is a hard and time-c
 %\section{Improving Physically-Based Rendering}
 \section{The Need for Automatic Scene Conversion}
 
-Currently, PBR and MC Ray Tracing are the only practical solution for simulating global illumination effects in complex environments. Due to its high computational cost, an image can take a long time to render - sometimes up to a few days, depending on the complexity of the scene or the technique used. This means that it is practically impossible to use these images in real-time applications.
+Currently, PBR and MC Ray Tracing are the only practical solution for simulating global illumination effects in complex environments. Due to its high computational cost, an image can take a long time to render --- sometimes up to a few days, depending on the complexity of the scene or the technique used. This means that it is practically impossible to use these images in real-time applications.
 
 There are some techniques that aim to improve the time spent rendering PBR images, like improved sampling~\cite{Heck2013, Pilleboue:2015} and reconstruction strategies~\cite{Sen2012, Rousselle2013, Kalantari2015, Bitterli2016}. These techniques are implemented on top of an existing PBR system as a way of using aspects of the MC Ray Tracing algorithm (such as ray-object intersection calculations) that are orthogonal to the proposed methods.
 
