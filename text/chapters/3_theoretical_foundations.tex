@@ -5,7 +5,7 @@
 This chapter reviews important concepts about  global illumination techniques such as \textit{Ray Tracing}, followed by 
 a description of 
 %important explanations about 
-the techniques implemented by the renderers used in our work (MC Ray Tracing). We do not delve too deep in the implementations of the techniques discussed in this chapter - we provide a general understanding of the process in order to better situate the reader.
+the techniques implemented by the renderers used in our work (MC Ray Tracing). We do not delve too deep in the implementations of the techniques discussed in this chapter --- we provide a general understanding of the process in order to better situate the reader.
 
 \section{Global Illumination Algorithms}
 
@@ -42,7 +42,7 @@ a certain amount of bounces is achieved, the contributions of subsequent hits be
 
 % While it may seem strange to send rays away from the camera - which is the opposite of how photographs are generated -, it is more cost-efficient as most light rays that incide on the scene do not reach the camera. Computing light paths is a strenuous task, and cutting back on this task load shortens the rendering time considerably.
 
-Because a Lambertian surface reflects rays in all directions, there is a very-high computational cost associated with calculating reflections in diffuse surfaces. In order to reduce this cost, Ray Tracing algorithm approximates the actual diffuse reflection, thus not representing it with as much realism as a specular surface.
+Because a Lambertian surface reflects rays in all directions, there is a very-high computational cost associated with calculating reflections in diffuse surfaces. In order to reduce this cost, Ray Tracing algorithm approximates the actual diffuse reflection (using Phong's illumination model, for instance), thus not representing it with as much realism as a specular surface.
 
 True realism can only be achieved when an algorithm approximates the \textit{Rendering Equation} \cite{Kajiya:1986} - which describes the full light transport.
 %every physical effect of light flow. 
@@ -52,9 +52,7 @@ This method will be further discussed in our next section.
 
 An important concept for global illumination algorithms is that of \textit{radiance}, which describes how much power arrives at (or leaves from) a certain point on a surface per unit solid angle and per unit projected area. Radiance can be thought of as the number of photons arriving per time at a small area from a given direction, and it describes the intensity of light at a given point in space in a given direction. Radiance remains constant along the light rays passing through empty space, and when computed, it captures the appearance of objects in the scene.
 
-Another important concept is that of the \textit{Bidirectional Reflection Distribution Function} (BRDF), a function that describes the local illumination model of a given material. The BRDF can be perceived as a constant of proportionality between the amount of incident light and the reflected light along a direction. 
-
-The BRDF has some crucial properties that aid in modeling a realistic global illumination model. It is, in general, anisotropic - which means that adding light from several incident directions in a given point has no influence on the amount of light that is reflected from it. Also, we can calculate the total amount of light reflected by a surface in a specific direction as an hemispherical integral over all possible incident directions, as seen in Figure \ref{fig:brdf}.
+Another important concept is that of the \textit{Bidirectional Reflectance Distribution Function} (BRDF), a function that describes the local illumination model of a given material. The BRDF can be perceived as a constant of proportionality between the amount of incident light and the reflected light along a direction. Using the BRDF, we are able calculate the total amount of light reflected by a surface with a given material in a specific direction as an hemispherical integral over all possible incident directions, as seen in Figure \ref{fig:brdf}.
 
 \begin{figure}[h]
   \centering
@@ -68,19 +66,20 @@ These concepts and properties were used in the \textit{Rendering Equation} \cite
 
 The Rendering Equation is described as:
 
-$$L_o (x \rightarrow \omega) = L_e (x \rightarrow \omega) + \int_{\Omega} f_r (x, s \rightarrow \omega) L_i (x \leftarrow s) V(x, x') G(x, x') ds $$
+% $$L_o (x \rightarrow \omega) = L_e (x \rightarrow \omega) + \int_{\Omega} f_r (x, s \rightarrow \omega) L_i (x \leftarrow s) V(x, x') G(x, x') ds $$
+$$ L_o (x, \omega_o) = L_e (x, \omega_o) + \int_{\Omega} f_r (x, \omega_i, \omega_o) L_i (x, \omega_i) (\omega_i \cdot n) d\omega_i $$
 
-It can be interpreted as: the radiance ($L_o$) leaving a particular point ($x$) in a given direction ($\omega$) is composed of the radiance emitted ($L_e$) by this point and the reflected radiance ($L_i$) in every possible direction considering the object's BRDF ($f_r$), the visibility ($V$) and the geometry ($G$) associated. 
+We can interpret this equation as: the total radiance $L_o$ directed outward from point $x$ along direction $\omega_o$ is composed of the radiance emitted ($L_e$) from point $x$ along direction $\omega_o$ and the sum of the radiance $L_i$ directed inward toward $x$ coming from every possible direction $\omega_i$ in hemisphere $\Omega$. $L_i$ is affected by the surface's BRDF ($f_r$), which dictates the proportion of light that is reflected from $\omega_i$ to $\omega_o$, and by the weakening factor $\omega_i \cdot n$ caused by $\omega_i$'s incident angle. 
 
 The Rendering Equation cannot be directly evaluated, as radiance (L) is present in both sides of the equation; it is impractical to solve with traditional quadrature methods. However, this equation \textit{can} be evaluated by \textit{Monte Carlo Integration}, the technique used in \textit{Monte Carlo Ray Tracing}.
 
 \subsection{Monte Carlo Ray Tracing}
 
-Monte Carlo Integration (MCI) is a technique that uses statistics principles to estimate complicated integrals. It assumes that if a $x$ is a random variable, then $f(x)$ is also a random variable that can be characterized by its probability distribution. We can approximate $f(x)$ with n random samples along $f(x)$'s probability distribution $p(x)$. The MC estimator of an arbitrary function $g(x)$ can be expressed as:
+Monte Carlo Integration (MCI) is a technique that uses statistical principles to estimate complicated integrals. It assumes that if a $x$ is a random variable, then $f(x)$ is also a random variable that can be characterized by its probability distribution. We can approximate $f(x)$ with n random samples along $f(x)$'s probability distribution $p(x)$. The MC estimator of an arbitrary function $g(x)$ can be expressed as:
 
 $$ \int g(x)dx \approx \frac{1}{n} \sum_{i = 1}^{n} \frac{g(X_i)}{p(X_i)}$$
 
-The convergence rate for MCI is $O(\frac{1}{\sqrt{n}})$ regardless of the smoothness of the integrand. The technique requires only sampling and point evaluation and can be used to solve a vast array of problems. It does, however, have a high variance that can, in the case of MC rendering, appear as noise. In order to reduce the variance naturally produce by this method, one must greatly increase the number of samples.
+The convergence rate for MCI is $O(\frac{1}{\sqrt{n}})$ regardless of the smoothness of the integrand at any dimension. The technique requires only sampling and point evaluation and can be used to solve a vast array of problems. It does, however, have a high variance that can, in the case of MC rendering, appear as noise. In order to reduce the variance naturally produce by this method, one must greatly increase the number of samples.
 
 The concept of \textit{Importance Sampling} was created to reduce this high variance, exploiting the fact that the MC estimator converges faster if the points are sampled from a distribution $p(x)$ that is similar to $f(x)$. This process is illustrated in Figure \ref{fig:importance}
 
@@ -91,6 +90,6 @@ The concept of \textit{Importance Sampling} was created to reduce this high vari
   \label{fig:importance}
 \end{figure}
 
-MC Ray Tracing uses MCI to approximate the Rendering Equation, estimating the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
+MC Ray Tracing, commonly called \textit{Path Tracing}, uses MCI to approximate the Rendering Equation, estimating the radiance for each point and produce photorealistic images. It is able to naturally reproduce very complicated effects such as motion blur (sampling over time) and depth-of-field (sampling through a lens). However, MC Ray Tracing has a very high computational cost - even using Importance Sampling, the number of samples required to render a large scene is in the order of thousands per pixel. Generating these images can take up to hours depending on the complexity of the scene. 
 
 Notwithstanding, MC Ray Tracing is currently the only practical solution for simulating global illumination effects in complex environments. It is implemented in virtually every modern physically-based renderer, featuring several other algorithms using MCI, such as Photon Mapping and Metropolis Light Transport.

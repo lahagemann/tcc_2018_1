@@ -17,7 +17,7 @@ To the best of our knowledge, no previous system has performed automatic scene c
 
 RenderToolbox3 is a MATLAB tool developed for assisting vision research~\cite{rendertoolbox}. It imports a scene containing geometric objects described as COLLADA XML files, and allows one to associate to them reflectance measurements from a MATLAB Psycophysics Toolbox~\cite{Brainard1997}. Such reflectance measurements are converted to multispectral reflectance representations compatible to PBRT and Mitsuba. A script then renders the objects with the associated multispectral representations using PBRT or Mitsuba. RenderToolbox3 is a visualization tool for exploring the impact of different reflectance and illuminating properties on human perception.
 
-\cite{rendertoolbox} is a system that imports COLLADA XML files into a MATLAB system and uses different rendering techniques in order images as close to 
+The work of \cite{rendertoolbox} is a system that imports COLLADA XML files into a MATLAB system and uses different rendering techniques in order images as close to 
 reality as possible. Their system uses integrated PBRT and Mitsuba rendering is capable of storing their data structure into their respective scene file 
 formats. The system does not convert scene files among rendering systems. 
 
@@ -33,5 +33,5 @@ Halide~\cite{Ragan-Kelley2012} is a system designed to optimize image-processing
 
 All these systems focus on generating efficient code while freeing the user from GPU architectural details. All goal, in turn, is to make high-quality scenes availability independent of one's choice of rendering system. 
 
-Santos et al. have recently presented a framework for developing and benchmarking MC sampling and denoising algorithms. They use an API to decouple algorithms from rendering systems, allowing for the same algorithm to be tested on multiple rendering systems. By doing so, they also increase the set of scenes an algorithm can be tested with. However, in order to use a given test scene, the rendering system for which the scene was created would have to be used as well. 
+Santos et al. \cite{Santos:2018:FBKSD} have recently presented a framework for developing and benchmarking MC sampling and denoising algorithms. They use an API to decouple algorithms from rendering systems, allowing for the same algorithm to be tested on multiple rendering systems. By doing so, they also increase the set of scenes an algorithm can be tested with. However, in order to use a given test scene, the rendering system for which the scene was created would have to be used as well. 
 
