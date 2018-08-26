@@ -2,7 +2,7 @@
 \label{sec:systemarch}
 
 Our system consists of two main components: an {\it import module} that reads an arbitrary scene file format and generates an equivalent description in a {\it canonical} scene representation; and an {\it export module} that takes our canonical representation and exports it to a target rendering system file format. The complete process is illustrated in Figure \ref{fig:sysarch}. 
-Currently, our system supports \textit{PBRT v-3}~\cite{PBRT:v3}, \textit{Mitsuba}~\cite{mitsuba}, and \textit{LuxRender}~\cite{luxrender}, as these are three of the most popular rendering systems.
+Currently, our system supports \textit{PBRT v-3}~\cite{PBRT:v3}, \textit{Mitsuba}~\cite{mitsuba}, and \textit{LuxRender}~\cite{luxrender}, as these are among the most popular rendering systems.
 This architecture, however, is quite flexible. Supporting additional rendering systems only requires specializing the import and export methods to handle the new formats. 
 %Moreover, it can be easily integrated with the API described in~\cite{Santos:2018:FBKSD}.   
 %
@@ -107,11 +107,10 @@ A {\it shape} can be a polygonal mesh or a geometric primitive such as a rectang
 
 \subsection{The Export Module}
 
-The export module is at the core of our system. While the import module deals with a single proprietary scene representation at a time, the export module has to map between materials and scene properties from two proprietary representations. 
-In this case, there are several delicate cases to
-consider. Matrix transformations, native shapes, environment mapping coordinates and, mostly, materials are
+The export module is at the core of our system, being responsible to produce the target scene representation. 
+Matrix transformations, native shapes, environment mapping coordinates and, mostly, materials are
 some of the components that vary greatly between renderers. 
-In several situations, there is no direct mapping between them. Still, our system should provide an output representation that, once rendered with the target system, best approximates the results obtained by the source rendering system with the input scene description. 
+Our system should provide an output scene representation that, once rendered with the target system, best approximates the results obtained by the source rendering system with the input scene description.  
 Achieving such results required extensive experimentation with parameters of the various systems. Next, we discuss a few relevant aspects one should consider.    
   
 %After the data is loaded into our canonical representation, it can be converted into any of the supported formats.
@@ -163,7 +162,7 @@ PBRT and LuxRender materials have roughness parameters, making it unnecessary to
 change the material's name.
 
 %The major problem was faced when converting metals from and to LuxRender. 
-To represent the material's reflectance, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
+To describe the material's reflectance spectra, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
 coefficient (\textit{k}) per color channel. 
 LuxRender, however, uses a so-called ``{\it Fresnel texture}'', specifying a 
 single value of $\eta$ and \textit{k} for all channels. Alternatively, LuxRender allows the specification of a single RGB 

@@ -1,7 +1,7 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Monte Carlo ray tracing is currently the only practical solution for simulating global illumination effects in complex environments.
+Monte Carlo ray tracing provides an effective solution for simulating global illumination effects in complex environments.
 Due to its high computational cost, several techniques have been introduced to reduce rendering time through improved sampling~\cite{Heck2013, Pilleboue:2015} and reconstruction strategies~\cite{Sen2012, Rousselle2013, Kalantari2015, Bitterli2016}. When developing such new techniques, researchers often implement them on top of existing rendering systems as a way of leveraging available infrastructure to perform functions (\eg, ray-traversal acceleration, ray-primitive intersections, etc.) that are orthogonal to the proposed methods.
 
 Unfortunately, the various rendering systems use proprietary scene description formats. While modeling visually-pleasing scenes requires significant artistic skills, manual conversion between proprietary formats requires knowledge of the specific formats and tend to be extremely time consuming (up to several days per scene~\cite{tungsten}). 
