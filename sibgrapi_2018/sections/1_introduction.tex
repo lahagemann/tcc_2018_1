@@ -4,12 +4,15 @@
 Monte Carlo ray tracing provides an effective solution for simulating global illumination effects in complex environments.
 Due to its high computational cost, several techniques have been introduced to reduce rendering time through improved sampling~\cite{Heck2013, Pilleboue:2015} and reconstruction strategies~\cite{Sen2012, Rousselle2013, Kalantari2015, Bitterli2016}. When developing such new techniques, researchers often implement them on top of existing rendering systems as a way of leveraging available infrastructure to perform functions (\eg, ray-traversal acceleration, ray-primitive intersections, etc.) that are orthogonal to the proposed methods.
 
-Unfortunately, the various rendering systems use proprietary scene description formats. While modeling visually-pleasing scenes requires significant artistic skills, manual conversion between proprietary formats requires knowledge of the specific formats and tend to be extremely time consuming (up to several days per scene~\cite{tungsten}). 
-Thus, by selecting a given rendering system one is often constrained to test and demonstrate the proposed techniques on the limited set of test scenes available for that renderer. This apparently simple limitation has profound implications, as it constrains a direct comparison between Monte Carlo (MC) rendering techniques that have been implemented using different rendering systems. In this case, one often has to compare the quality of algorithms using disjoint sets of scenes, which, is not the ideal case.    
+Unfortunately, the various rendering systems use proprietary scene description formats. While modeling visually-pleasing scenes requires  artistic skills, manual conversion between proprietary formats requires knowledge of the specific formats and tends to be extremely time consuming (up to several days per scene~\cite{tungsten}). 
+Thus, by selecting a given rendering system one is often constrained to test and demonstrate the proposed techniques on the limited set of test scenes available for that renderer. This apparently simple limitation has profound implications, as it constrains a direct comparison between Monte Carlo (MC) rendering techniques that have been implemented using different rendering systems. Thus, one often has to compare the quality of algorithms by evaluating them on disjoint sets of test scenes. 
+%, which, is not the ideal case.    
     
 We present {\it a system for automatic conversion among scene file formats used by Monte Carlo physically-based rendering systems}. 
 Our solution significantly expands the repertoire of scenes available for testing, validation, and benchmarking of MC rendering algorithms.  
-Currently, our system handles conversions among PBRT v3~\cite{PBRT:v3}, Mitsuba~\cite{mitsuba}, and LuxRender~\cite{luxrender}, which are three of the most popular physically-based renderers (PBR). Extending it to support additional renderes is straightforward. Our solution (discussed in Section~\ref{sec:systemarch}) consists of {\it importing} any source scene description into a canonical representation, which can then be {\it exported} to other scene formats. 
+Currently, our system handles conversions among PBRT v3~\cite{PBRT:v3}, Mitsuba~\cite{mitsuba}, and LuxRender~\cite{luxrender}, which are three of the most popular physically-based renderers (PBR). Extending it to support additional renderes is straightforward. Our solution 
+%(discussed in Section~\ref{sec:systemarch}) 
+consists of {\it importing} a source scene description into a canonical representation, which can then be {\it exported} to other scene formats. 
 %By specializing the import and export classes to the various formats, our system can convert among arbitrary scene file formats.     
 %
 Figure~\ref{fig:teaser} illustrates the use of our system to perform automatic conversion of a scene represented in the PBRT v3 format. 
@@ -18,9 +21,13 @@ The images at the center and on the right show, respectively, the renderings pro
 %scene elements that include multiple 
 various materials (glass, plastic, and metal).
 
-Our work does not introduce a new physically-based rendering technique per se. Instead, it falls in the area of {\it meta-research} systems, which are systems designed to facilitate and improve the research process. Meta-research systems are quite common in computer graphics~\cite{Santos:2018:FBKSD, Ragan-Kelley2012,Buck2004,Mark2003} and computer vision~\cite{MiddleburyStereo, MiddleburyFlow, AlphaMatting, VideoMatting}, where they have led to significant progress in these fields. 
+Our work does not introduce a new physically-based rendering technique per se. Instead, 
+%it falls in the area of {\it meta-research} systems, which are systems
+it was designed to facilitate and improve the research process. 
+%Meta-research 
+These kinds of systems are quite common in computer graphics~\cite{Santos:2018:FBKSD, Ragan-Kelley2012,Buck2004,Mark2003} and computer vision~\cite{MiddleburyStereo, MiddleburyFlow, AlphaMatting, VideoMatting}, where they have led to significant progress in these fields. 
 %In a work particularly relevant to us,  
-Recently, Santos et al.~\cite{Santos:2018:FBKSD} introduced a framework for developing and benchmarking MC sampling and denoising algorithms. This is achieved by providing an API the decouples the developed techniques from the used rendering system. While it allows a technique to be tested on any rendering system that supports the proposed API, each rendering system is still constrained to a limited set of test scenes. Our system is orthogonal to and complements the API described in~\cite{Santos:2018:FBKSD}, lending to full orthogonality, among algorithms, rendering systems, and scene files.
+Recently, Santos et al.~\cite{Santos:2018:FBKSD} introduced a framework for developing and benchmarking MC sampling and denoising algorithms. This is achieved by providing an API the decouples the developed techniques from the used rendering system. While it allows a technique to be tested on any rendering system that supports the proposed API, each rendering system is still constrained to a limited set of test scenes. Our system is orthogonal to and complements the API described in~\cite{Santos:2018:FBKSD}, lending to full orthogonality among algorithms, rendering systems, and scene files.
 %by allowing an MC technique to be tested on any combination of rendering systems and scene files. 
 %The system is also available for download~\cite{sceneConverter}.    
 

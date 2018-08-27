@@ -1,7 +1,7 @@
 \section{Automatic Scene Conversion} 
 \label{sec:systemarch}
 
-Our system consists of two main components: an {\it import module} that reads an arbitrary scene file format and generates an equivalent description in a {\it canonical} scene representation; and an {\it export module} that takes our canonical representation and exports it to a target rendering system file format. The complete process is illustrated in Figure \ref{fig:sysarch}. 
+Our system consists of two main components: an {\it import module} that reads an arbitrary scene file format and generates an equivalent description in a {\it canonical scene representation}; and an {\it export module} that takes our canonical representation and exports it to a target rendering system file format. The complete process is illustrated in Figure \ref{fig:sysarch}. 
 Currently, our system supports \textit{PBRT v-3}~\cite{PBRT:v3}, \textit{Mitsuba}~\cite{mitsuba}, and \textit{LuxRender}~\cite{luxrender}, as these are among the most popular rendering systems.
 This architecture, however, is quite flexible. Supporting additional rendering systems only requires specializing the import and export methods to handle the new formats. 
 %Moreover, it can be easily integrated with the API described in~\cite{Santos:2018:FBKSD}.   
@@ -36,7 +36,7 @@ Most physically-based renderers subdivide the scene description in two main sect
 {\it scene-wide rendering options} and {\it world block}. The former defines the rendering settings, while the latter describes the scene geometry and materials.
 %
 The import module parses the input scene files and translates each directive into a canonical
-representation. Since rendering systems use proprietary file format, both the import and export modules have to be specialized for each renderer.
+representation. Since rendering systems use proprietary file format, both import and export modules have to be specialized for each renderer.
 
 PBRT and LuxRender scene descriptions consist of structured text statements. We generated parsers for these systems using 
 %Given their structure, a Lex/Yacc parser was considered the best choice for these formats. As we intended to keep our system in pure Python, we chose to use The parser for  
@@ -61,7 +61,7 @@ While most renderers have a similar structure, they differ in a few supported fe
  However, COLLADA files only include information about scene geometry. No information about other rendering 
  options, such as camera positioning or integration techniques, is available. 
  In order to establish a common ground for conversion, we defined a canonical scene representation. It 
- is illustrated in Figure~\ref{fig:canonicalrep} and can easily extended to incorporate any directives not covered in our current implementation.
+ is illustrated in Figure~\ref{fig:canonicalrep} and can be easily extended to incorporate any directives not covered in our current implementation.
  
 %Renderer directives are usually written as a command, followed by a type and a list of additional parameters. 
 %So, for instance, to specify the path
@@ -107,21 +107,21 @@ A {\it shape} can be a polygonal mesh or a geometric primitive such as a rectang
 
 \subsection{The Export Module}
 
-The export module is at the core of our system, being responsible to produce the target scene representation. 
+The export module is at the core of our system, being responsible for producing the target scene representation. 
 Matrix transformations, native shapes, environment mapping coordinates and, mostly, materials are
 some of the components that vary greatly between renderers. 
-Our system should provide an output scene representation which, once rendered with the target system, best approximates the results obtained by the source rendering system with the input scene description.  
+Our system tries to generate an output scene representation which, once rendered with the target system, best approximates the results obtained by the source rendering system applied to the input scene description.  
 Achieving such results required extensive experimentation with parameters of the various systems. Next, we discuss a few relevant aspects one should consider.    
   
 %After the data is loaded into our canonical representation, it can be converted into any of the supported formats.
 % \subsubsection{Converting Matrices}
 %\noindent 
 \textbf{Matrix Conversion}: 
-There are several issues to consider when converting matrices between renderers.
+There are several issues to consider when handling matrices.
 %A few things we had to keep in mind were: 
-Do the two renderers use different coordinate systems (either left-handed or right-handed)? 
+Does the renderer use a left-hand or right-hand coordinate system? 
 %does this renderer use a left or right coordinate system? Does this renderer 
-Do they represent matrices in the scene file using a direct representation or its
+Does it represent matrices (in the scene file) using a direct representation or its
 inverse-transpose? How is the object-world transformation represented for
 shapes?
 
@@ -131,6 +131,7 @@ two, one has to mirror the x-axis of all camera matrix transformations. This is
 also the case for environment map positioning and object-world
 transformations. Moreover, Mitsuba's scene files contain a world-to-camera transformation matrix (\ie, view matrix),
 while PBRT and LuxRender scene files use the view matrix inverse transpose.
+In addition, LuxRender uses a different texture parameterization (reversed direction of the \emph{v} parameter) with respect to PBRT and Mitsuba.
 
 %\green{Furthermore, Mitsuba scene files have their camera position specified as a 
 %world-to-camera transformation matrix, while PBRT and LuxRender scene files have 
@@ -148,8 +149,8 @@ while PBRT and LuxRender scene files use the view matrix inverse transpose.
 materials are the most delicate aspect of scene conversion. Materials have
 spectral and roughness properties that absolutely must be correctly mapped. 
 However, most renderers have very different implementations
-for common subsurface scattering models (BSDFs), making it hard to
-predict the mapping between the parameters of two such implementations.
+for common subsurface scattering models (BSDFs).
+%, making it hard to predict the mapping between the parameters of two such implementations.
 
 Mitsuba uses a more physics-oriented approach: a material can be diffuse,
 conductor, dielectric, plastic, translucent, or a bumpmap.
@@ -164,7 +165,7 @@ change the material's name.
 %The major problem was faced when converting metals from and to LuxRender. 
 To describe a metal's reflectance spectra, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
 coefficient (\textit{k}) per color channel. 
-LuxRender, however, uses a so-called ``{\it Fresnel texture}'', specifying a 
+LuxRender, however, uses a so-called {\it Fresnel texture}, specifying a 
 single value of $\eta$ and \textit{k} for all channels. Alternatively, LuxRender allows the specification of a single RGB 
 color value for the material's reflectance. Therefore, correctly converting metal colors between LuxRender and PBRT or Mitsuba is not well defined, 
 and is not supported in the current implementation of our system.
@@ -180,10 +181,7 @@ Mitsuba's primitives are defined by some parameters (\eg, vertex positions, radi
 a transformation (model) matrix. To reproduce these primitives in PBRT and 
 LuxRender, an {\it internal triangle mesh} must be used. This is done by specifying the position, normal, and texture coordinates for each vertex in the mesh representing a given primitive. One should note that these internal meshes do not use the same representation as the 3D meshes stored in files.
 
-Converting PBRT and LuxRender internal triangle meshes into Mitsuba primitive shapes is a more involving process. Since Mitsuba's 
-primitives have predefined coordinates, converting vertices from PBRT or LuxRender internal meshes into 
-these coordinates requires obtaining the transformation matrix that maps PBRT or LuxRender vertices 
-to Mitsuba's predefined points. Our system takes care of this automatically.
+%Converting PBRT and LuxRender internal triangle meshes into Mitsuba primitive shapes is a more involving process. Since Mitsuba's primitives have predefined coordinates, converting vertices from PBRT or LuxRender internal meshes into these coordinates requires obtaining the transformation matrix that maps PBRT or LuxRender vertices to Mitsuba's predefined points. Our system takes care of this automatically.
 
 Converting external 3D meshes is simple, as all rendering systems have directives
 for this purpose. PBRT, however, does not support Object File Wavefront 3D
