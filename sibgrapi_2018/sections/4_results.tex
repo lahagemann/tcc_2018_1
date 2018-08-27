@@ -171,18 +171,18 @@ As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflecta
 	\centering
 	\begin{tabular}{@{}r@{ } c@{ } c@{ } c@{ } c }
 		&
-		\small{(a) Original Image} &
-		\small{(b) Original vs. Converted 1} &
-		\small{(c) Original vs. Converted 2} &
-		\small{(d) Converted 1 vs. Converted 2} \\
+		\small{Original image} &
+		\small{Diff from converted$_1$} &
+		\small{Diff from converted$_2$} &
+		\small{Diff between converted} \\
 	
 		\begin{sideways} \parbox[b]{30mm} {\small{From\\ PBRT v3}} \end{sideways} &
 		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/1_from_pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-mitsuba.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_mitsuba-lux.png} \\
+		\subfloat[PBRT -- Mitsuba]{\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-mitsuba.png}} &
+		\subfloat[PBRT -- LuxRender]{\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-lux.png}} &
+		\subfloat[Mitsuba -- Lux]{\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_mitsuba-lux.png}} \\
 		
-		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
+		\begin{sideways} \parbox[b]{30mm} {\small{From\\ Mitsuba}} \end{sideways} &
 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/1_from_mitsuba} &
 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-pbrt.png} &
 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-lux.png} &
@@ -224,7 +224,7 @@ As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflecta
 		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-pbrt.png} &
 		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_mitsuba-pbrt.png}
 	\end{tabular}
-	\caption{Pixel-wise differences between the original scene (a) and the scenes converted by our renderer (b)(c), and between the two converted scenes (d). The differences between images are highlighted in color, showcasing the issues previously discussed. }
+	\caption{Pixel-wise differences between the original scene (left) and the scenes converted by our system (middle), and between the two scenes converted by our system (right). The differences between images are highlighted in color, showcasing the issues previously discussed. }
 	\label{fig:diffs}
 \end{figure*}
 
