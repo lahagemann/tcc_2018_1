@@ -167,66 +167,66 @@ As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflecta
 	\label{fig:MIS}
 \end{figure}
 
-\begin{figure*}[t!bp]
+\begin{figure}[t!bp]
 	\centering
 	\begin{tabular}{@{}r@{ } c@{ } c@{ } c@{ } c }
 		&
-		\small{Original image} &
-		\small{Diff from converted$_1$} &
-		\small{Diff from converted$_2$} &
-		\small{Diff between converted} \\
+		\small{Original} &
+		\small{Converted 1} &
+		\small{Converted 2} &
+		\small{Converted 1,2} \\
 	
-		\begin{sideways} \parbox[b]{30mm} {\small{From\\ PBRT v3}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/1_from_pbrt.png} &
-		\subfloat[PBRT -- Mitsuba]{\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-mitsuba.png}} &
-		\subfloat[PBRT -- LuxRender]{\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-lux.png}} &
-		\subfloat[Mitsuba -- Lux]{\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_mitsuba-lux.png}} \\
+		\begin{sideways} \parbox[b]{15mm} {\small{PBRT v3}} \end{sideways} &
+		\includegraphics[width=0.11\textwidth]{figs/4_results/coffee/1_from_pbrt.png} &
+		\subfloat[$|P - M|$]{\includegraphics[width=0.11\textwidth]{figs/4_results/coffee/diff_pbrt-mitsuba.png}} &
+		\subfloat[$|P - L|$]{\includegraphics[width=0.11\textwidth]{figs/4_results/coffee/diff_pbrt-lux.png}} &
+		\subfloat[$|M - L|$]{\includegraphics[width=0.11\textwidth]{figs/4_results/coffee/diff_mitsuba-lux.png}} \\
 		
-		\begin{sideways} \parbox[b]{30mm} {\small{From\\ Mitsuba}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/1_from_mitsuba} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_pbrt-lux.png} \\
-		
-		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/1_from_mitsuba.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_mitsuba-pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_mitsuba-lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_pbrt-lux.png} \\
-		
-		\begin{sideways} \parbox[b]{15mm} {\small{From\\ LuxRender}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/1_from_lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_lux-mitsuba.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_lux-pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_mitsuba-pbrt.png} \\
-		
-		\begin{sideways} \parbox[b]{15mm} {\small{From\\ LuxRender}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/1_from_lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_lux-mitsuba.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_lux-pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_mitsuba-pbrt.png} \\
-		
-		\begin{sideways} \parbox[b]{15mm} {\small{From\\ PBRT v3}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/1_from_pbrt_s.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_pbrt-mitsuba.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_pbrt-lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_mitsuba-lux.png} \\
-		
-		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/1_from_mitsuba_s.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_mitsuba-pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_mitsuba-lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_pbrt-lux.png} \\
-		
-		\begin{sideways} \parbox[b]{20mm} {\small{From\\ LuxRender}} \end{sideways} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/1_from_lux.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-mitsuba.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-pbrt.png} &
-		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_mitsuba-pbrt.png}
+% 		\begin{sideways} \parbox[b]{30mm} {\small{Mitsuba}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/1_from_mitsuba} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-pbrt.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_pbrt-lux.png} \\
+% 		
+% 		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/1_from_mitsuba.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_mitsuba-pbrt.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_mitsuba-lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_pbrt-lux.png} \\
+% 		
+% 		\begin{sideways} \parbox[b]{15mm} {\small{From\\ LuxRender}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/1_from_lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_lux-mitsuba.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_lux-pbrt.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_mitsuba-pbrt.png} \\
+% 		
+% 		\begin{sideways} \parbox[b]{15mm} {\small{From\\ LuxRender}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/1_from_lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_lux-mitsuba.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_lux-pbrt.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_mitsuba-pbrt.png} \\
+% 		
+% 		\begin{sideways} \parbox[b]{15mm} {\small{From\\ PBRT v3}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/1_from_pbrt_s.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_pbrt-mitsuba.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_pbrt-lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_mitsuba-lux.png} \\
+% 		
+% 		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/1_from_mitsuba_s.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_mitsuba-pbrt.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_mitsuba-lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_pbrt-lux.png} \\
+% 		
+% 		\begin{sideways} \parbox[b]{20mm} {\small{From\\ LuxRender}} \end{sideways} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/1_from_lux.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-mitsuba.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-pbrt.png} &
+% 		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_mitsuba-pbrt.png}
 	\end{tabular}
 	\caption{Pixel-wise differences between the original scene (left) and the scenes converted by our system (middle), and between the two scenes converted by our system (right). The differences between images are highlighted in color, showcasing the issues previously discussed. }
 	\label{fig:diffs}
-\end{figure*}
+\end{figure}
 
 %\begin{figure}
 %\centering
