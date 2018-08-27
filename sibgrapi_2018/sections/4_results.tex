@@ -90,6 +90,7 @@ Figure~\ref{fig:bidir-cornell} shows two scenes, \textit{Veach Bidir Room} and \
 \end{figure*}
 
 \subsection{Discussion}
+\label{subsec:discussion}
 
 The renderings produced by different rendering systems may exhibit significant differences in color or shading due to features unsupported by some renderers.  
 For instance, consider the use of a light source to emulate the sun. In PBRT and LuxRender, this directive is implemented as a distant white light.
@@ -97,6 +98,9 @@ Mitsuba, in turn, emulates the sun using a distant environment light implemented
 described in \cite{Preetham}, which produces a warm-colored, distant light source. Thus, when the sun directive is used, Mitsuba renderings present a different color compared to the other two. This situation is illustrated in Figure~\ref{fig:dining-room}.
 
 LuxRender does not properly handle a combination of sun directive and local light sources. This is illustrated in Figure~\ref{lamp_Lux}, where hard shadows have turned soft. The difference in colors are due to the sun directive, as discussed above.
+
+To better showcase these differences, we calculated the PSNR and pixel-wise difference for the input image and each converted image, as well as between the converted images for each scene. Pairs of images with greater discrepancies have lower PSNRs and highlighted differences. These results can be seen on Figure~\ref{fig:diffs}.
+
 
 %The supplemental materials included with this submission show all the examples presented in the paper plus additional ones. We would like to encourage the reader to explore them, where one can inspect the images at their original resolutions.
 
@@ -162,6 +166,67 @@ As discussed in Section~\ref{sec:systemarch}, LuxRender treats material reflecta
 		Converting metal colors to LuxRender is a challenging task, not currently supported by our system. } 
 	\label{fig:MIS}
 \end{figure}
+
+\begin{figure*}[t!bp]
+	\centering
+	\begin{tabular}{@{}r@{ } c@{ } c@{ } c@{ } c }
+		&
+		\small{(a) Original Image} &
+		\small{(b) Original vs. Converted 1} &
+		\small{(c) Original vs. Converted 2} &
+		\small{(d) Converted 1 vs. Converted 2} \\
+	
+		\begin{sideways} \parbox[b]{30mm} {\small{From\\ PBRT v3}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/1_from_pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-mitsuba.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_pbrt-lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/coffee/diff_mitsuba-lux.png} \\
+		
+		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/1_from_mitsuba} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_mitsuba-lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-bidir/diff_pbrt-lux.png} \\
+		
+		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/1_from_mitsuba.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_mitsuba-pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_mitsuba-lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/cornell-box/diff_pbrt-lux.png} \\
+		
+		\begin{sideways} \parbox[b]{15mm} {\small{From\\ LuxRender}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/1_from_lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_lux-mitsuba.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_lux-pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/teapot/diff_mitsuba-pbrt.png} \\
+		
+		\begin{sideways} \parbox[b]{15mm} {\small{From\\ LuxRender}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/1_from_lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_lux-mitsuba.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_lux-pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/dining_room/diff_mitsuba-pbrt.png} \\
+		
+		\begin{sideways} \parbox[b]{15mm} {\small{From\\ PBRT v3}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/1_from_pbrt_s.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_pbrt-mitsuba.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_pbrt-lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/veach-mis/diff_mitsuba-lux.png} \\
+		
+		\begin{sideways} \parbox[b]{20mm} {\small{From\\ Mitsuba}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/1_from_mitsuba_s.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_mitsuba-pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_mitsuba-lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/lamp/diff_pbrt-lux.png} \\
+		
+		\begin{sideways} \parbox[b]{20mm} {\small{From\\ LuxRender}} \end{sideways} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/1_from_lux.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-mitsuba.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_lux-pbrt.png} &
+		\includegraphics[width=0.15\textwidth]{figs/4_results/staircase/diff_mitsuba-pbrt.png}
+	\end{tabular}
+	\caption{Pixel-wise differences between the original scene (a) and the scenes converted by our renderer (b)(c), and between the two converted scenes (d). The differences between images are highlighted in color, showcasing the issues previously discussed. }
+	\label{fig:diffs}
+\end{figure*}
 
 %\begin{figure}
 %\centering
