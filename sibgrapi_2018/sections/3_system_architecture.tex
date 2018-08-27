@@ -110,7 +110,7 @@ A {\it shape} can be a polygonal mesh or a geometric primitive such as a rectang
 The export module is at the core of our system, being responsible to produce the target scene representation. 
 Matrix transformations, native shapes, environment mapping coordinates and, mostly, materials are
 some of the components that vary greatly between renderers. 
-Our system should provide an output scene representation that, once rendered with the target system, best approximates the results obtained by the source rendering system with the input scene description.  
+Our system should provide an output scene representation which, once rendered with the target system, best approximates the results obtained by the source rendering system with the input scene description.  
 Achieving such results required extensive experimentation with parameters of the various systems. Next, we discuss a few relevant aspects one should consider.    
   
 %After the data is loaded into our canonical representation, it can be converted into any of the supported formats.
@@ -162,7 +162,7 @@ PBRT and LuxRender materials have roughness parameters, making it unnecessary to
 change the material's name.
 
 %The major problem was faced when converting metals from and to LuxRender. 
-To describe the material's reflectance spectra, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
+To describe a metal's reflectance spectra, PBRT and Mitsuba use one index of refraction ($\eta$) and one absorption 
 coefficient (\textit{k}) per color channel. 
 LuxRender, however, uses a so-called ``{\it Fresnel texture}'', specifying a 
 single value of $\eta$ and \textit{k} for all channels. Alternatively, LuxRender allows the specification of a single RGB 
