@@ -1,24 +1,47 @@
 \scriptsize
 \begin{table}
 \begin{center}
-    \begin{tabular}{ | c | c | c | c | }
-    \hline
-    {\bf Scene} & {\bf Converted$_1$} & {\bf Converted$_2$} & {\bf Converted$_{1,2}$} \\ 
-    \hline
-    Breakfast Room & 11.8510 \small{(L,M)} & 17.5810 \small{(L,P)} & 13.1571 \small{(M,P)} \\
-    Coffee Maker & 24.5376 \small{(P,M)} & 20.9046 \small{(P,L)} & 28.8957 \small{(M,L)} \\
-    Cornell Box & 35.5156 \small{(M,P)} & 22.0726 \small{(M,L)} & 21.5158 \small{(P,L)} \\
-  	Glass of Water & 14.6463 \small{(P,L)} & 13.8424 \small{(P,M)} & 12.5093 \small{(M,L)} \\
-  	Little Lamp & 27.7912 \small{(M,P)} & 14.1011 \small{(M,L)} & 14.9416 \small{(P,L)} \\
-  	Wooden Stairase & 25.8600 \small{(L,M)} & 24.8293 \small{(L,P)} & 23.1929 \small{(M,P)} \\
-  	Utah Teapot & 16.3979 \small{(L,M)} & 17.2888 \small{(L,P)} & 22.9236 \small{(M,P)} \\
-	Veach, Bidir & 30.3493 \small{(M,P)} & 21.8102 \small{(M,L)} & 21.3300 \small{(P,L)} \\
-	Veach, MIS & 16.5668 \small{(P,M)} & 13.5168 \small{(P,L)} & 14.4631 \small{(M,L)} \\
-	\hline
-
-    \end{tabular}
+	    \begin{tabular}{ | l | c | c | }
+	    	\hline
+	    	{\bf Input Scene } & {\bf PSNR } & {\bf PSNR }  \\ 
+	    	  {\bf (source system)} & {\bf (target system 1)}& {\bf (target system 2)}  \\ 
+	    	\hline
+	    	Breakfast Room \small{(L)}& 11.85 \small{(M)} & 17.58 \small{(P)}  \\
+	    	Coffee Maker \small{(P)} & 24.54 \small{(M)} & 20.90 \small{(L)}  \\
+	    	Cornell Box \small{(M)}& 35.51 \small{(P)} & 22.07 \small{(L)}  \\
+%	    	Glass of Water \small{(P)}& 14.65 \small{(P,L)} & 13.84 \small{(P,M)}  \\
+	    	Little Lamp \small{(M)}& 27.79 \small{(P)} & 14.10 \small{(L)}  \\
+	    	Utah Teapot \small{(L)}& 16.40 \small{(M)} & 17.29 \small{(P)}  \\
+	    	Veach, Bidir \small{(M)}& 30.35 \small{(P)} & 21.81 \small{(L)}  \\
+	    	Veach, MIS \small{(P)}& 16.57 \small{(M)} & 13.52 \small{(L)}  \\
+	    	Wooden Stairase \small{(L)}& 25.86 \small{(M)} & 24.83 \small{(P)}  \\
+	    	\hline
+	    	
+	    \end{tabular}
+	    	
+%    \begin{tabular}{ | c | c | c | c | }
+%    \hline
+%    {\bf Scene} & {\bf Converted$_1$} & {\bf Converted$_2$} & {\bf Converted$_{1,2}$} \\ 
+%    \hline
+%    Breakfast Room & 11.8510 \small{(L,M)} & 17.5810 \small{(L,P)} & 13.1571 \small{(M,P)} \\
+%    Coffee Maker & 24.5376 \small{(P,M)} & 20.9046 \small{(P,L)} & 28.8957 \small{(M,L)} \\
+%    Cornell Box & 35.5156 \small{(M,P)} & 22.0726 \small{(M,L)} & 21.5158 \small{(P,L)} \\
+%  	Glass of Water & 14.6463 \small{(P,L)} & 13.8424 \small{(P,M)} & 12.5093 \small{(M,L)} \\
+%  	Little Lamp & 27.7912 \small{(M,P)} & 14.1011 \small{(M,L)} & 14.9416 \small{(P,L)} \\
+%  	Wooden Stairase & 25.8600 \small{(L,M)} & 24.8293 \small{(L,P)} & 23.1929 \small{(M,P)} \\
+%  	Utah Teapot & 16.3979 \small{(L,M)} & 17.2888 \small{(L,P)} & 22.9236 \small{(M,P)} \\
+%	Veach, Bidir & 30.3493 \small{(M,P)} & 21.8102 \small{(M,L)} & 21.3300 \small{(P,L)} \\
+%	Veach, MIS & 16.5668 \small{(P,M)} & 13.5168 \small{(P,L)} & 14.4631 \small{(M,L)} \\
+%	\hline
+%    \end{tabular}
 \end{center}
-  \caption{PSNRs generated for each scene, considering the original scene file and scenes converted by our system (Converted$_1$ and Converted$_2$), and considering both scenes converted by our system (Converted$_{1,2}$). The renderers used to generate the images used to calculate the PSNR are specified by their initial letters: P for PBRT v3, M for Mitsuba and L for LuxRender. Note that the PSNR may vary between different scenes. } 
-  \label{tab:summary}
+  \caption{PSNR values for images rendered from scene descriptions automatically converted by our tool to two target systems. Reference images obtained by rendering the input scenes with the source systems shown on the left. 
+ % 	the generated for each scene, considering the original scene file and scenes converted by our system (Converted$_1$ and Converted$_2$), and considering both scenes converted by our system (Converted$_{1,2}$). 
+  	The renderers used to generate the compared images 
+  	%used to calculate the PSNR 
+  	are PBRT v3 (P), Mitsuba (M), and LuxRender (L). 
+%  	Note that the PSNR may vary between different scenes. 
+  	} 
+  \label{tab:psnr}
 \end{table}
 \normalsize 
