@@ -1,20 +1,20 @@
 \scriptsize
 \begin{table}
 \begin{center}
-	    \begin{tabular}{ | l | c | c | }
+	    \begin{tabular}{ | l | c | c | c | }
 	    	\hline
-	    	{\bf Input Scene } & {\bf PSNR } & {\bf PSNR }  \\ 
-	    	  {\bf (source system)} & {\bf (target system 1)}& {\bf (target system 2)}  \\ 
+	    	{\bf Input Scene } & {\bf PSNR } & {\bf PSNR } &  {\bf PSNR }\\ 
+	    	  {\bf (source system)} & {\bf (target 1)} & {\bf (target 2)}  & {\bf (source)} \\ 
 	    	\hline
-	    	Breakfast Room \small{(L)}& 11.85 \small{(M)} & 17.58 \small{(P)}  \\
-	    	Coffee Maker \small{(P)} & 24.54 \small{(M)} & 20.90 \small{(L)}  \\
-	    	Cornell Box \small{(M)}& 35.51 \small{(P)} & 22.07 \small{(L)}  \\
-%	    	Glass of Water \small{(P)}& 14.65 \small{(P,L)} & 13.84 \small{(P,M)}  \\
-	    	Little Lamp \small{(M)}& 27.79 \small{(P)} & 14.10 \small{(L)}  \\
-	    	Utah Teapot \small{(L)}& 16.40 \small{(M)} & 17.29 \small{(P)}  \\
-	    	Veach, Bidir \small{(M)}& 30.35 \small{(P)} & 21.81 \small{(L)}  \\
-	    	Veach, MIS \small{(P)}& 16.57 \small{(M)} & 13.52 \small{(L)}  \\
-	    	Wooden Stairase \small{(L)}& 25.86 \small{(M)} & 24.83 \small{(P)}  \\
+	    	Breakfast Room \small{(L)}& 11.85 \small{(M)} & 17.58 \small{(P)} & 28.34 \small{(L)} \\
+	    	Coffee Maker \small{(P)} & 24.54 \small{(M)} & 20.90 \small{(L)} &  37.78 \small{(P)} \\
+	    	Cornell Box \small{(M)}& 35.51 \small{(P)} & 22.07 \small{(L)} & 39.03 \small{(M)} \\
+%	    	Glass of Water \small{(P)}& 14.65 \small{(P,L)} & 13.84 \small{(P,M)} & 37.05 \small{(P)} \\
+	    	Little Lamp \small{(M)}& 27.79 \small{(P)} & 14.10 \small{(L)} & 42.35 \small{(M)} \\
+	    	Utah Teapot \small{(L)}& 16.40 \small{(M)} & 17.29 \small{(P)} & 39.30 \small{(L)} \\
+	    	Veach, Bidir \small{(M)}& 30.35 \small{(P)} & 21.81 \small{(L)} & 38.42 \small{(M)} \\
+	    	Veach, MIS \small{(P)}& 16.57 \small{(M)} & 13.52 \small{(L)} & 39.93 \small{(P)} \\
+	    	Wooden Stairase \small{(L)}& 25.86 \small{(M)} & 24.83 \small{(P)} & 36.48 \small{(L)}\\
 	    	\hline
 	    	
 	    \end{tabular}
@@ -35,7 +35,9 @@
 %	\hline
 %    \end{tabular}
 \end{center}
-  \caption{PSNR values for images rendered from scene descriptions automatically converted by our tool to two target systems. Reference images obtained by rendering the input scenes with the source systems shown on the left. 
+  \caption{PSNR values for images rendered from scene descriptions automatically converted by our tool to two target systems. 
+  	The reference images were obtained by rendering the input scenes with the source systems shown on the left. 
+  	For comparison, the right column shows the PSNR of an additional rendition of the input scene produce by the source system.
  % 	the generated for each scene, considering the original scene file and scenes converted by our system (Converted$_1$ and Converted$_2$), and considering both scenes converted by our system (Converted$_{1,2}$). 
   	The renderers used to generate the compared images 
   	%used to calculate the PSNR 
